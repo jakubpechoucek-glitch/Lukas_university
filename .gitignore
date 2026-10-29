@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+*.db
+# osobní data (známky, predikce, zdrojový Excel) – nikdy necommitovat
+data/private/
+*.xlsx
+*.xls
