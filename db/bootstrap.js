@@ -80,9 +80,27 @@ function ensureBaseData(db = getDb()) {
   })();
 }
 
+/**
+ * Scénář „podle průměrů“ má známky odvozené z vážených průměrů assessmentů (počítá klient).
+ * Vytvoří se, pokud chybí; body TOK+EE převezme z aktivního scénáře.
+ */
+function ensureAveragesScenario(db = getDb()) {
+  const student = db.prepare('SELECT id FROM students ORDER BY id LIMIT 1').get();
+  if (!student) return;
+  const exists = db.prepare("SELECT 1 FROM scenarios WHERE student_id = ? AND source = 'averages'").get(student.id);
+  if (exists) return;
+  const active = db.prepare('SELECT core_points FROM scenarios WHERE student_id = ? AND is_active = 1').get(student.id);
+  const order = db.prepare('SELECT COALESCE(MAX(sort_order), -1) + 1 AS n FROM scenarios WHERE student_id = ?').get(student.id).n;
+  db.prepare(
+    "INSERT INTO scenarios (student_id, name, source, core_points, sort_order) VALUES (?, 'podle průměrů', 'averages', ?, ?)"
+  ).run(student.id, active?.core_points ?? null, order);
+  console.log('  ✓ Scénář „podle průměrů“ vytvořen');
+}
+
 function bootstrap() {
   const db = getDb();
   ensureBaseData(db);
+  ensureAveragesScenario(db);
   ensureUsers(db);
   // Veřejný katalog škol se nahraje jen do prázdné DB (viz db/seed-catalog.js).
   const { seedCatalog } = require('./seed-catalog');
@@ -108,4 +126,4 @@ function ensurePrivateSeed(db = getDb()) {
   console.log(`  ✓ Osobní data importována z PRIVATE_SEED_JSON: ${JSON.stringify(stats)}`);
 }
 
-module.exports = { bootstrap, ensureUsers, ensureBaseData, ensurePrivateSeed, parseBootstrapUsers };
+module.exports = { bootstrap, ensureUsers, ensureBaseData, ensureAveragesScenario, ensurePrivateSeed, parseBootstrapUsers };

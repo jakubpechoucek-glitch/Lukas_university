@@ -5,6 +5,8 @@ import { useAuth } from '../context/AuthContext';
 import { useData, scenarioSubjects, scenarioTotals, useEvaluation } from '../context/DataContext';
 import { STATUS_META, PROGRAM_STATUSES, formatDate } from '../lib/format';
 import PageHeader from '../components/PageHeader';
+import { subjectAverage, fmtAvg } from '../lib/averages';
+import { roundGrade } from '@calc';
 import { FieldChip, SECTIONS } from '../lib/theme';
 
 const [, CATALOG, PREDICTION, SUBJECTS] = SECTIONS;
@@ -15,6 +17,70 @@ function CardTitle({ section, children }) {
     <div className={`mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide ${section.text}`}>
       <SectionIcon className="h-4 w-4" />{children}
     </div>
+  );
+}
+
+/** Blok s aktuálními váženými průměry všech předmětů. */
+function AveragesCard({ student, activeScenario }) {
+  const avgScenario = student.scenarios.find((s) => s.source === 'averages');
+  const avgTotals = avgScenario ? scenarioTotals(student.subjects, avgScenario) : null;
+  return (
+    <Link to="/predmety" className="card block border-l-4 border-l-emerald-500 hover:shadow-md">
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <CardTitle section={SUBJECTS}>Vážené průměry</CardTitle>
+        {avgTotals && (
+          <div className="text-right text-xs text-slate-500">
+            IB podle průměrů <span className="text-lg font-semibold tabular-nums text-emerald-700">{avgTotals.total}</span> / 45
+          </div>
+        )}
+      </div>
+      <table className="w-full text-sm">
+        <thead className="text-xs text-slate-500">
+          <tr>
+            <th className="py-1 text-left font-normal">Předmět</th>
+            <th className="w-1/3 py-1 font-normal" />
+            <th className="py-1 text-right font-normal">Průměr</th>
+            <th className="py-1 text-center font-normal">Známka</th>
+            <th className="hidden py-1 text-center font-normal sm:table-cell" title={`Predikce ve scénáři „${activeScenario?.name}“`}>Predikce</th>
+          </tr>
+        </thead>
+        <tbody>
+          {student.subjects.map((s) => {
+            const avg = subjectAverage(student.assessments, s.id);
+            const grade = roundGrade(avg);
+            const predicted = activeScenario?.grades?.[s.id];
+            const diff = grade !== null && predicted !== null && predicted !== undefined ? grade - predicted : null;
+            return (
+              <tr key={s.id} className="border-t border-slate-100">
+                <td className="py-1.5 pr-2">
+                  <span className="mr-1.5 rounded bg-slate-100 px-1.5 py-0.5 text-xs font-medium text-slate-600">{s.level}</span>
+                  {s.displayName}
+                </td>
+                <td className="py-1.5 pr-3">
+                  <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+                    {avg !== null && <div className="h-full rounded-full bg-emerald-500" style={{ width: `${(avg / 7) * 100}%` }} />}
+                  </div>
+                </td>
+                <td className="py-1.5 text-right tabular-nums text-slate-600">{fmtAvg(avg)}</td>
+                <td className="py-1.5 text-center">
+                  {grade !== null
+                    ? <span className="inline-block min-w-[2rem] rounded bg-emerald-100 px-1.5 py-0.5 font-bold tabular-nums text-emerald-800">{grade}</span>
+                    : <span className="text-slate-400">–</span>}
+                </td>
+                <td className="hidden py-1.5 text-center tabular-nums sm:table-cell">
+                  {predicted ?? '–'}
+                  {diff !== null && diff !== 0 && (
+                    <span className={`ml-1 text-xs font-semibold ${diff > 0 ? 'text-emerald-600' : 'text-red-600'}`} title="Průměr oproti predikci">
+                      {diff > 0 ? `▲${diff}` : `▼${-diff}`}
+                    </span>
+                  )}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </Link>
   );
 }
 
@@ -88,6 +154,8 @@ export default function Home() {
           </table>
         </Link>
       </div>
+
+      <AveragesCard student={student} activeScenario={activeScenario} />
 
       <div className="grid gap-4 md:grid-cols-2">
         <div className="card border-l-4 border-l-violet-500">

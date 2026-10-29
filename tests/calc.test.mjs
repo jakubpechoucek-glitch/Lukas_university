@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   ibTotals, corePointsFromGrades, evaluateProgram, evaluateSet, category, STATUS,
-  weightedAverage, averageByCriterion, yearAverage,
+  weightedAverage, averageByCriterion, yearAverage, roundGrade,
 } from '../shared/calc/index.mjs';
 
 // Fiktivní scénář z docs/04-vypocty.md (ne skutečné známky).
@@ -157,6 +157,18 @@ test('vážený průměr: bez známek → null, nikdy 0', () => {
   assert.equal(r.rounded, null);
   assert.equal(r.weightWarning, false);
   assert.equal(weightedAverage([]).average, null);
+});
+
+test('matematické zaokrouhlení průměru na známku', () => {
+  assert.equal(roundGrade(5.01), 5);
+  assert.equal(roundGrade(5.33), 5);
+  assert.equal(roundGrade(5.49), 5);
+  assert.equal(roundGrade(5.5), 6);
+  assert.equal(roundGrade(5.67), 6);
+  assert.equal(roundGrade(0.15 * 5 / 0.3 + 0.15 * 6 / 0.3), 6, '5,5 z vah s chybou plovoucí čárky → 6');
+  assert.equal(roundGrade(7.2), 7);
+  assert.equal(roundGrade(null), null);
+  assert.equal(weightedAverage([{ weight: 0.15, grade: 4 }, { weight: 0.15, grade: 3 }]).rounded, 4, '3,5 → 4');
 });
 
 test('průměr podle kritéria a roční průměr', () => {

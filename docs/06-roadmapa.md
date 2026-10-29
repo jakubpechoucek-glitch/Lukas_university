@@ -45,11 +45,15 @@
   na mobilu spodní lišta s ikonami. Obory mají vlastní barvu a ikonu (záložky, matice, přehled).
 - Katalog a matice seskupují programy podle univerzity – např. Bath (3 programy ve Sport Science)
   je jeden řádek; shodné požadavky se neopakují („stejné jako výše“).
+- Vážené průměry se zaokrouhlují na známku **matematicky** (od ,50 nahoru).
+- Nový scénář **„podle průměrů“** (`source = 'averages'`): známky se živě počítají z vážených průměrů
+  v Předmětech, nelze ho smazat, lze ho nastavit jako aktivní; body TOK+EE se zadávají ručně.
+- Přehled: nový blok **Vážené průměry** (průměr, známka, porovnání s predikcí aktivního scénáře,
+  celkové IB skóre podle průměrů).
 
 ### Fáze 5 – Rozšíření (podle potřeby)
 - Nadcházející termíny a kalendář (export do Google Calendar).
 - Sledování přihlášek (stav, deadline UCAS 14. 1., personal statement, reference).
-- Scénář z aktuálních průměrů.
 - Srovnání nákladů (školné + život) v jedné měně.
 - Mapa škol.
 

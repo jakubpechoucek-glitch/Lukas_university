@@ -166,6 +166,7 @@ SPA_B, SPA_AB_INITIO, MATH_AA, MATH_AI, …) a **skupiny** pro zkrácený zápis
 | student_id | FK | |
 | name | text | „kašle na to“, „průměr“, „dře/maká“, „zázrak“, „moje predikce“, později „Official predicted (škola)“ |
 | is_active | bool | právě jeden aktivní, podle něj se vyhodnocuje katalog |
+| source | enum | `manual` (známky zadané ručně) / `averages` (známky = vážené průměry z assessmentů, počítá klient; jen jeden, nelze smazat) |
 | core_points | int | 0–3 (TOK+EE) |
 | tok_grade / ee_grade | char? | A–E, volitelné, body se pak dopočítají |
 | sort_order | int | |

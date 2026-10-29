@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import toast from 'react-hot-toast';
 import api from '../services/api';
 import { ibTotals, evaluateProgram } from '@calc';
+import { averageGrades } from '../lib/averages';
 
 const DataContext = createContext(null);
 
@@ -128,10 +129,20 @@ export function DataProvider({ children }) {
     },
   }), [call, reload]);
 
+  // Scénář „podle průměrů“ nemá uložené známky – dopočítají se z assessmentů, takže se mění živě.
+  const studentView = useMemo(() => {
+    if (!student) return student;
+    const derived = averageGrades(student.subjects, student.assessments);
+    return {
+      ...student,
+      scenarios: student.scenarios.map((sc) => (sc.source === 'averages' ? { ...sc, grades: derived } : sc)),
+    };
+  }, [student]);
+
   const value = useMemo(() => {
-    const activeScenario = student?.scenarios.find((s) => s.isActive) ?? student?.scenarios[0] ?? null;
-    return { catalog, student, error, activeScenario, ...actions };
-  }, [catalog, student, error, actions]);
+    const activeScenario = studentView?.scenarios.find((s) => s.isActive) ?? studentView?.scenarios[0] ?? null;
+    return { catalog, student: studentView, error, activeScenario, ...actions };
+  }, [catalog, studentView, error, actions]);
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 }

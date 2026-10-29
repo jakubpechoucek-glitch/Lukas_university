@@ -29,7 +29,7 @@ function getScenarios(studentId) {
     SELECT g.* FROM scenario_grades g JOIN scenarios s ON s.id = g.scenario_id WHERE s.student_id = ?
   `).all(studentId);
   return scenarios.map((s) => ({
-    id: s.id, name: s.name, isActive: !!s.is_active, corePoints: s.core_points,
+    id: s.id, name: s.name, source: s.source, isActive: !!s.is_active, corePoints: s.core_points,
     tokGrade: s.tok_grade, eeGrade: s.ee_grade, sortOrder: s.sort_order,
     grades: Object.fromEntries(grades.filter((g) => g.scenario_id === s.id).map((g) => [g.subject_id, g.grade])),
   }));

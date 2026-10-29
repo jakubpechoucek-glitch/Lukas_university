@@ -88,7 +88,8 @@ test('student: scénáře – úprava známek, kopie, aktivace, smazání', asyn
   let res = await api('get', '/api/student');
   const { subjects, scenarios } = res.body.data;
   assert.equal(subjects.length, 6);
-  assert.equal(scenarios.length, 5);
+  assert.equal(scenarios.length, 6);
+  assert.equal(scenarios.filter((s) => s.source === 'averages').length, 1);
   const active = scenarios.find((s) => s.isActive);
   assert.equal(active.name, 'moje predikce');
 
@@ -116,6 +117,22 @@ test('student: scénáře – úprava známek, kopie, aktivace, smazání', asyn
   res = await api('delete', `/api/scenarios/${copy.id}`);
   assert.equal(res.status, 200);
   assert.equal(res.body.data.filter((s) => s.isActive).length, 1, 'po smazání aktivního se aktivuje jiný');
+});
+
+test('student: scénář podle průměrů – známky nejdou měnit, nejde smazat, jde aktivovat', async () => {
+  const { subjects, scenarios } = (await api('get', '/api/student')).body.data;
+  const avg = scenarios.find((s) => s.source === 'averages');
+  assert.equal(avg.name, 'podle průměrů');
+
+  let res = await api('put', `/api/scenarios/${avg.id}`).send({ grades: { [subjects[0].id]: 6 } });
+  assert.equal(res.status, 422);
+  res = await api('put', `/api/scenarios/${avg.id}`).send({ corePoints: 2, name: 'z průměrů' });
+  assert.equal(res.status, 200, 'TOK+EE a název jdou měnit');
+  assert.equal(res.body.data.corePoints, 2);
+
+  assert.equal((await api('delete', `/api/scenarios/${avg.id}`)).status, 409);
+  res = await api('post', `/api/scenarios/${avg.id}/activate`);
+  assert.equal(res.body.data.find((s) => s.isActive).id, avg.id);
 });
 
 test('student: assessmenty a předměty', async () => {

@@ -1,13 +1,12 @@
 import { useMemo, useState } from 'react';
-import { weightedAverage, averageByCriterion } from '@calc';
+import { weightedAverage, averageByCriterion, roundGrade } from '@calc';
 import { useData } from '../context/DataContext';
 import GradeSelect from '../components/GradeSelect';
 import { TERMS, formatDate } from '../lib/format';
-import { subjectAverage } from './Prediction';
+import { subjectAverage, fmtAvg } from '../lib/averages';
 import PageHeader from '../components/PageHeader';
 
 const pct = (w) => (w === null || w === undefined ? '' : String(Math.round(w * 1000) / 10));
-const fmtAvg = (a) => (a === null || a === undefined ? '–' : a.toFixed(2));
 const today = () => new Date().toISOString().slice(0, 10);
 
 /** Textové/číselné pole, které uloží hodnotu až po opuštění (nebo Enteru). */
@@ -138,6 +137,7 @@ export default function Subjects() {
             >
               <span className="mr-1 text-xs opacity-70">{s.level}</span>{s.displayName}
               <span className="ml-2 tabular-nums opacity-80">{fmtAvg(avg)}</span>
+              {avg !== null && <span className={`ml-1.5 rounded px-1.5 py-0.5 text-xs font-bold tabular-nums ${s.id === subject.id ? 'bg-white/25' : 'bg-emerald-100 text-emerald-800'}`}>{roundGrade(avg)}</span>}
             </button>
           );
         })}
@@ -217,7 +217,12 @@ export default function Subjects() {
             <div>
               <div className="text-xs uppercase tracking-wide text-slate-500">Vážený průměr {term}</div>
               <div className="text-3xl font-semibold tabular-nums">{fmtAvg(stats.average)}</div>
-              {stats.rounded !== null && <div className="text-sm text-slate-600">zaokrouhleno {stats.rounded}</div>}
+              {stats.rounded !== null && (
+                <div className="mt-1 text-sm text-slate-600">
+                  známka <span className="rounded bg-emerald-100 px-2 py-0.5 text-base font-bold text-emerald-800">{stats.rounded}</span>
+                  <span className="ml-1 text-xs text-slate-400">(zaokrouhleno matematicky)</span>
+                </div>
+              )}
             </div>
             <div>
               <div className="mb-1 flex justify-between text-xs text-slate-500">
@@ -236,7 +241,7 @@ export default function Subjects() {
               </div>
             )}
             <dl className="grid grid-cols-2 gap-y-1 border-t border-slate-100 pt-3 text-sm">
-              <dt className="text-slate-500">Všechna pololetí</dt><dd className="text-right tabular-nums">{fmtAvg(overall)}</dd>
+              <dt className="text-slate-500">Všechna pololetí</dt><dd className="text-right tabular-nums">{fmtAvg(overall)}{overall !== null && <b className="ml-1.5 text-emerald-700">→ {roundGrade(overall)}</b>}</dd>
               <dt className="text-slate-500">Predikce „{activeScenario?.name}“</dt><dd className="text-right tabular-nums">{predicted ?? '–'}</dd>
               <dt className="text-slate-500">ISM průměr 2025</dt><dd className="text-right tabular-nums">{subject.ismMean2025 ?? '–'}</dd>
               <dt className="text-slate-500">Světový průměr 2025</dt><dd className="text-right tabular-nums">{subject.worldMean2025 ?? '–'}</dd>

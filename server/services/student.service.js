@@ -54,6 +54,7 @@ function updateScenario(id, body) {
   if (body.tokGrade !== undefined) data.tokGrade = v.oneOf(body.tokGrade, 'TOK', ['A', 'B', 'C', 'D', 'E']);
   if (body.eeGrade !== undefined) data.eeGrade = v.oneOf(body.eeGrade, 'EE', ['A', 'B', 'C', 'D', 'E']);
   if (body.grades !== undefined) {
+    if (sc.source === 'averages') v.fail('Známky scénáře „podle průměrů“ se počítají z assessmentů – nelze je měnit ručně');
     const subjectIds = new Set(repo.getSubjects(sc.student_id).map((s) => s.id));
     data.grades = {};
     for (const [subjectId, g] of Object.entries(body.grades)) {
@@ -73,6 +74,7 @@ function activateScenario(id) {
 
 function deleteScenario(id) {
   const sc = scenarioOrFail(id);
+  if (sc.source === 'averages') throw { status: 409, message: 'Scénář „podle průměrů“ nelze smazat' };
   if (repo.countScenarios(sc.student_id) <= 1) throw { status: 409, message: 'Poslední scénář nelze smazat' };
   getDb().transaction(() => {
     repo.deleteScenario(id);

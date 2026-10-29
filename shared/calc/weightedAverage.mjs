@@ -4,6 +4,15 @@
 const EPS = 1e-9;
 
 /**
+ * Známka z průměru zaokrouhlená matematicky (5,49 → 5, 5,5 → 6), omezená na 1–7.
+ * EPS chrání před chybou plovoucí čárky (5,4999999999 má dát 6 stejně jako 5,5).
+ */
+export function roundGrade(average) {
+  if (average === null || average === undefined) return null;
+  return Math.min(7, Math.max(1, Math.round(average + EPS)));
+}
+
+/**
  * Jmenovatel = součet vah jen hodnocených položek, takže se nic nepřepisuje ručně.
  * @param {{weight: number, grade: number|null}[]} assessments
  */
@@ -19,7 +28,7 @@ export function weightedAverage(assessments) {
 
   return {
     average,
-    rounded: average === null ? null : Math.round(average),
+    rounded: roundGrade(average),
     gradedCount: graded.length,
     count: valid.length,
     weightTotal,

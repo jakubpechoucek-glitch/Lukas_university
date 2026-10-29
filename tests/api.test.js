@@ -36,7 +36,8 @@ test('bootstrap vytvoří účty, obory, předměty a scénáře (idempotentně)
   assert.equal(db.prepare('SELECT COUNT(*) n FROM users').get().n, 2);
   assert.equal(db.prepare('SELECT COUNT(*) n FROM fields').get().n, 4);
   assert.equal(db.prepare('SELECT COUNT(*) n FROM subjects').get().n, 6);
-  assert.equal(db.prepare('SELECT COUNT(*) n FROM scenarios').get().n, 5);
+  assert.equal(db.prepare('SELECT COUNT(*) n FROM scenarios').get().n, 6);
+  assert.equal(db.prepare("SELECT COUNT(*) n FROM scenarios WHERE source = 'averages'").get().n, 1, 'scénář podle průměrů jen jednou');
   assert.equal(db.prepare('SELECT name FROM scenarios WHERE is_active = 1').get().name, 'moje predikce');
 });
 

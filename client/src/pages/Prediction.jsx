@@ -1,20 +1,15 @@
 import { useMemo, useState } from 'react';
-import { evaluateProgram, weightedAverage, yearAverage } from '@calc';
+import { evaluateProgram } from '@calc';
 import { useData, scenarioSubjects, scenarioTotals } from '../context/DataContext';
 import GradeSelect from '../components/GradeSelect';
-import { STATUS_META, TERMS } from '../lib/format';
+import { STATUS_META } from '../lib/format';
+import { subjectAverage, fmtAvg } from '../lib/averages';
 import PageHeader from '../components/PageHeader';
 
 const CORE_OPTIONS = [0, 1, 2, 3];
 
-/** Aktuální vážený průměr předmětu přes všechna pololetí (null, když není žádná známka). */
-export function subjectAverage(assessments, subjectId) {
-  const terms = TERMS.map((term) => ({
-    term,
-    average: weightedAverage(assessments.filter((a) => a.subjectId === subjectId && a.term === term)).average,
-  }));
-  return yearAverage(terms);
-}
+// Aktivní scénář fialově, scénář „podle průměrů“ v zeleném přerušovaném rámečku.
+const colCls = (sc) => `${sc.isActive ? 'bg-violet-50' : ''} ${sc.source === 'averages' ? 'border-x-2 border-dashed border-emerald-300' : ''}`;
 
 function ScenarioHeader({ scenario, canDelete, onRename, onActivate, onDelete }) {
   const [editing, setEditing] = useState(false);
@@ -25,7 +20,12 @@ function ScenarioHeader({ scenario, canDelete, onRename, onActivate, onDelete })
     else setName(scenario.name);
   };
   return (
-    <th className={`min-w-[7.5rem] px-2 py-2 align-top text-center ${scenario.isActive ? 'bg-violet-50 text-violet-800' : ''}`}>
+    <th className={`min-w-[7.5rem] px-2 py-2 align-top text-center ${scenario.isActive ? 'bg-violet-50 text-violet-800' : ''} ${scenario.source === 'averages' ? 'border-x-2 border-t-2 border-dashed border-emerald-300' : ''}`}>
+      {scenario.source === 'averages' && (
+        <div className="mb-1 inline-block rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-700" title="Známky = vážené průměry z Předmětů, zaokrouhlené matematicky. Mění se samy.">
+          živě z Předmětů
+        </div>
+      )}
       {editing ? (
         <input
           autoFocus
@@ -43,7 +43,7 @@ function ScenarioHeader({ scenario, canDelete, onRename, onActivate, onDelete })
           <input type="radio" name="active-scenario" checked={scenario.isActive} onChange={onActivate} />
           aktivní
         </label>
-        {canDelete && (
+        {canDelete && scenario.source !== 'averages' && (
           <button className="text-slate-400 hover:text-red-600" title="Smazat scénář" onClick={onDelete}>✕</button>
         )}
       </div>
@@ -72,15 +72,12 @@ export default function Prediction() {
   if (!student || !catalog) return null;
   const { subjects, scenarios } = student;
 
-  async function addScenario(fromAverages) {
-    const name = window.prompt('Název nového scénáře', fromAverages ? 'podle průměrů' : `kopie – ${activeScenario?.name ?? ''}`);
+  async function copyActive() {
+    const name = window.prompt('Název nového scénáře', `kopie – ${activeScenario?.name ?? ''}`);
     if (!name) return;
-    const sc = await createScenario(name.trim(), fromAverages ? null : activeScenario?.id);
-    if (fromAverages) {
-      // Známky = zaokrouhlené vážené průměry, body TOK+EE se převezmou z aktivního scénáře.
-      const grades = Object.fromEntries(subjects.map((s) => [s.id, averages[s.id] === null ? null : Math.round(averages[s.id])]));
-      await updateScenario(sc.id, { grades, corePoints: activeScenario?.corePoints ?? null });
-    }
+    const sc = await createScenario(name.trim(), activeScenario?.id);
+    // Kopie scénáře „podle průměrů“ zmrazí aktuální známky jako ručně upravitelné.
+    if (activeScenario?.source === 'averages') await updateScenario(sc.id, { grades: activeScenario.grades });
   }
 
   const rowCls = 'border-t border-slate-100';
@@ -91,10 +88,7 @@ export default function Prediction() {
       <PageHeader
         subtitle="Změna známky se hned uloží a přepočítá. Aktivní scénář určuje vyhodnocení v katalogu."
         actions={(
-          <>
-            <button className="btn-secondary" onClick={() => addScenario(false)}>+ Kopie aktivního scénáře</button>
-            <button className="btn-secondary" onClick={() => addScenario(true)} title="Známky = zaokrouhlené vážené průměry z assessmentů">+ Scénář z průměrů</button>
-          </>
+          <button className="btn-secondary" onClick={copyActive}>+ Kopie aktivního scénáře</button>
         )}
       />
 
@@ -125,16 +119,22 @@ export default function Prediction() {
                   <span className="mr-1.5 rounded bg-slate-100 px-1.5 py-0.5 text-xs font-medium text-slate-600">{s.level}</span>
                   {s.displayName}
                 </td>
-                <td className="px-2 text-center tabular-nums">{averages[s.id] === null ? '–' : averages[s.id].toFixed(2)}</td>
+                <td className="px-2 text-center tabular-nums" title="Vážený průměr (všechna pololetí)">{fmtAvg(averages[s.id])}</td>
                 <td className="px-2 text-center tabular-nums text-slate-500">{s.ismMean2025 ?? ''}</td>
                 <td className="px-2 text-center tabular-nums text-slate-500">{s.worldMean2025 ?? ''}</td>
                 {scenarios.map((sc) => (
-                  <td key={sc.id} className={`px-2 py-1.5 text-center ${sc.isActive ? 'bg-violet-50' : ''}`}>
-                    <GradeSelect
-                      label={`${s.displayName} – ${sc.name}`}
-                      value={sc.grades[s.id]}
-                      onChange={(g) => updateScenario(sc.id, { grades: { [s.id]: g } })}
-                    />
+                  <td key={sc.id} className={`px-2 py-1.5 text-center ${colCls(sc)}`}>
+                    {sc.source === 'averages' ? (
+                      <span className="inline-block min-w-[2.5rem] rounded-md bg-emerald-50 px-2 py-1 font-semibold tabular-nums text-emerald-800" title={`průměr ${fmtAvg(averages[s.id])}`}>
+                        {sc.grades[s.id] ?? '–'}
+                      </span>
+                    ) : (
+                      <GradeSelect
+                        label={`${s.displayName} – ${sc.name}`}
+                        value={sc.grades[s.id]}
+                        onChange={(g) => updateScenario(sc.id, { grades: { [s.id]: g } })}
+                      />
+                    )}
                   </td>
                 ))}
               </tr>
@@ -143,7 +143,7 @@ export default function Prediction() {
               <td className={`${stickyCls} px-3 py-1.5`} title="Body za Theory of Knowledge + Extended Essay (0–3)">TOK + EE</td>
               <td colSpan={3} />
               {scenarios.map((sc) => (
-                <td key={sc.id} className={`px-2 py-1.5 text-center ${sc.isActive ? 'bg-violet-50' : ''}`}>
+                <td key={sc.id} className={`px-2 py-1.5 text-center ${colCls(sc)}`}>
                   <GradeSelect label={`TOK+EE – ${sc.name}`} options={CORE_OPTIONS} value={sc.corePoints} onChange={(g) => updateScenario(sc.id, { corePoints: g })} />
                 </td>
               ))}
@@ -154,7 +154,7 @@ export default function Prediction() {
               <td className={`${stickyCls} px-3 py-2 font-semibold`}>Celkem</td>
               <td colSpan={3} className="text-center text-xs text-slate-500">max. 45</td>
               {scenarios.map((sc) => (
-                <td key={sc.id} className={`px-2 py-2 text-center text-lg font-semibold tabular-nums ${sc.isActive ? 'bg-violet-50' : ''}`}>
+                <td key={sc.id} className={`px-2 py-2 text-center text-lg font-semibold tabular-nums ${colCls(sc)}`}>
                   {summaries[sc.id]?.totals.total}
                 </td>
               ))}
@@ -164,7 +164,7 @@ export default function Prediction() {
               <td colSpan={3} />
               {scenarios.map((sc) => {
                 const t = summaries[sc.id]?.totals;
-                return <td key={sc.id} className="px-2 py-1 text-center tabular-nums">{t?.hlProfile.join('-')} <span className="text-slate-400">({t?.hlSum})</span></td>;
+                return <td key={sc.id} className={`px-2 py-1 text-center tabular-nums ${colCls(sc)}`}>{t?.hlProfile.join('-')} <span className="text-slate-400">({t?.hlSum})</span></td>;
               })}
             </tr>
             <tr className="text-slate-600">
@@ -173,7 +173,7 @@ export default function Prediction() {
               {scenarios.map((sc) => {
                 const issues = summaries[sc.id]?.totals.diplomaIssues ?? [];
                 return (
-                  <td key={sc.id} className="px-2 py-1 text-center" title={issues.join('\n')}>
+                  <td key={sc.id} className={`px-2 py-1 text-center ${colCls(sc)}`} title={issues.join('\n')}>
                     {issues.length ? <span className="cursor-help text-red-600">✗ {issues.length}</span> : <span className="text-emerald-700">✓</span>}
                   </td>
                 );
@@ -185,7 +185,7 @@ export default function Prediction() {
               {scenarios.map((sc) => {
                 const c = summaries[sc.id]?.counts;
                 return (
-                  <td key={sc.id} className="px-2 py-2 text-center text-xs leading-5 tabular-nums">
+                  <td key={sc.id} className={`px-2 py-2 text-center text-xs leading-5 tabular-nums ${colCls(sc)} ${sc.source === 'averages' ? 'border-b-2' : ''}`}>
                     {['meets', 'borderline', 'fails'].map((k) => (
                       <div key={k} title={STATUS_META[k].label}>{STATUS_META[k].icon} {c?.[k]}</div>
                     ))}

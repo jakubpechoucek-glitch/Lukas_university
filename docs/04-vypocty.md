@@ -94,16 +94,17 @@ pokrytí   = Σ weight hodnocených / Σ weight všech   (zobrazit jako %)
   z Excelu, kde se jmenovatel přepisoval ručně (viz [02](02-analyza-excelu.md#blok-2-assessmenty-g11-semester-1-a17o35)).
 - Váhy se nemusí sčítat na 1. Vzorec je normalizuje. Pokud součet vah všech položek ≠ 100 %,
   zobrazí se varování (Business Management dnes 125 %).
-- Průměr se zobrazí na 2 desetinná místa a vedle něj zaokrouhlená známka 1–7.
+- Průměr se zobrazí na 2 desetinná místa a vedle něj známka 1–7 **zaokrouhlená matematicky** (5,49 → 5, 5,50 → 6).
 - Bez hodnocených položek se průměr nezobrazí (pomlčka), nikdy ne 0.
 - Volitelně se průměr počítá i podle kritéria (KU, TL) a za celý rok
   (vážený přes pololetí, váhy pololetí jsou nastavitelné, výchozí 50/50).
 
 ### Vazba na predikci (nice-to-have)
 
-Tlačítko **„Vytvořit scénář z aktuálních průměrů“** vytvoří scénář, kde známka předmětu
-= zaokrouhlený vážený průměr a core points se převezmou z aktivního scénáře.
-Vznikne tak realistický scénář podložený skutečnými výsledky.
+Scénář **„podle průměrů“** (`scenarios.source = 'averages'`) nemá ručně zadané známky:
+známka každého předmětu = vážený průměr přes všechna pololetí **zaokrouhlený matematicky** (od ,50 nahoru).
+Přepočítává se živě při každé změně assessmentu. Body TOK+EE se zadávají ručně (assessmenty k nim nejsou).
+Scénář lze nastavit jako aktivní, nelze ho smazat; předmět bez jediné známky zůstane prázdný.
 
 ## Testovací případy (pro unit testy)
 
