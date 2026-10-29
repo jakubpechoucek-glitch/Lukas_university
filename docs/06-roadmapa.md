@@ -33,10 +33,12 @@
 - Vyhodnocení běží v prohlížeči (`shared/calc`), takže změna známky se projeví okamžitě bez dotazu na server.
 - 33 testů (výpočty, katalog, import, API včetně CRUD), UI ověřeno v prohlížeči (desktop i mobil).
 
-### Fáze 4 – Nasazení (částečně ✅)
+### Fáze 4 – Nasazení ✅
 - ✅ Render služba `lukas-university` (Starter, Singapore), 3 účty.
 - ✅ Persistent disk 1 GB (`/opt/render/project/src/data`), osobní data naimportována, `PRIVATE_SEED_JSON` vyprázdněno.
-- ⏳ Merge do `main` a přepnutí deploy větve, dlaždice v rozcestníku.
+- ✅ Vývoj sloučen do `main`; Render nasazuje z `main` (`render.yaml: branch: main`).
+- ✅ Dlaždice „Lukas University“ v rozcestníku (sekce Vzdělání).
+- Postup pro další změny: vývoj ve vlastní větvi → merge do `main` → Render nasadí automaticky.
 
 ### Fáze 5 – Rozšíření (podle potřeby)
 - Nadcházející termíny a kalendář (export do Google Calendar).

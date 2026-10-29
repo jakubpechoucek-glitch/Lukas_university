@@ -2,6 +2,7 @@ services:
   - type: web
     name: lukas-university
     runtime: node
+    branch: main
     region: frankfurt
     plan: starter
     buildCommand: npm install && npm run build

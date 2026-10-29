@@ -85,7 +85,7 @@ Vyhodnocení (✅⚠️❌❔) se nepočítá na serveru – klient načte katal
 ## Nasazení (stav)
 
 - Render web service `lukas-university`, plán Starter, region Singapore (nejblíž Manile),
-  URL https://lukas-university.onrender.com, auto-deploy z větve `claude/amazing-cori-0abi6p`.
+  URL https://lukas-university.onrender.com, auto-deploy z větve `main`.
 - Proměnné: `NODE_ENV`, `NODE_VERSION=22`, `JWT_SECRET`, `BCRYPT_ROUNDS`, `DATABASE_URL`,
   `BOOTSTRAP_USERS`, `INITIAL_PASSWORD`, volitelně `PRIVATE_SEED_JSON`.
 - Build: `npm install && npm run build`. Klientský build si doinstaluje devDependencies sám
@@ -95,4 +95,5 @@ Vyhodnocení (✅⚠️❌❔) se nepočítá na serveru – klient načte katal
 
 ## Napojení na rozcestník
 
-Po nasazení přidat dlaždici do repozitáře `rozcestnik` (`index.html`) s odkazem na aplikaci.
+Dlaždice „Lukas University“ je v repozitáři `rozcestnik` (`index.html`, sekce Vzdělání, třída `t-uni`).
+Rozcestník je veřejný, proto dlaždice neukazuje žádné osobní údaje (známky, skóre).

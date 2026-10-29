@@ -5,7 +5,8 @@ výsledků IB Diploma. Nahrazuje Excel `Srovnání univerzit 2026 – Lukas.xlsx
 
 > **Stav:** fáze 3 hotová – MVP je použitelné: katalog s vyhodnocením, predikce, předměty s váženým průměrem,
 > matice scénářů a přehled. Další kroky viz [roadmapa](docs/06-roadmapa.md).
-> Běží na **https://lukas-university.onrender.com** (Render, Singapore, nasazuje větev `claude/amazing-cori-0abi6p`).
+> Běží na **https://lukas-university.onrender.com** (Render, Singapore, nasazuje větev `main`).
+> Odkaz je i v [rozcestníku](https://github.com/jakubpechoucek-glitch/rozcestnik).
 
 ## Co bude aplikace umět (MVP)
 
