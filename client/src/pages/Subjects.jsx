@@ -4,6 +4,7 @@ import { useData } from '../context/DataContext';
 import GradeSelect from '../components/GradeSelect';
 import { TERMS, formatDate } from '../lib/format';
 import { subjectAverage } from './Prediction';
+import PageHeader from '../components/PageHeader';
 
 const pct = (w) => (w === null || w === undefined ? '' : String(Math.round(w * 1000) / 10));
 const fmtAvg = (a) => (a === null || a === undefined ? '–' : a.toFixed(2));
@@ -124,10 +125,7 @@ export default function Subjects() {
 
   return (
     <div className="space-y-4">
-      <div>
-        <h1 className="text-2xl font-semibold">Předměty a assessmenty</h1>
-        <p className="text-sm text-slate-600">Vážený průměr počítá jen hodnocené položky, takže se nic nepřepisuje ručně.</p>
-      </div>
+      <PageHeader subtitle="Vážený průměr počítá jen hodnocené položky, takže se nic nepřepisuje ručně." />
 
       <div className="flex gap-1 overflow-x-auto pb-1">
         {student.subjects.map((s) => {
@@ -136,7 +134,7 @@ export default function Subjects() {
             <button
               key={s.id}
               onClick={() => setSubjectId(s.id)}
-              className={`whitespace-nowrap rounded-md px-3 py-1.5 text-left text-sm ${s.id === subject.id ? 'bg-primary text-white' : 'bg-white text-slate-700 hover:bg-slate-100'}`}
+              className={`whitespace-nowrap rounded-md px-3 py-1.5 text-left text-sm ${s.id === subject.id ? 'bg-emerald-600 font-semibold text-white shadow-sm' : 'bg-white text-slate-700 hover:bg-emerald-50'}`}
             >
               <span className="mr-1 text-xs opacity-70">{s.level}</span>{s.displayName}
               <span className="ml-2 tabular-nums opacity-80">{fmtAvg(avg)}</span>
@@ -152,7 +150,7 @@ export default function Subjects() {
               <button
                 key={t}
                 onClick={() => setTerm(t)}
-                className={`rounded-full border px-3 py-1 text-sm ${t === term ? 'border-primary bg-primary-light font-medium text-primary' : 'border-slate-200 bg-white text-slate-600'}`}
+                className={`rounded-full border px-3 py-1 text-sm ${t === term ? 'border-emerald-600 bg-emerald-50 font-medium text-emerald-800' : 'border-slate-200 bg-white text-slate-600'}`}
               >
                 {t}{termsWithData.has(t) ? '' : ' ·'}
               </button>
@@ -193,7 +191,7 @@ export default function Subjects() {
                   <td />
                   <td className="px-2 py-2">
                     <button
-                      className="font-medium text-primary hover:underline"
+                      className="font-medium text-emerald-700 hover:underline"
                       onClick={() => createAssessment({ subjectId: subject.id, term, name: 'Nový assessment', weight: 0 })}
                     >
                       + Přidat řádek
@@ -227,7 +225,7 @@ export default function Subjects() {
                 <span>{stats.gradedCount}/{stats.count} · {Math.round(stats.coverage * 100)} % vah</span>
               </div>
               <div className="h-2 overflow-hidden rounded-full bg-slate-100">
-                <div className="h-full bg-primary" style={{ width: `${Math.round(stats.coverage * 100)}%` }} />
+                <div className="h-full bg-emerald-500" style={{ width: `${Math.round(stats.coverage * 100)}%` }} />
               </div>
             </div>
             {Object.keys(byCriterion).length > 0 && (

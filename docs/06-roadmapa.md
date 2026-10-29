@@ -40,6 +40,12 @@
 - ✅ Dlaždice „Lukas University“ v rozcestníku (sekce Vzdělání).
 - Postup pro další změny: vývoj ve vlastní větvi → merge do `main` → Render nasadí automaticky.
 
+### Úpravy po prvním používání ✅
+- Každá sekce má vlastní barvu a ikonu (navigace, nadpis stránky, barevný proužek pod hlavičkou);
+  na mobilu spodní lišta s ikonami. Obory mají vlastní barvu a ikonu (záložky, matice, přehled).
+- Katalog a matice seskupují programy podle univerzity – např. Bath (3 programy ve Sport Science)
+  je jeden řádek; shodné požadavky se neopakují („stejné jako výše“).
+
 ### Fáze 5 – Rozšíření (podle potřeby)
 - Nadcházející termíny a kalendář (export do Google Calendar).
 - Sledování přihlášek (stav, deadline UCAS 14. 1., personal statement, reference).

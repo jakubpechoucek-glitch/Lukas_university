@@ -69,7 +69,8 @@ function evaluateSubjectRule(rule, subjects) {
   const allowed = expandSubjects(rule.subjects);
   const level = rule.level ?? 'ANY';
   const count = rule.count ?? 1;
-  const names = [...allowed].map(subjectLabel).join(', ');
+  // Krátké kódy (BIO, CHEM…) – plné názvy dělaly z důvodu nečitelně dlouhý text.
+  const names = rule.subjects.join(', ');
   const levelText = level === 'ANY' ? '' : `${level} `;
 
   const candidates = subjects

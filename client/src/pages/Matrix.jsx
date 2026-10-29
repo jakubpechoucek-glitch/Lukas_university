@@ -2,7 +2,9 @@ import { useMemo, useState } from 'react';
 import { evaluateProgram } from '@calc';
 import { useData, scenarioSubjects, scenarioTotals } from '../context/DataContext';
 import StatusBadge from '../components/StatusBadge';
+import PageHeader from '../components/PageHeader';
 import { STATUS_META } from '../lib/format';
+import { fieldMeta } from '../lib/theme';
 
 export default function Matrix() {
   const { catalog, student } = useData();
@@ -31,12 +33,20 @@ export default function Matrix() {
 
   const total = (i, status) => catalog.programs.filter((p) => results[i].get(p.id).status === status).length;
 
+  // Programy jednoho oboru seskupené podle univerzity (název univerzity jen jednou).
+  const grouped = (fieldId) => {
+    const byUni = new Map();
+    for (const p of catalog.programs) {
+      if (p.fieldId !== fieldId || !visible(p)) continue;
+      if (!byUni.has(p.universityId)) byUni.set(p.universityId, []);
+      byUni.get(p.universityId).push(p);
+    }
+    return [...byUni.entries()].map(([uid, programs]) => ({ u: unis.get(uid), programs }));
+  };
+
   return (
     <div className="space-y-4">
-      <div>
-        <h1 className="text-2xl font-semibold">Matice scénářů</h1>
-        <p className="text-sm text-slate-600">Které programy se otevřou, když se Lukas zlepší. Najetím na ikonu se zobrazí důvod.</p>
-      </div>
+      <PageHeader subtitle="Které programy se otevřou, když se Lukas zlepší. Najetím na ikonu se zobrazí důvod." />
       <div className="flex flex-wrap gap-4 text-sm text-slate-600">
         <label className="flex items-center gap-1.5"><input type="checkbox" checked={onlyChanging} onChange={(e) => setOnlyChanging(e.target.checked)} /> jen programy, kde se výsledek mezi scénáři liší</label>
         <label className="flex items-center gap-1.5"><input type="checkbox" checked={hideUnknown} onChange={(e) => setHideUnknown(e.target.checked)} /> skrýt nevyhodnotitelné</label>
@@ -44,37 +54,44 @@ export default function Matrix() {
 
       <div className="card overflow-x-auto p-0">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-xs text-slate-500">
+          <thead className="bg-amber-50/60 text-xs text-slate-500">
             <tr>
-              <th className="sticky left-0 z-10 bg-slate-50 px-3 py-2 text-left uppercase tracking-wide">Program</th>
-              {scenarios.map((sc) => (
-                <th key={sc.id} className={`min-w-[6rem] px-2 py-2 text-center ${sc.isActive ? 'text-primary' : ''}`}>
+              <th className="sticky left-0 z-10 bg-amber-50 px-3 py-2 text-left uppercase tracking-wide">Univerzita</th>
+              <th className="px-3 py-2 text-left uppercase tracking-wide">Program</th>
+              {scenarios.map((sc, i) => (
+                <th key={sc.id} className={`min-w-[6rem] px-2 py-2 text-center ${sc.isActive ? 'bg-violet-50 text-violet-700' : ''}`}>
                   <div className="text-sm font-semibold normal-case">{sc.name}</div>
                   <div className="font-normal tabular-nums">{scenarioTotals(student.subjects, sc).total} b.</div>
-                  <div className="font-normal">{STATUS_META.meets.icon} {total(scenarios.indexOf(sc), 'meets')} · {STATUS_META.borderline.icon} {total(scenarios.indexOf(sc), 'borderline')}</div>
+                  <div className="font-normal">{STATUS_META.meets.icon} {total(i, 'meets')} · {STATUS_META.borderline.icon} {total(i, 'borderline')}</div>
                 </th>
               ))}
             </tr>
           </thead>
           {catalog.fields.map((f) => {
-            const programs = catalog.programs.filter((p) => p.fieldId === f.id && visible(p));
-            if (!programs.length) return null;
+            const groups = grouped(f.id);
+            if (!groups.length) return null;
+            const m = fieldMeta(f.name);
+            const FieldIcon = m.icon;
             return (
               <tbody key={f.id}>
-                <tr className="bg-slate-100/70">
-                  <td colSpan={scenarios.length + 1} className="sticky left-0 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-slate-600">{f.name}</td>
+                <tr className={m.bg}>
+                  <td colSpan={scenarios.length + 2} className={`sticky left-0 px-3 py-2 text-sm font-semibold ${m.text}`}>
+                    <span className="inline-flex items-center gap-1.5"><FieldIcon className="h-4 w-4" />{f.name}</span>
+                  </td>
                 </tr>
-                {programs.map((p) => (
-                  <tr key={p.id} className="border-t border-slate-100">
-                    <td className="sticky left-0 z-10 max-w-[16rem] bg-white px-3 py-1.5">
-                      <div className="truncate font-medium" title={unis.get(p.universityId)?.name}>{unis.get(p.universityId)?.name}</div>
-                      <div className="truncate text-xs text-slate-500" title={p.name}>{p.name}</div>
-                    </td>
-                    {results.map((r, i) => (
-                      <td key={scenarios[i].id} className="px-2 py-1.5 text-center"><StatusBadge result={r.get(p.id)} /></td>
+                {groups.flatMap(({ u, programs }) => programs.map((p, i) => (
+                  <tr key={p.id} className={i === 0 ? 'border-t border-slate-200' : 'border-t border-dashed border-slate-100'}>
+                    {i === 0 && (
+                      <td rowSpan={programs.length} className="sticky left-0 z-10 max-w-[12rem] bg-white px-3 py-1.5 align-top font-medium">
+                        <div className="truncate" title={u?.name}>{u?.name}</div>
+                      </td>
+                    )}
+                    <td className="max-w-[16rem] px-3 py-1.5 text-xs text-slate-600"><div className="truncate" title={p.name}>{p.name}</div></td>
+                    {results.map((r, j) => (
+                      <td key={scenarios[j].id} className={`px-2 py-1.5 text-center ${scenarios[j].isActive ? 'bg-violet-50/50' : ''}`}><StatusBadge result={r.get(p.id)} /></td>
                     ))}
                   </tr>
-                ))}
+                )))}
               </tbody>
             );
           })}

@@ -4,6 +4,19 @@ import { evaluateProgram } from '@calc';
 import { useAuth } from '../context/AuthContext';
 import { useData, scenarioSubjects, scenarioTotals, useEvaluation } from '../context/DataContext';
 import { STATUS_META, PROGRAM_STATUSES, formatDate } from '../lib/format';
+import PageHeader from '../components/PageHeader';
+import { FieldChip, SECTIONS } from '../lib/theme';
+
+const [, CATALOG, PREDICTION, SUBJECTS] = SECTIONS;
+
+function CardTitle({ section, children }) {
+  const SectionIcon = section.icon;
+  return (
+    <div className={`mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide ${section.text}`}>
+      <SectionIcon className="h-4 w-4" />{children}
+    </div>
+  );
+}
 
 function countMeets(programs, subjects, totals) {
   return programs.filter((p) => evaluateProgram(p, subjects, totals).status === 'meets').length;
@@ -45,18 +58,18 @@ export default function Home() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-semibold">Ahoj, {user?.name}</h1>
+      <PageHeader title={`Ahoj, ${user?.name ?? ''}`} subtitle="Rychlý přehled – kliknutím na kartu přejdete do příslušné sekce." />
 
       <div className="grid gap-4 md:grid-cols-3">
-        <Link to="/predikce" className="card block hover:border-primary">
-          <div className="text-xs uppercase tracking-wide text-slate-500">Aktivní scénář „{activeScenario?.name}“</div>
+        <Link to="/predikce" className="card block border-l-4 border-l-violet-500 hover:shadow-md">
+          <CardTitle section={PREDICTION}>Aktivní scénář „{activeScenario?.name}“</CardTitle>
           <div className="mt-1 text-4xl font-semibold tabular-nums">{totals.total}<span className="text-lg text-slate-400"> / 45</span></div>
           <div className="text-sm text-slate-600">HL {totals.hlProfile.join('-')} · SL součet {totals.slSum}</div>
           {totals.diplomaIssues.length > 0 && <div className="mt-1 text-sm text-red-600">Diplom: {totals.diplomaIssues.join(', ')}</div>}
         </Link>
 
-        <Link to="/katalog" className="card block hover:border-primary md:col-span-2">
-          <div className="mb-2 text-xs uppercase tracking-wide text-slate-500">Dosažitelnost podle oboru</div>
+        <Link to="/katalog" className="card block border-l-4 border-l-sky-500 hover:shadow-md md:col-span-2">
+          <CardTitle section={CATALOG}>Dosažitelnost podle oboru</CardTitle>
           <table className="w-full text-sm">
             <tbody>
               {catalog.fields.map((f) => {
@@ -64,7 +77,7 @@ export default function Home() {
                 const c = (st) => ps.filter((p) => evaluation.get(p.id)?.status === st).length;
                 return (
                   <tr key={f.id}>
-                    <td className="py-0.5">{f.name}</td>
+                    <td className="py-1"><FieldChip name={f.name} /></td>
                     {['meets', 'borderline', 'fails', 'unknown'].map((st) => (
                       <td key={st} className="w-14 text-right tabular-nums" title={STATUS_META[st].label}>{STATUS_META[st].icon} {c(st)}</td>
                     ))}
@@ -77,23 +90,23 @@ export default function Home() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <div className="card">
-          <h2 className="font-semibold">Kde se vyplatí přidat</h2>
+        <div className="card border-l-4 border-l-violet-500">
+          <CardTitle section={PREDICTION}>Kde se vyplatí přidat</CardTitle>
           <p className="mb-2 text-xs text-slate-500">O kolik programů víc by Lukas splňoval, kdyby se zlepšil o jednu známku.</p>
           <ul className="space-y-1 text-sm">
             {whatIf.map((w) => (
               <li key={w.label} className="flex items-center gap-2">
                 <span className="w-48 shrink-0">{w.label}</span>
-                <span className="h-2 rounded bg-primary" style={{ width: `${Math.max(2, w.gain * 4)}px` }} />
+                <span className="h-2 rounded bg-violet-500" style={{ width: `${Math.max(2, w.gain * 4)}px` }} />
                 <span className="tabular-nums text-slate-600">+{w.gain}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="card space-y-4">
+        <div className="card space-y-4 border-l-4 border-l-emerald-500">
           <div>
-            <h2 className="mb-2 font-semibold">Nadcházející termíny</h2>
+            <CardTitle section={SUBJECTS}>Nadcházející termíny</CardTitle>
             {upcoming.length ? (
               <ul className="space-y-1 text-sm">
                 {upcoming.map((a) => (
@@ -105,12 +118,12 @@ export default function Home() {
                 ))}
               </ul>
             ) : (
-              <p className="text-sm text-slate-500">Žádné termíny – doplňte je u assessmentů v <Link className="text-primary hover:underline" to="/predmety">Předmětech</Link>.</p>
+              <p className="text-sm text-slate-500">Žádné termíny – doplňte je u assessmentů v <Link className="text-emerald-700 hover:underline" to="/predmety">Předmětech</Link>.</p>
             )}
           </div>
           {tracked.length > 0 && (
             <div>
-              <h2 className="mb-2 font-semibold">Přihlášky</h2>
+              <CardTitle section={CATALOG}>Přihlášky</CardTitle>
               <ul className="space-y-1 text-sm">
                 {tracked.map((p) => (
                   <li key={p.id} className="flex justify-between gap-2">

@@ -3,6 +3,7 @@ import { evaluateProgram, weightedAverage, yearAverage } from '@calc';
 import { useData, scenarioSubjects, scenarioTotals } from '../context/DataContext';
 import GradeSelect from '../components/GradeSelect';
 import { STATUS_META, TERMS } from '../lib/format';
+import PageHeader from '../components/PageHeader';
 
 const CORE_OPTIONS = [0, 1, 2, 3];
 
@@ -24,7 +25,7 @@ function ScenarioHeader({ scenario, canDelete, onRename, onActivate, onDelete })
     else setName(scenario.name);
   };
   return (
-    <th className={`min-w-[7.5rem] px-2 py-2 align-top text-center ${scenario.isActive ? 'bg-primary-light' : ''}`}>
+    <th className={`min-w-[7.5rem] px-2 py-2 align-top text-center ${scenario.isActive ? 'bg-violet-50 text-violet-800' : ''}`}>
       {editing ? (
         <input
           autoFocus
@@ -87,16 +88,15 @@ export default function Prediction() {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-semibold">Predikce IB</h1>
-          <p className="text-sm text-slate-600">Změna známky se hned uloží a přepočítá. Aktivní scénář určuje vyhodnocení v katalogu.</p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <button className="btn-secondary" onClick={() => addScenario(false)}>+ Kopie aktivního scénáře</button>
-          <button className="btn-secondary" onClick={() => addScenario(true)} title="Známky = zaokrouhlené vážené průměry z assessmentů">+ Scénář z průměrů</button>
-        </div>
-      </div>
+      <PageHeader
+        subtitle="Změna známky se hned uloží a přepočítá. Aktivní scénář určuje vyhodnocení v katalogu."
+        actions={(
+          <>
+            <button className="btn-secondary" onClick={() => addScenario(false)}>+ Kopie aktivního scénáře</button>
+            <button className="btn-secondary" onClick={() => addScenario(true)} title="Známky = zaokrouhlené vážené průměry z assessmentů">+ Scénář z průměrů</button>
+          </>
+        )}
+      />
 
       <div className="card overflow-x-auto p-0">
         <table className="w-full text-sm">
@@ -129,7 +129,7 @@ export default function Prediction() {
                 <td className="px-2 text-center tabular-nums text-slate-500">{s.ismMean2025 ?? ''}</td>
                 <td className="px-2 text-center tabular-nums text-slate-500">{s.worldMean2025 ?? ''}</td>
                 {scenarios.map((sc) => (
-                  <td key={sc.id} className={`px-2 py-1.5 text-center ${sc.isActive ? 'bg-primary-light/60' : ''}`}>
+                  <td key={sc.id} className={`px-2 py-1.5 text-center ${sc.isActive ? 'bg-violet-50' : ''}`}>
                     <GradeSelect
                       label={`${s.displayName} – ${sc.name}`}
                       value={sc.grades[s.id]}
@@ -143,7 +143,7 @@ export default function Prediction() {
               <td className={`${stickyCls} px-3 py-1.5`} title="Body za Theory of Knowledge + Extended Essay (0–3)">TOK + EE</td>
               <td colSpan={3} />
               {scenarios.map((sc) => (
-                <td key={sc.id} className={`px-2 py-1.5 text-center ${sc.isActive ? 'bg-primary-light/60' : ''}`}>
+                <td key={sc.id} className={`px-2 py-1.5 text-center ${sc.isActive ? 'bg-violet-50' : ''}`}>
                   <GradeSelect label={`TOK+EE – ${sc.name}`} options={CORE_OPTIONS} value={sc.corePoints} onChange={(g) => updateScenario(sc.id, { corePoints: g })} />
                 </td>
               ))}
@@ -154,7 +154,7 @@ export default function Prediction() {
               <td className={`${stickyCls} px-3 py-2 font-semibold`}>Celkem</td>
               <td colSpan={3} className="text-center text-xs text-slate-500">max. 45</td>
               {scenarios.map((sc) => (
-                <td key={sc.id} className={`px-2 py-2 text-center text-lg font-semibold tabular-nums ${sc.isActive ? 'bg-primary-light/60' : ''}`}>
+                <td key={sc.id} className={`px-2 py-2 text-center text-lg font-semibold tabular-nums ${sc.isActive ? 'bg-violet-50' : ''}`}>
                   {summaries[sc.id]?.totals.total}
                 </td>
               ))}
