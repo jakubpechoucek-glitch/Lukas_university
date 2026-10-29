@@ -21,17 +21,21 @@
   dostanou `manual_review`.
 - Hotovo: 67 programů / 36 univerzit, 28 testů. Podrobnosti a body k ověření v [07](07-import-dat.md).
 
-### Fáze 3 – MVP obrazovky
+### Fáze 3 – MVP obrazovky ✅
 1. **Predikce**: tabulka scénářů jako v Excelu, editace buněk, živý součet, výběr aktivního scénáře.
 2. **Katalog**: záložky oborů, tabulka programů se stavem ✅⚠️❌❔, přeškrtnutí, důvod
    v tooltipu, filtr a řazení, formulář programu včetně editoru požadavků.
 3. **Předměty**: pro každý předmět editovatelná tabulka assessmentů (váha, známka, termín,
    kritérium), vážený průměr, pokrytí vah, přepínač pololetí.
 4. **Matice** program × scénář.
+5. ✅ Navíc **Přehled**: skóre aktivního scénáře, dosažitelnost po oborech, „kde se vyplatí přidat“
+   (o kolik programů víc by Lukas splňoval při +1 známce v daném předmětu), nadcházející termíny, přihlášky.
+- Vyhodnocení běží v prohlížeči (`shared/calc`), takže změna známky se projeví okamžitě bez dotazu na server.
+- 33 testů (výpočty, katalog, import, API včetně CRUD), UI ověřeno v prohlížeči (desktop i mobil).
 
 ### Fáze 4 – Nasazení (částečně ✅)
 - ✅ Render služba `lukas-university` (Starter, Singapore), 3 účty.
-- ⏳ Persistent disk – nutno přidat v dashboardu (API ho neumí), jinak se DB při deployi maže.
+- ✅ Persistent disk 1 GB (`/opt/render/project/src/data`), osobní data naimportována, `PRIVATE_SEED_JSON` vyprázdněno.
 - ⏳ Merge do `main` a přepnutí deploy větve, dlaždice v rozcestníku.
 
 ### Fáze 5 – Rozšíření (podle potřeby)

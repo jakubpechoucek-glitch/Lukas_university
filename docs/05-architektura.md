@@ -35,22 +35,25 @@ Lukas_university/
 └── render.yaml
 ```
 
-### API (náčrt)
+### API (implementováno)
+
+Všechny endpointy kromě `/api/health` a `/api/auth/login` vyžadují JWT. Odpověď `{ success, data | error }`.
 
 ```
-GET/POST        /api/fields
-GET/POST        /api/universities          PUT/DELETE /api/universities/:id
-GET/POST        /api/programs?field=…      PUT/DELETE /api/programs/:id
-PUT             /api/programs/:id/requirements     (celé sady najednou)
-GET/POST        /api/scenarios             PUT/DELETE /api/scenarios/:id
-PUT             /api/scenarios/:id/grades
-POST            /api/scenarios/:id/activate
-GET/POST        /api/subjects              PUT/DELETE /api/subjects/:id
-GET/POST        /api/subjects/:id/assessments
-PUT/DELETE      /api/assessments/:id
-GET             /api/evaluation?scenario=… (výsledky ✅⚠️❌❔ pro všechny programy)
-GET             /api/export                (JSON záloha)
+POST            /api/auth/login | /api/auth/change-password      GET /api/auth/me
+GET             /api/catalog                   obory, univerzity, programy včetně sad požadavků
+POST            /api/catalog/universities      PUT/DELETE /api/catalog/universities/:id
+POST            /api/catalog/programs          PUT/DELETE /api/catalog/programs/:id
+                                               (PUT je částečný; requirementSets nahradí všechny sady)
+GET             /api/student                   předměty, scénáře se známkami, assessmenty, složky zkoušek
+PUT             /api/subjects/:id
+POST            /api/scenarios {name, copyFrom?}   PUT/DELETE /api/scenarios/:id   POST /api/scenarios/:id/activate
+POST            /api/assessments               PUT/DELETE /api/assessments/:id
+POST            /api/import/private            (jen parent) import osobních dat, viz docs/07
 ```
+
+Vyhodnocení (✅⚠️❌❔) se nepočítá na serveru – klient načte katalog a scénáře a počítá přes `shared/calc`.
+Úpravy se ukládají optimisticky; při chybě se zobrazí hláška a data se načtou znovu.
 
 ## Zvážené alternativy
 
@@ -87,7 +90,8 @@ GET             /api/export                (JSON záloha)
   `BOOTSTRAP_USERS`, `INITIAL_PASSWORD`, volitelně `PRIVATE_SEED_JSON`.
 - Build: `npm install && npm run build`. Klientský build si doinstaluje devDependencies sám
   (Render nastavuje `NODE_ENV=production`, takže by jinak chyběl `vite`).
-- **Disk** se přes API přidat nedá. Je nutné ho přidat ručně v dashboardu.
+- **Disk** 1 GB připojen (přidán ručně v dashboardu – API to neumí).
+- `app.set('trust proxy', 1)` – Render posílá `X-Forwarded-For`, jinak by rate-limit loginu hlásil chybu.
 
 ## Napojení na rozcestník
 

@@ -3,8 +3,8 @@
 Webová aplikace pro výběr vysoké školy v Evropě podle oboru a podle predikce
 výsledků IB Diploma. Nahrazuje Excel `Srovnání univerzit 2026 – Lukas.xlsx`.
 
-> **Stav:** fáze 2 hotová. Kostra, přihlášení, výpočty a data z Excelu (67 programů, 36 univerzit)
-> jsou v databázi. Obrazovky přijdou ve fázi 3 (viz [roadmapa](docs/06-roadmapa.md)).
+> **Stav:** fáze 3 hotová – MVP je použitelné: katalog s vyhodnocením, predikce, předměty s váženým průměrem,
+> matice scénářů a přehled. Další kroky viz [roadmapa](docs/06-roadmapa.md).
 > Běží na **https://lukas-university.onrender.com** (Render, Singapore, nasazuje větev `claude/amazing-cori-0abi6p`).
 
 ## Co bude aplikace umět (MVP)
@@ -47,7 +47,7 @@ Požadavek: Node.js ≥ 22.12 (server načítá sdílené ES moduly z `shared/ca
 
 ```
 client/         React + Vite + Tailwind (build → server/public)
-server/         Express API (routes → controllers → services → repositories)
+server/         Express API (routes → controllers → services → repositories), viz docs/05
 shared/calc/    výpočty IB skóre, vyhodnocení škol a váženého průměru (server i klient)
 db/             SQLite, migrace, bootstrap účtů a základních dat
 tests/          node:test (calc, catalog, api)

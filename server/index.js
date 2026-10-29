@@ -10,6 +10,8 @@ if (!process.env.JWT_SECRET) {
 }
 
 const app = express();
+// Render běží za proxy – bez toho by express-rate-limit nepoznal IP klienta (ERR_ERL_UNEXPECTED_X_FORWARDED_FOR).
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -23,6 +25,8 @@ app.get('/api/health', (req, res) => res.json({ success: true, data: { status: '
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/fields', require('./routes/fields.routes'));
 app.use('/api/import', require('./routes/import.routes'));
+app.use('/api/catalog', require('./routes/catalog.routes'));
+app.use('/api', require('./routes/student.routes'));
 
 // Serve React in production
 if (!isDev) {
