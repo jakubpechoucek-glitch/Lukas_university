@@ -1,0 +1,2862 @@
+{
+  "version": 1,
+  "source": "Srovnání univerzit 2026 – Lukas.xlsx (29. 10. 2026)",
+  "universities": [
+    {
+      "name": "Aarhus University",
+      "country": "DK",
+      "city": "Aarhus",
+      "website": "https://bachelor.au.dk/en/"
+    },
+    {
+      "name": "Cardiff University",
+      "country": "GB",
+      "city": "Cardiff",
+      "address": "Park Place, Cardiff, CF10 3AT, United Kingdom",
+      "website": "https://www.cardiff.ac.uk",
+      "worldRankText": "190",
+      "worldRankSort": 190
+    },
+    {
+      "name": "City St George's, University of London",
+      "country": "GB",
+      "city": "London",
+      "address": "City St George's, University of London\nNorthampton Square\nLondon EC1V 0HB\nUnited Kingdom",
+      "website": "https://www.citystgeorges.ac.uk"
+    },
+    {
+      "name": "Dublin City University",
+      "country": "IE",
+      "city": "Dublin",
+      "address": "Dublin City University, Collins Ave Ext, Whitehall, Dublin 9, Ireland",
+      "website": "https://www.dcu.ie",
+      "worldRankText": "284",
+      "worldRankSort": 284
+    },
+    {
+      "name": "Durham University",
+      "country": "GB",
+      "city": "Durham",
+      "address": "The Palatine Centre, University, Stockton Rd, Durham DH1 3LE, United Kingdom",
+      "website": "https://www.durham.ac.uk",
+      "worldRankText": "157",
+      "worldRankSort": 157
+    },
+    {
+      "name": "Erasmus University Rotterdam",
+      "country": "NL",
+      "city": "Rotterdam",
+      "address": "Campus Woudestein\nBurgemeester Oudlaan 50\n3062 PA Rotterdam\nNetherlands",
+      "website": "https://www.eur.nl/en",
+      "worldRankText": "93",
+      "worldRankSort": 93
+    },
+    {
+      "name": "King's College London",
+      "country": "GB",
+      "city": "London",
+      "address": "King's College London Strand London WC2R 2LS United Kingdom",
+      "website": "https://www.kcl.ac.uk",
+      "worldRankText": "40",
+      "worldRankSort": 40
+    },
+    {
+      "name": "Lancaster University",
+      "country": "GB",
+      "city": "Lancaster",
+      "address": "Lancaster University\nLancaster\nLA1 4YW\nUnited Kingdom",
+      "website": "https://www.lancaster.ac.uk"
+    },
+    {
+      "name": "Loughborough University",
+      "country": "GB",
+      "city": "Loughborough",
+      "address": "Loughborough University\nEpinal Way\nLoughborough\nLeicestershire, UK",
+      "website": "https://www.lboro.ac.uk",
+      "worldRankText": "326~350",
+      "worldRankSort": 326
+    },
+    {
+      "name": "Lund University",
+      "country": "SE",
+      "city": "Lund",
+      "website": "https://www.lunduniversity.lu.se/"
+    },
+    {
+      "name": "Maastricht University",
+      "country": "NL",
+      "city": "Maastricht",
+      "website": "https://www.maastrichtuniversity.nl"
+    },
+    {
+      "name": "Newcastle University",
+      "country": "GB",
+      "city": "Newcastle upon Tyne",
+      "address": "Newcastle\nNewcastle University\nNewcastle upon Tyne\nNE1 7RU",
+      "website": "https://www.ncl.ac.uk",
+      "worldRankText": "154",
+      "worldRankSort": 154
+    },
+    {
+      "name": "The Hague University of Applied Sciences",
+      "country": "NL",
+      "city": "The Hague",
+      "address": "Johanna Westerdijkplein 75\n2521 EN The Hague",
+      "website": "https://www.thuas.com",
+      "worldRankText": "?"
+    },
+    {
+      "name": "Tilburg University",
+      "country": "NL",
+      "city": "Tilburg",
+      "address": "Warandelaan 2, 5037 AB Tilburg, The Netherlands ",
+      "website": "https://www.tilburguniversity.edu"
+    },
+    {
+      "name": "Trinity College Dublin",
+      "country": "IE",
+      "city": "Dublin",
+      "address": "Trinity College Dublin, The University of Dublin.\nCollege Green, Dublin 2, Ireland",
+      "website": "https://www.tcd.ie/courses/"
+    },
+    {
+      "name": "UCAM – Universidad Católica San Antonio de Murcia",
+      "country": "ES",
+      "city": "Murcia",
+      "address": "CAM\n\nUniversidad Católica San Antonio de Murcia\n\nCampus de los Jerónimos, Guadalupe 30107\n\n(Murcia) - España",
+      "website": "https://international.ucam.edu",
+      "worldRankText": "?"
+    },
+    {
+      "name": "University College Cork",
+      "country": "IE",
+      "city": "Cork",
+      "address": "College Rd, University College, Cork, Ireland",
+      "website": "https://www.ucc.ie/en/",
+      "worldRankText": "351-400",
+      "worldRankSort": 351
+    },
+    {
+      "name": "University College Dublin",
+      "country": "IE",
+      "city": "Dublin",
+      "address": "Belfield,\nDublin 4, Ireland.",
+      "website": "https://www.ucd.ie",
+      "worldRankText": "212",
+      "worldRankSort": 212
+    },
+    {
+      "name": "University College London",
+      "country": "GB",
+      "city": "London"
+    },
+    {
+      "name": "University of Amsterdam",
+      "country": "NL",
+      "city": "Amsterdam",
+      "website": "https://www.uva.nl/en"
+    },
+    {
+      "name": "University of Bath",
+      "country": "GB",
+      "city": "Bath",
+      "address": "Claverton Down\nBath\nBA2 7AY\nUnited Kingdom",
+      "website": "https://www.bath.ac.uk",
+      "worldRankText": "284",
+      "worldRankSort": 284
+    },
+    {
+      "name": "University of Birmingham",
+      "country": "GB",
+      "city": "Birmingham",
+      "address": "Birmingham B15 2TT, United Kingdom",
+      "website": "https://www.birmingham.ac.uk",
+      "worldRankText": "97",
+      "worldRankSort": 97
+    },
+    {
+      "name": "University of Bristol",
+      "country": "GB",
+      "city": "Bristol",
+      "address": "University of Bristol,\nBeacon House,\nQueens Road,\nBristol,\nBS8 1QU,",
+      "website": "https://www.bristol.ac.uk"
+    },
+    {
+      "name": "University of East Anglia",
+      "country": "GB",
+      "city": "Norwich",
+      "address": "Norwich Research ParkNorwich, NorfolkNR4 7TJ",
+      "website": "https://www.uea.ac.uk",
+      "worldRankText": "251-300",
+      "worldRankSort": 251
+    },
+    {
+      "name": "University of Edinburgh",
+      "country": "GB",
+      "city": "Edinburgh",
+      "address": "University of Edinburgh\n\nHolyrood Road\n\nEdinburgh EH8 8AQ",
+      "website": "https://www.ed.ac.uk",
+      "worldRankText": "29",
+      "worldRankSort": 29
+    },
+    {
+      "name": "University of Exeter",
+      "country": "GB",
+      "city": "Exeter",
+      "address": "Stocker Rd, Exeter EX4 4PY, United Kingdom",
+      "website": "https://www.exeter.ac.uk/",
+      "worldRankText": "172",
+      "worldRankSort": 172
+    },
+    {
+      "name": "University of Glasgow",
+      "country": "GB",
+      "city": "Glasgow",
+      "address": "University of Glasgow\n\nGlasgow, G12 8QQ, Scotland",
+      "website": "https://www.gla.ac.uk",
+      "worldRankText": "83",
+      "worldRankSort": 83
+    },
+    {
+      "name": "University of Groningen",
+      "country": "NL",
+      "city": "Groningen",
+      "website": "https://www.rug.nl"
+    },
+    {
+      "name": "University of Lausanne",
+      "country": "CH",
+      "city": "Lausanne",
+      "website": "https://www.unil.ch/unil/en/"
+    },
+    {
+      "name": "University of Leeds",
+      "country": "GB",
+      "city": "Leeds",
+      "address": "Woodhouse, Leeds LS2 9JT, United Kingdom",
+      "website": "https://www.leeds.ac.uk",
+      "worldRankText": "113",
+      "worldRankSort": 113
+    },
+    {
+      "name": "University of Limerick",
+      "country": "IE",
+      "city": "Limerick",
+      "address": "Castletroy, Co. Limerick, V94 T9PX, Ireland",
+      "website": "https://www.ul.ie",
+      "worldRankText": "500-600",
+      "worldRankSort": 500
+    },
+    {
+      "name": "University of Liverpool",
+      "country": "GB",
+      "city": "Liverpool",
+      "address": "University of Liverpool\nFoundation Building\nBrownlow Hill\nLiverpool\nL69 7ZX",
+      "website": "https://www.liverpool.ac.uk",
+      "worldRankText": "168",
+      "worldRankSort": 168
+    },
+    {
+      "name": "University of Nottingham",
+      "country": "GB",
+      "city": "Nottingham",
+      "address": "University of Nottingham\nUniversity Park\nNottingham, NG7 2RD\nUnited Kingdom",
+      "website": "https://www.nottingham.ac.uk",
+      "worldRankText": "157",
+      "worldRankSort": 157
+    },
+    {
+      "name": "University of Southampton",
+      "country": "GB",
+      "city": "Southampton",
+      "address": "University of Southampton \nUniversity Road \nSouthampton \nSO17 1BJ \nUnited Kingdom",
+      "website": "https://www.southampton.ac.uk",
+      "worldRankText": "97",
+      "worldRankSort": 97
+    },
+    {
+      "name": "University of St Andrews",
+      "country": "GB",
+      "city": "St Andrews"
+    },
+    {
+      "name": "University of Warwick",
+      "country": "GB",
+      "city": "Coventry"
+    }
+  ],
+  "programs": [
+    {
+      "university": "University of Bath",
+      "field": "Sport Science",
+      "name": "Health and Exercise Science BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.bath.ac.uk/courses/undergraduate-2026/sport-exercise-and-health/#course-entries",
+      "fieldRank": 1,
+      "mastersInfo": "1 MSC program po BSC programu",
+      "tuitionFee": 30500,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "36 points overall and 6, 6, 6 or 7, 6, 5 in three Higher Level subjects including 6 in one science or mathematics subject.\n\nWe accept the following Higher Level science or mathematics subjects for this course:\n\nBiology\nChemistry\nMathematics: Analysis & Approaches or Applications & Interpretations\nPhysics\nPsychology\nSports, Exercise and Health Science",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "6,6,6 v HL",
+          "kind": "typical",
+          "minTotal": 36,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            6
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "MATH",
+                "PHYS",
+                "PSYCH",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 1
+            }
+          ],
+          "sortOrder": 0
+        },
+        {
+          "label": "7,6,5 v HL",
+          "kind": "typical",
+          "minTotal": 36,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            7,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "MATH",
+                "PHYS",
+                "PSYCH",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 1
+            }
+          ],
+          "sortOrder": 1
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Bath",
+      "field": "Sport Science",
+      "name": "Sport and Exercise Science BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.bath.ac.uk/courses/undergraduate-2026/sport-exercise-and-health/#course-entries",
+      "fieldRank": 1,
+      "mastersInfo": "1 MSC program po BSC programu",
+      "tuitionFee": 30500,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "36 points overall and 6, 6, 6 or 7, 6, 5 in three Higher Level subjects including 6 in one science or mathematics subject.\n\nWe accept the following Higher Level science or mathematics subjects for this course:\n\nBiology\nChemistry\nMathematics: Analysis & Approaches or Applications & Interpretations\nPhysics\nPsychology\nSports, Exercise and Health Science",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "6,6,6 v HL",
+          "kind": "typical",
+          "minTotal": 36,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            6
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "MATH",
+                "PHYS",
+                "PSYCH",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 1
+            }
+          ],
+          "sortOrder": 0
+        },
+        {
+          "label": "7,6,5 v HL",
+          "kind": "typical",
+          "minTotal": 36,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            7,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "MATH",
+                "PHYS",
+                "PSYCH",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 1
+            }
+          ],
+          "sortOrder": 1
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Bath",
+      "field": "Sport Science",
+      "name": "Sport and Exercise Science MSci",
+      "degree": "MSci",
+      "durationYears": 4,
+      "programUrl": "https://www.bath.ac.uk/courses/undergraduate-2026/sport-exercise-and-health/#course-entries",
+      "fieldRank": 1,
+      "mastersInfo": "1 MSC program po BSC programu",
+      "tuitionFee": 30500,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "36 points overall and 6, 6, 6 or 7, 6, 5 in three Higher Level subjects including 6 in one science or mathematics subject.\n\nWe accept the following Higher Level science or mathematics subjects for this course:\n\nBiology\nChemistry\nMathematics: Analysis & Approaches or Applications & Interpretations\nPhysics\nPsychology\nSports, Exercise and Health Science",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "6,6,6 v HL",
+          "kind": "typical",
+          "minTotal": 36,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            6
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "MATH",
+                "PHYS",
+                "PSYCH",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 1
+            }
+          ],
+          "sortOrder": 0
+        },
+        {
+          "label": "7,6,5 v HL",
+          "kind": "typical",
+          "minTotal": 36,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            7,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "MATH",
+                "PHYS",
+                "PSYCH",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 1
+            }
+          ],
+          "sortOrder": 1
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "Loughborough University",
+      "field": "Sport Science",
+      "name": "Sport and Exercise Science BSc (Hons)",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.lboro.ac.uk/study/undergraduate/courses/sport-and-exercise-science/",
+      "fieldRank": 2,
+      "mastersInfo": "cca 13 Msc. Programu",
+      "tuitionFee": 31500,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "1. Typical IB offer\n38 - 37 (7,6,6 - 6,6,6 HL) to include two of the following subjects at HL: Biology, Maths, Physics, Chemistry, Psychology, Sport, Exercise and Health Science.\n2. Typical IB offer\n35 (6,6,5 HL) to include at least one of the following subjects at HL: Biology, Maths, Physics, Chemistry, Psychology, Social and Cultural Anthropology, History, Geography, Sport, Exercise and Health Science and English Literature/Language A.",
+      "manualReview": false,
+      "notes": "Typical offer 38–37 (7,6,6 – 6,6,6 HL). Použita spodní hranice 37 / 6,6,6.",
+      "requirementSets": [
+        {
+          "label": "37 (6,6,6 HL)",
+          "kind": "typical",
+          "minTotal": 37,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            6
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "MATH",
+                "PHYS",
+                "PSYCH",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 2
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "Loughborough University",
+      "field": "Sport Science",
+      "name": "Sport Science, Coaching and Physical Education BSc (Hons)",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.lboro.ac.uk/study/undergraduate/courses/sport-coaching-and-physical-education/",
+      "fieldRank": 2,
+      "mastersInfo": "cca 13 Msc. Programu",
+      "tuitionFee": 31500,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "1. Typical IB offer\n38 - 37 (7,6,6 - 6,6,6 HL) to include two of the following subjects at HL: Biology, Maths, Physics, Chemistry, Psychology, Sport, Exercise and Health Science.\n2. Typical IB offer\n35 (6,6,5 HL) to include at least one of the following subjects at HL: Biology, Maths, Physics, Chemistry, Psychology, Social and Cultural Anthropology, History, Geography, Sport, Exercise and Health Science and English Literature/Language A.",
+      "manualReview": false,
+      "notes": "Předmět ze seznamu na HL – minimální známka neuvedena, předpoklad 5 (z profilu 6,6,5).",
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 35,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "MATH",
+                "PHYS",
+                "CHEM",
+                "PSYCH",
+                "SCA",
+                "HIST",
+                "GEO",
+                "SEHS",
+                "ENGLISH"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "Durham University",
+      "field": "Sport Science",
+      "name": "Sport and Exercise Sciences BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.durham.ac.uk/study/courses/sport-and-exercise-sciences-c606/",
+      "fieldRank": 3,
+      "mastersInfo": "Physical Activity, Health and Society MSc",
+      "tuitionFee": 32500,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "35\nwith 665 in higher level subjects.",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 35,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "King's College London",
+      "field": "Sport Science",
+      "name": "Sport & Exercise Medical Sciences BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.kcl.ac.uk/study/undergraduate/courses/sport-and-exercise-medical-sciences-bsc",
+      "fieldRank": 4,
+      "mastersInfo": "Physiotherapy (Pre-Registration) MSc",
+      "tuitionFee": 40600,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "33 points overall or an aggregate score of 16 from three Higher Levels.\nMust include grade 5 at Higher Level in two of the following subjects; Biology, Chemistry, Physics, Psychology, Sports Exercise and Health Science or Mathematics (Analysis & Approaches or Applications & Interpretation).  The total point score of 33 includes TOK/EE.",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "33 bodů",
+          "kind": "typical",
+          "minTotal": 33,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "PHYS",
+                "PSYCH",
+                "SEHS",
+                "MATH"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 2
+            }
+          ],
+          "sortOrder": 0
+        },
+        {
+          "label": "16 bodů ze 3 HL",
+          "kind": "typical",
+          "totalBasis": "with_core",
+          "minHlSum": 16,
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "PHYS",
+                "PSYCH",
+                "SEHS",
+                "MATH"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 2
+            }
+          ],
+          "sortOrder": 1
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Exeter",
+      "field": "Sport Science",
+      "name": "Exercise and Sport Sciences BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.exeter.ac.uk/study/undergraduate/courses/sport/exsport/",
+      "fieldRank": 5,
+      "mastersInfo": "Sport and Exercise Medicine MSc",
+      "tuitionFee": 33800,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "31 overall with 6,6,5 at Higher Level, including a science or Sports, Exercise and Health Science.",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 31,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "SCIENCE"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1,
+              "note": "„including a science or SEHS“ – známka vychází z profilu 6,6,5"
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Birmingham",
+      "field": "Sport Science",
+      "name": "Sport, PE and Coaching Science BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.birmingham.ac.uk/study/undergraduate/subjects/sport-sciences-courses/sport-pe-and-coaching-science-bsc",
+      "fieldRank": 6,
+      "mastersInfo": "9 MSC/MRE programu",
+      "tuitionFee": 24470,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "6,6,5 - 6,5,5 in Higher level subjects plus 32 points overall, dependent on the number of preferred subjects as defined for the A-level qualification.",
+      "manualReview": false,
+      "notes": "Rozsah 6,6,5 – 6,5,5 podle počtu „preferred subjects“. Jako typical se počítá přísnější 6,6,5.",
+      "requirementSets": [
+        {
+          "label": "6,6,5 HL",
+          "kind": "typical",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        },
+        {
+          "label": "6,5,5 HL (s preferovanými předměty)",
+          "kind": "contextual",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            5,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 1
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Birmingham",
+      "field": "Sport Science",
+      "name": "Sport, Exercise and Health Sciences BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.birmingham.ac.uk/study/undergraduate/subjects/sport-sciences-courses/sport-exercise-and-health-sciences-bsc",
+      "fieldRank": 6,
+      "mastersInfo": "9 MSC/MRE programu",
+      "tuitionFee": 24470,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "6,6,5 - 6,5,5 in Higher level subjects plus 32 points overall, dependent on the number of preferred subjects as defined for the A-level qualification.",
+      "manualReview": false,
+      "notes": "Rozsah 6,6,5 – 6,5,5 podle počtu „preferred subjects“. Jako typical se počítá přísnější 6,6,5.",
+      "requirementSets": [
+        {
+          "label": "6,6,5 HL",
+          "kind": "typical",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        },
+        {
+          "label": "6,5,5 HL (s preferovanými předměty)",
+          "kind": "contextual",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            5,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 1
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Glasgow",
+      "field": "Sport Science",
+      "name": "Sport & Exercise Science BSc/MSci",
+      "degree": "BSc",
+      "durationYears": 4,
+      "programUrl": "https://www.gla.ac.uk/undergraduate/degrees/sport-exercise-science/",
+      "fieldRank": 7,
+      "mastersInfo": "SPORT & EXERCISE SCIENCE MSci",
+      "tuitionFee": 24720,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "34 (6,5,5)\nAdditional requirements: HL Biology or Chemistry.\nNote: Sporting proficiency is not essential for admission to the programme, nor does the programme involve you directly in sport.",
+      "manualReview": false,
+      "notes": "HL Biology nebo Chemistry – minimální známka neuvedena, předpoklad 5.",
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            5,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Leeds",
+      "field": "Sport Science",
+      "name": "Sport and Exercise Sciences BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://courses.leeds.ac.uk/f003/sport-and-exercise-sciences-bsc",
+      "fieldRank": 8,
+      "tuitionFee": 32250,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "BSc: 31 overall with 6,6,5 at higher level including a science or Sports, Exercise and Health Science.",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 31,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "SCIENCE"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1,
+              "note": "„including a science or SEHS“ – známka vychází z profilu 6,6,5"
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Nottingham",
+      "field": "Sport Science",
+      "name": "Sport and Exercise Science BSc (Hons)",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.nottingham.ac.uk/studywithus/ugstudy/courses/UG/Sport-and-Exercise-Science-BSc-Hons.html",
+      "fieldRank": 9,
+      "mastersInfo": "Sports and Exercise Medicine MSc",
+      "tuitionFee": 33500,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "IB score\n34 points overall or 6,6,6 in three HL certificates\nIB requirements\nHL6 and HL6 in two of biology; chemistry; maths; physics; psychology; sport, exercise and health science",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "34 bodů",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "MATH",
+                "PHYS",
+                "PSYCH",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 2
+            }
+          ],
+          "sortOrder": 0
+        },
+        {
+          "label": "6,6,6 v HL",
+          "kind": "typical",
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            6
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "MATH",
+                "PHYS",
+                "PSYCH",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 2
+            }
+          ],
+          "sortOrder": 1
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Nottingham",
+      "field": "Sport Science",
+      "name": "Sport Rehabilitation BSc (Hons)",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.nottingham.ac.uk/studywithus/ugstudy/courses/UG/Sport-Rehabilitation-BSc-Hons.html",
+      "fieldRank": 9,
+      "mastersInfo": "Sports and Exercise Medicine MSc",
+      "tuitionFee": 33500,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "IB score\n34 points overall or 6,6,6 in three HL certificates\nIB requirements\nHL6 and HL6 in two of biology; chemistry; maths; physics; psychology; sport, exercise and health science",
+      "manualReview": false,
+      "notes": "Požadavky převzaty ze Sport and Exercise Science – ověřit na stránce programu.",
+      "requirementSets": [
+        {
+          "label": "34 bodů",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "MATH",
+                "PHYS",
+                "PSYCH",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 2
+            }
+          ],
+          "sortOrder": 0
+        },
+        {
+          "label": "6,6,6 v HL",
+          "kind": "typical",
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            6
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "MATH",
+                "PHYS",
+                "PSYCH",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 2
+            }
+          ],
+          "sortOrder": 1
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Edinburgh",
+      "field": "Sport Science",
+      "name": "Applied Sport Science BSc (Hons)",
+      "degree": "BSc",
+      "durationYears": 4,
+      "programUrl": "https://study.ed.ac.uk/programmes/undergraduate/114-applied-sport-science",
+      "fieldRank": 10,
+      "mastersInfo": "4 MSC programy",
+      "tuitionFee": 40900,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "These are the grades most applicants needed to receive an offer in recent years:\n\n34 points with 655 at HL\n\nRequired subjects.The grades you use to meet our entry requirements must include **one** of the following at HL:\n\nBiology at 5\nHuman Biology at 5\nChemistry at 5\nMathematics at 5\nPhysics at 5\nPsychology at 5\nSport, Exercise and Health Science at 5\nYour other HLs can be in any other subject.\n\nStandard Levels (SLs) required\nYou must also have the following at SL:\n\nEnglish at 5",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            5,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "MATH",
+                "PHYS",
+                "PSYCH",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1
+            },
+            {
+              "subjects": [
+                "ENGLISH"
+              ],
+              "level": "ANY",
+              "minGrade": 5,
+              "count": 1,
+              "note": "English na SL 5 (HL také vyhovuje)"
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "Newcastle University",
+      "field": "Sport Science",
+      "name": "Sport and Exercise Science BSc Honours",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.ncl.ac.uk/undergraduate/degrees/c600/?_gl=1*kmvhrs*_up*MQ..*_ga*MTAzNTE3MjM4Mi4xNzkyODI3MDIw*_ga_VH2F6S16XP*czE3OTI4MjcwMTkkbzEkZzEkdDE3OTI4MjcxMjkkajYwJGwwJGgxNDc4MTA3NzIy",
+      "fieldRank": 11,
+      "mastersInfo": "Applied Sport and Exercise Psychology MSc\nData Science and Sport MSc",
+      "tuitionFee": 30950,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "32-34 points overall with at least one science at Higher Level grade 5 or above. If not studying full IB Diploma - Grades 6, 6, 5 at Higher Level with at least one science and completion of a national high school diploma. Standard Level Mathematics or Mathematical Studies required at grade 4 or above if not offered at Higher Level.",
+      "manualReview": false,
+      "notes": "Rozsah 32–34; jako typical se počítá 34.",
+      "requirementSets": [
+        {
+          "label": "34 bodů",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "SCIENCE"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1
+            },
+            {
+              "subjects": [
+                "MATH"
+              ],
+              "level": "ANY",
+              "minGrade": 4,
+              "count": 1
+            }
+          ],
+          "sortOrder": 0
+        },
+        {
+          "label": "32 bodů (spodní hranice)",
+          "kind": "contextual",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "SCIENCE"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1
+            },
+            {
+              "subjects": [
+                "MATH"
+              ],
+              "level": "ANY",
+              "minGrade": 4,
+              "count": 1
+            }
+          ],
+          "sortOrder": 1
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University College Dublin",
+      "field": "Sport Science",
+      "name": "Sport, Health & Exercise Science",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://hub.ucd.ie/usis/!W_HU_MENU.P_PUBLISH?p_tag=INTDISP&SOURCE=INT&LEVL=UG&DISPCODE=SPT&LAYO=DISP_UG",
+      "mastersInfo": "NE",
+      "tuitionFee": 22600,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "CAO",
+      "requirementsText": "International Baccalaureate\nIB 35",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 35,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "Dublin City University",
+      "field": "Sport Science",
+      "name": "Sport Science and Health",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.dcu.ie/courses/undergraduate/school-health-and-human-performance/sport-science-and-health",
+      "tuitionFee": 16400,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "CAO",
+      "manualReview": false,
+      "notes": "Požadavky v Excelu neuvedeny („?“).",
+      "requirementSets": [],
+      "status": "research"
+    },
+    {
+      "university": "University College Cork",
+      "field": "Sport Science",
+      "name": "Physical Education, Sports Studies",
+      "degree": "BSc",
+      "durationYears": 4,
+      "programUrl": "https://www.ucc.ie/en/ck125/",
+      "tuitionFee": 3000,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "CAO",
+      "requirementsText": "Award of diploma with 24 overall, Minimum 31",
+      "manualReview": false,
+      "notes": "Text „Award of diploma with 24 overall, Minimum 31“ – použito 31 (opatrnější varianta), ověřit.",
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 31,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Limerick",
+      "field": "Sport Science",
+      "name": "Bachelor of Science in Exercise and Health Fitness Management",
+      "degree": "BSc",
+      "durationYears": 4,
+      "programUrl": "https://www.ul.ie/courses/bachelor-science-exercise-health-fitness-management",
+      "tuitionFee": 7000,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "CAO",
+      "manualReview": false,
+      "notes": "Požadavky v Excelu neuvedeny.",
+      "requirementSets": [],
+      "status": "research"
+    },
+    {
+      "university": "UCAM – Universidad Católica San Antonio de Murcia",
+      "field": "Sport Science",
+      "name": "Physical Activity and Sport Sciences",
+      "durationYears": 4,
+      "programUrl": "https://international.ucam.edu/studies/bachelor-in-physical-activity-and-sport-sciences",
+      "applicationSystem": "direct",
+      "manualReview": false,
+      "notes": "Požadavky v Excelu neuvedeny.",
+      "requirementSets": [],
+      "status": "research"
+    },
+    {
+      "university": "University of Bath",
+      "field": "Sport Management",
+      "name": "Sport Management and Coaching BSc (Hons)",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.bath.ac.uk/courses/undergraduate-2026/sport-exercise-and-health/bsc-sport-management-and-coaching/",
+      "fieldRank": 6,
+      "mastersInfo": "Sport Management MSc",
+      "tuitionFee": 25400,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "36 points overall and 6, 6, 5 in three Higher Level subjects.",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 36,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "Loughborough University",
+      "field": "Sport Management",
+      "name": "Sport Management BSc (Hons)",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.lboro.ac.uk/study/undergraduate/courses/sport-management/",
+      "fieldRank": 14,
+      "mastersInfo": "cca 13 Msc. Programu",
+      "tuitionFee": 33000,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "35 (6,6,5 HL)",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 35,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Exeter",
+      "field": "Sport Management",
+      "name": "BSc Sport Business Management",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.exeter.ac.uk/undergraduate-degrees/bsc-sport-business-management/",
+      "fieldRank": 8,
+      "mastersInfo": "MSc Sports Management",
+      "tuitionFee": 31500,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "32/655",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            5,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Birmingham",
+      "field": "Sport Management",
+      "name": "Sport Sciences with Business BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.birmingham.ac.uk/study/undergraduate/subjects/sport-sciences-courses/sport-sciences-with-business",
+      "fieldRank": 11,
+      "mastersInfo": "9 MSC/MRE programu",
+      "tuitionFee": 24470,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "6,6,5 - 6,5,5 in Higher level subjects plus 32 points overall, dependent on the number of preferred subjects as defined for the A-level qualification.",
+      "manualReview": false,
+      "notes": "Rozsah 6,6,5 – 6,5,5 podle počtu „preferred subjects“. Jako typical se počítá přísnější 6,6,5.",
+      "requirementSets": [
+        {
+          "label": "6,6,5 HL",
+          "kind": "typical",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        },
+        {
+          "label": "6,5,5 HL (s preferovanými předměty)",
+          "kind": "contextual",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            5,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 1
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Birmingham",
+      "field": "Sport Management",
+      "name": "Sport, Coaching Sciences and Business BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.birmingham.ac.uk/study/undergraduate/subjects/sport-sciences-courses/sport-coaching-sciences-and-business-bsc",
+      "fieldRank": 11,
+      "mastersInfo": "9 MSC/MRE programu",
+      "tuitionFee": 24470,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "6,6,5 - 6,5,5 in Higher level subjects plus 32 points overall, dependent on the number of preferred subjects as defined for the A-level qualification.",
+      "manualReview": false,
+      "notes": "Rozsah 6,6,5 – 6,5,5 podle počtu „preferred subjects“. Jako typical se počítá přísnější 6,6,5.",
+      "requirementSets": [
+        {
+          "label": "6,6,5 HL",
+          "kind": "typical",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        },
+        {
+          "label": "6,5,5 HL (s preferovanými předměty)",
+          "kind": "contextual",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            5,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 1
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Edinburgh",
+      "field": "Sport Management",
+      "name": "Sport Management BSc (Hons)",
+      "degree": "BSc",
+      "durationYears": 4,
+      "programUrl": "https://study.ed.ac.uk/programmes/undergraduate/668-sport-management",
+      "fieldRank": 13,
+      "mastersInfo": "4 MSC programy",
+      "tuitionFee": 31100,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "These are the grades most applicants needed to receive an offer in recent years:\n\n34 points with 655 at HL\nWhat do these grades mean?\n\nRequired subjects\n\nno specific subjects required\nYour HLs can be in any subject.\n\nStandard Levels (SLs) required\n\nYou must also have the following at SL:\n\nEnglish at 5",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            5,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "ENGLISH"
+              ],
+              "level": "ANY",
+              "minGrade": 5,
+              "count": 1,
+              "note": "English na SL 5 (HL také vyhovuje)"
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of East Anglia",
+      "field": "Sport Management",
+      "name": "Sports Development BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.uea.ac.uk/course/undergraduate/bsc-sports-development",
+      "fieldRank": 40,
+      "mastersInfo": "MSc Professional Practice in Sport",
+      "tuitionFee": 24250,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "International Baccalaureate \n32 points overall",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University College Dublin",
+      "field": "Sport Management",
+      "name": "Sport & Exercise Management BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://hub.ucd.ie/usis/!W_HU_MENU.P_PUBLISH?p_tag=COURSE&MAJR=SMS2&AUDIENCE=EU",
+      "mastersInfo": "NE",
+      "tuitionFee": 22600,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "CAO",
+      "requirementsText": "International Baccalaureate\nIB 35",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 35,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "The Hague University of Applied Sciences",
+      "field": "Sport Management",
+      "name": "Sport Studies | International Sport Management",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.thuas.com/programmes/bachelors/sport-studies-international-sport-management",
+      "tuitionFee": 5400,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "Studielink",
+      "requirementsText": "If you have a full IB diploma, you have access to both 4-year programmes and 3-year programmes.\nYour IB diploma must contain at least 6 academic IB courses, with a minimum of 3 courses at Higher\nLevel (HL) > 12 points, and 3 courses at Standard level (SL). The total amount of credits must be at least 24 and the\nTheory of Knowledge (TOK) is a compulsory part that must have been completed successfully. Also, with English as\nexam subject on HL, you are exempted from the language requirement.",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "plný diplom, 24 bodů, 12 z HL",
+          "kind": "typical",
+          "minTotal": 24,
+          "totalBasis": "with_core",
+          "minHlSum": 12,
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Liverpool",
+      "field": "Physiotherapy",
+      "name": "Physiotherapy BSc (Hons)",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.liverpool.ac.uk/courses/physiotherapy-bsc-hons",
+      "fieldRank": 1,
+      "mastersInfo": "NE",
+      "tuitionFee": 33000,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "Pass the full International Baccalaureate Diploma with at least 34 points overall with no score less than 4, and achieve HL grades equivalent to 6, 6, 5 in three Higher Level subjects including Biology or Sport, Exercise and Health Science.",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "minEachSubject": 4,
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of East Anglia",
+      "field": "Physiotherapy",
+      "name": "BSc (Hons) Physiotherapy",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.uea.ac.uk/course/undergraduate/bsc-physiotherapy",
+      "fieldRank": 2,
+      "mastersInfo": "MSc Physiotherapy",
+      "tuitionFee": 24250,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "33 including HL 5 Biology or Sports, Exercise & Health Science.",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 33,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Birmingham",
+      "field": "Physiotherapy",
+      "name": "Physiotherapy MSci",
+      "degree": "MSci",
+      "durationYears": 4,
+      "programUrl": "https://www.birmingham.ac.uk/study/undergraduate/subjects/physiotherapy-courses/physiotherapy-msci",
+      "fieldRank": 3,
+      "tuitionFee": 32500,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "6,6,5 at Higher Level, with 32 points overall, including 6 in Biology / Human Biology / PE",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "SEHS"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 1,
+              "note": "Biology / Human Biology / PE"
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "Cardiff University",
+      "field": "Physiotherapy",
+      "name": "Physiotherapy (BSc)",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.cardiff.ac.uk/study/undergraduate/courses/course/physiotherapy-bsc",
+      "fieldRank": 4,
+      "mastersInfo": "Physiotherapy (Pre-Registration) MSc",
+      "applicationSystem": "UCAS",
+      "requirementsText": "34-31 overall or 665-555 in 3 HL subjects. Must include grade 5 in HL Biology.",
+      "manualReview": false,
+      "notes": "Rozsah 34–31 / 665–555; jako typical se počítá horní hranice.",
+      "requirementSets": [
+        {
+          "label": "34 bodů",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1
+            }
+          ],
+          "sortOrder": 0
+        },
+        {
+          "label": "6,6,5 v HL",
+          "kind": "typical",
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1
+            }
+          ],
+          "sortOrder": 1
+        },
+        {
+          "label": "31 bodů (spodní hranice)",
+          "kind": "contextual",
+          "minTotal": 31,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1
+            }
+          ],
+          "sortOrder": 2
+        },
+        {
+          "label": "5,5,5 v HL (spodní hranice)",
+          "kind": "contextual",
+          "totalBasis": "with_core",
+          "hlProfile": [
+            5,
+            5,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1
+            }
+          ],
+          "sortOrder": 3
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University of Southampton",
+      "field": "Physiotherapy",
+      "name": "Physiotherapy (BSc)",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.southampton.ac.uk/courses/physiotherapy-degree-bsc",
+      "fieldRank": 5,
+      "mastersInfo": "NE",
+      "tuitionFee": 33600,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "Pass with 34 points overall with 17 points at Higher Level including a science",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "minHlSum": 17,
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "SCIENCE"
+              ],
+              "level": "HL",
+              "minGrade": 4,
+              "count": 1,
+              "note": "„including a science“ – známka neuvedena"
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "King's College London",
+      "field": "Physiotherapy",
+      "name": "Physiotherapy BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.kcl.ac.uk/study/undergraduate/courses/physiotherapy-bsc",
+      "fieldRank": 11,
+      "mastersInfo": "Physiotherapy (Pre-Registration) MSc",
+      "tuitionFee": 40600,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "35 points overall or an aggregate score of 17 from three Higher Levels\nMust include grade 6 and grade 5 at Higher Level in two of: Biology, Chemistry, Physics, Psychology, Sociology, Sports Exercise and Health Science or Mathematics.   The total point score of 35 includes TOK/EE.",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "35 bodů",
+          "kind": "typical",
+          "minTotal": 35,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "PHYS",
+                "PSYCH",
+                "SOC",
+                "SEHS",
+                "MATH"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 1
+            },
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "PHYS",
+                "PSYCH",
+                "SOC",
+                "SEHS",
+                "MATH"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 2
+            }
+          ],
+          "sortOrder": 0
+        },
+        {
+          "label": "17 bodů ze 3 HL",
+          "kind": "typical",
+          "totalBasis": "with_core",
+          "minHlSum": 17,
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "PHYS",
+                "PSYCH",
+                "SOC",
+                "SEHS",
+                "MATH"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 1
+            },
+            {
+              "subjects": [
+                "BIO",
+                "CHEM",
+                "PHYS",
+                "PSYCH",
+                "SOC",
+                "SEHS",
+                "MATH"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 2
+            }
+          ],
+          "sortOrder": 1
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "University College Dublin",
+      "field": "Physiotherapy",
+      "name": "Physiotherapy BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://hub.ucd.ie/usis/!W_HU_MENU.P_PUBLISH?p_tag=COURSE&MAJR=MDS5&AUDIENCE=EU",
+      "mastersInfo": "Physiotherapy\nProfMasters",
+      "tuitionFee": 22600,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "CAO",
+      "requirementsText": "International Baccalaureate\nIB 35",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 35,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "status": "research"
+    },
+    {
+      "university": "Dublin City University",
+      "field": "Physiotherapy",
+      "name": "Athletic Therapy and Training / Athletic Therapy and Strength and Conditioning (Integrated MSc)",
+      "degree": "MSci",
+      "durationYears": 4,
+      "programUrl": "https://www.dcu.ie/courses/undergraduate/school-health-and-human-performance/athletic-therapy-and-training-athletic",
+      "tuitionFee": 16400,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "CAO",
+      "manualReview": false,
+      "notes": "Požadavky v Excelu neuvedeny („?“).",
+      "requirementSets": [],
+      "status": "research"
+    },
+    {
+      "university": "University of Exeter",
+      "field": "Business Management",
+      "name": "BSc Business and Management",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.exeter.ac.uk/undergraduate-degrees/bsc-business-and-management/#course-summary",
+      "fieldRank": 8,
+      "mastersInfo": "Vice MSC/MRE programu",
+      "tuitionFee": 31000,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "34/665",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "172",
+      "status": "research"
+    },
+    {
+      "university": "University of Leeds",
+      "field": "Business Management",
+      "name": "Business Management and Leadership BSc",
+      "degree": "BSc",
+      "durationYears": 4,
+      "programUrl": "https://courses.leeds.ac.uk/i079/business-management-and-leadership-bsc",
+      "fieldRank": 9,
+      "tuitionFee": 32250,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "We accept the International Baccalaureate Diploma Programme with a minimum overall score of 31. Some undergraduate degrees may require a higher overall score or specific grades in higher level (HL) or standard level (SL) subjects",
+      "manualReview": false,
+      "notes": "Minimum univerzity 31, program může vyžadovat víc – ověřit.",
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 31,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "101-125",
+      "status": "research"
+    },
+    {
+      "university": "University of Bristol",
+      "field": "Business Management",
+      "name": "BSc International Business Management",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.bristol.ac.uk/study/undergraduate/2027/international-business-management/bsc-international-business-management/",
+      "fieldRank": 10,
+      "tuitionFee": 29300,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "36 points overall with 18 at Higher Level",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 36,
+          "totalBasis": "with_core",
+          "minHlSum": 18,
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "151-175",
+      "status": "research"
+    },
+    {
+      "university": "University of Bristol",
+      "field": "Business Management",
+      "name": "BSc Business and Management",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.bristol.ac.uk/study/undergraduate/2027/business-and-management/bsc-business-and-management/",
+      "fieldRank": 10,
+      "tuitionFee": 29300,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "36 points overall with 18 at Higher Level",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 36,
+          "totalBasis": "with_core",
+          "minHlSum": 18,
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "151-175",
+      "status": "research"
+    },
+    {
+      "university": "University of Bristol",
+      "field": "Business Management",
+      "name": "MSci Business and Management with Innovation",
+      "degree": "MSci",
+      "durationYears": 4,
+      "programUrl": "https://www.bristol.ac.uk/study/undergraduate/2027/innovation/msci-business-and-management-with-innovation/",
+      "fieldRank": 10,
+      "tuitionFee": 29300,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "36 points overall with 18 at Higher Level",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 36,
+          "totalBasis": "with_core",
+          "minHlSum": 18,
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "151-175",
+      "status": "research"
+    },
+    {
+      "university": "University of Birmingham",
+      "field": "Business Management",
+      "name": "Business Management BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.birmingham.ac.uk/study/undergraduate/subjects/business-and-management-courses/business-management-bsc",
+      "fieldRank": 11,
+      "mastersInfo": "9 MSC/MRE programu",
+      "tuitionFee": 28680,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "6,6,5 32 points overall",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "99",
+      "status": "research"
+    },
+    {
+      "university": "Loughborough University",
+      "field": "Business Management",
+      "name": "Business and Management BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.lboro.ac.uk/study/undergraduate/courses/business-management/",
+      "fieldRank": 14,
+      "mastersInfo": "cca 13 Msc. Programu",
+      "tuitionFee": 25950,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "35 (6,6,5 HL)",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 35,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "326~350",
+      "status": "research"
+    },
+    {
+      "university": "Loughborough University",
+      "field": "Business Management",
+      "name": "International Business BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.lboro.ac.uk/study/undergraduate/courses/international-business/",
+      "fieldRank": 14,
+      "mastersInfo": "cca 13 Msc. Programu",
+      "tuitionFee": 25950,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "35 (6,6,5 HL)",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 35,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "326~350",
+      "status": "research"
+    },
+    {
+      "university": "University of Glasgow",
+      "field": "Business Management",
+      "name": "Business & Management MA(SocSci)/BSc",
+      "degree": "BSc",
+      "durationYears": 4,
+      "programUrl": "https://www.gla.ac.uk/undergraduate/degrees/businessmanagement/",
+      "fieldRank": 16,
+      "mastersInfo": "spousta magisterskych programu",
+      "tuitionFee": 24720,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "IB standard entry requirements\n\n36 (6,6,5)\nAdditional requirements: English HL6 or Humanities HL6 with English SL6.",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "English HL 6",
+          "kind": "typical",
+          "minTotal": 36,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "ENGLISH"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 1
+            }
+          ],
+          "sortOrder": 0
+        },
+        {
+          "label": "Humanities HL 6 + English SL 6",
+          "kind": "typical",
+          "minTotal": 36,
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "HIST",
+                "GEO",
+                "ECON",
+                "PSYCH",
+                "SCA",
+                "BM"
+              ],
+              "level": "HL",
+              "minGrade": 6,
+              "count": 1,
+              "note": "které předměty Glasgow řadí mezi humanities – ověřit, zda i BM"
+            },
+            {
+              "subjects": [
+                "ENGLISH"
+              ],
+              "level": "ANY",
+              "minGrade": 6,
+              "count": 1
+            }
+          ],
+          "sortOrder": 1
+        }
+      ],
+      "subjectWorldRankText": "76",
+      "status": "research"
+    },
+    {
+      "university": "City St George's, University of London",
+      "field": "Business Management",
+      "name": "Business Management BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.bayes.citystgeorges.ac.uk/study/undergraduate/courses/business-management",
+      "fieldRank": 18,
+      "tuitionFee": 28840,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "35 points\noverall with Higher Level 4 / Standard Level 5 in Mathematics and English",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 35,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "MATH"
+              ],
+              "level": "ANY",
+              "minGrade": 5,
+              "count": 1,
+              "note": "HL 4 / SL 5 – zjednodušeno na 5"
+            },
+            {
+              "subjects": [
+                "ENGLISH"
+              ],
+              "level": "ANY",
+              "minGrade": 5,
+              "count": 1,
+              "note": "HL 4 / SL 5 – zjednodušeno na 5"
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "101-125",
+      "status": "research"
+    },
+    {
+      "university": "City St George's, University of London",
+      "field": "Business Management",
+      "name": "International Business BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.bayes.citystgeorges.ac.uk/study/undergraduate/courses/international-business",
+      "fieldRank": 18,
+      "tuitionFee": 28840,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "35 points\noverall with Higher Level 4 / Standard Level 5 in Mathematics and English",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 35,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "MATH"
+              ],
+              "level": "ANY",
+              "minGrade": 5,
+              "count": 1,
+              "note": "HL 4 / SL 5 – zjednodušeno na 5"
+            },
+            {
+              "subjects": [
+                "ENGLISH"
+              ],
+              "level": "ANY",
+              "minGrade": 5,
+              "count": 1,
+              "note": "HL 4 / SL 5 – zjednodušeno na 5"
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "101-125",
+      "status": "research"
+    },
+    {
+      "university": "Cardiff University",
+      "field": "Business Management",
+      "name": "Business Management (BSc)",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.cardiff.ac.uk/study/undergraduate/courses/course/business-management-bsc",
+      "fieldRank": 19,
+      "mastersInfo": "spousta magisterskych programu",
+      "tuitionFee": 25450,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "34-31 overall or 665-555 in 3 HL subjects.",
+      "manualReview": false,
+      "notes": "Rozsah 34–31 / 665–555; jako typical se počítá horní hranice.",
+      "requirementSets": [
+        {
+          "label": "34 bodů",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        },
+        {
+          "label": "6,6,5 v HL",
+          "kind": "typical",
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 1
+        },
+        {
+          "label": "31 bodů (spodní hranice)",
+          "kind": "contextual",
+          "minTotal": 31,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 2
+        },
+        {
+          "label": "5,5,5 v HL (spodní hranice)",
+          "kind": "contextual",
+          "totalBasis": "with_core",
+          "hlProfile": [
+            5,
+            5,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 3
+        }
+      ],
+      "subjectWorldRankText": "176-200",
+      "status": "research"
+    },
+    {
+      "university": "Lancaster University",
+      "field": "Business Management",
+      "name": "Business Management BSc Hons",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.lancaster.ac.uk/study/undergraduate/courses/business-management-bsc-hons-n102/2027/",
+      "fieldRank": 20,
+      "tuitionFee": 27100,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "32 points overall with 16 points from the best 3 HL subjects",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 32,
+          "totalBasis": "with_core",
+          "minHlSum": 16,
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "90",
+      "status": "research"
+    },
+    {
+      "university": "University of Liverpool",
+      "field": "Business Management",
+      "name": "Business Management",
+      "degree": "BA",
+      "durationYears": 3,
+      "programUrl": "https://www.liverpool.ac.uk/courses/business-management-ba-hons",
+      "fieldRank": 22,
+      "mastersInfo": "spousta magisterskych programu",
+      "tuitionFee": 28000,
+      "tuitionCurrency": "GBP",
+      "applicationSystem": "UCAS",
+      "requirementsText": "34 points overall with no score less than 4 or pass the IB Diploma plus 6,6,5 in 3 HL subjects.",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "34 bodů, žádná známka pod 4",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "minEachSubject": 4,
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        },
+        {
+          "label": "6,6,5 v HL",
+          "kind": "typical",
+          "totalBasis": "with_core",
+          "hlProfile": [
+            6,
+            6,
+            5
+          ],
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 1
+        }
+      ],
+      "subjectWorldRankText": "101-125",
+      "status": "research"
+    },
+    {
+      "university": "Trinity College Dublin",
+      "field": "Business Management",
+      "name": "Business (Joint Honours)",
+      "degree": "BSc",
+      "durationYears": 4,
+      "programUrl": "https://www.tcd.ie/courses/undergraduate/courses/business-jh/",
+      "applicationSystem": "CAO",
+      "requirementsText": "HL Grade 5 Mathematics",
+      "manualReview": false,
+      "notes": "Přijímá se přes CAO body; v Excelu jen podmínka HL Math 5.",
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "MATH"
+              ],
+              "level": "HL",
+              "minGrade": 5,
+              "count": 1
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "101-125",
+      "status": "research"
+    },
+    {
+      "university": "Dublin City University",
+      "field": "Business Management",
+      "name": "Bachelor of Business Studies",
+      "degree": "BBS",
+      "durationYears": 4,
+      "programUrl": "https://www.dcu.ie/courses/undergraduate/business-school/business-studies",
+      "tuitionFee": 16400,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "CAO",
+      "requirementsText": "5 SL 4 HL Maths\nIB 37\n5 SL 4 HL Maths\nIB 34",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 37,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "MATH"
+              ],
+              "level": "ANY",
+              "minGrade": 5,
+              "count": 1,
+              "note": "SL 5 / HL 4 – zjednodušeno na 5"
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "284",
+      "status": "research"
+    },
+    {
+      "university": "Dublin City University",
+      "field": "Business Management",
+      "name": "BSc Digital Business and Innovation",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.dcu.ie/courses/undergraduate/business-school/digital-business-and-innovation",
+      "tuitionFee": 16400,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "CAO",
+      "requirementsText": "5 SL 4 HL Maths\nIB 37\n5 SL 4 HL Maths\nIB 34",
+      "manualReview": false,
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 34,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "MATH"
+              ],
+              "level": "ANY",
+              "minGrade": 5,
+              "count": 1,
+              "note": "SL 5 / HL 4 – zjednodušeno na 5"
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "284",
+      "status": "research"
+    },
+    {
+      "university": "Erasmus University Rotterdam",
+      "field": "Business Management",
+      "name": "Bachelor International Business Administration (IBA)",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.eur.nl/en/bachelor/bachelor-international-business-administration",
+      "tuitionFee": 2600,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "Studielink",
+      "requirementsText": "Mathematics requirement\n\nMathematics Analysis & Approaches SL minimum grade 5 OR Mathematics Analysis & Approaches HL minimum grade 4 OR Mathematics Applications & Interpretation HL minimum grade 5 \n\nEnglish language requirement\n\nYou are exempt from the English language test if you have obtained or will obtain the IB diploma AND the final two years of the IB programme were fully taught in English.\n\nYou will be granted selection points if you have a total of 33 points based on the 6 exam subjects (excluding TOK and EE) or higher.\n\n---\nAs a numerux fixus programme, IBA applicants are given selection points, which are used for ranking and selecting the top 750 applicants. The selection points are based on your grades and your motivation;\nGrades 75%: Your average grade counts the most for the final ranking. The lower your grades, the fewer selection points you'll receive.\nMotivation 25%: You will answer 3 motivation questions when applying.\nYou must also meet the minimum English and Mathematics requirements listed for your diploma type.",
+      "manualReview": true,
+      "notes": "Numerus fixus – výběr podle známek (75 %) a motivace (25 %). Sloučeno se zdvojeným řádkem 22.\nAs a numerux fixus programme, IBA applicants are given selection points, which are used for ranking and selecting the top 650 applicants. The selection points are based on your grades and your motivation;\nGrades 75%: Your average grade counts the most for the final ranking. The lower your grades, the fewer selection points you'll receive.\nMotivation 25%: You will answer 3 motivation questions when applying.\nYou must also meet the minimum English and Mathematics requirements listed for your diploma type. Žebříček: 24 (řádek 17) / 93 (řádek 22) – který je oborový, ověřit.",
+      "requirementSets": [
+        {
+          "label": "matematika",
+          "kind": "typical",
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "MATH_AA"
+              ],
+              "level": "ANY",
+              "minGrade": 5,
+              "count": 1,
+              "note": "AA SL 5 / AA HL 4 / AI HL 5"
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "24",
+      "status": "research"
+    },
+    {
+      "university": "Tilburg University",
+      "field": "Business Management",
+      "name": "International Business Administration BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.tilburguniversity.edu/education/bachelors-programs/international-business-administration",
+      "applicationSystem": "Studielink",
+      "requirementsText": "Tilburg University only accepts the full International Baccalaureate Diploma, which includes the core (Theory of Knowledge, Extended Essay and CAS) and subjects taken from groups 1-5 or groups 1-6 - of which at least three subjects must be at Higher Level. The overall score must be ≥ 24. Individual diploma program course results are not accepted for admission purposes. \nPlease note: Predicted grades are not used for the evaluation. Your school needs to list your IB courses clearly on your grade reports. The subjects you plan to take for your IB exams should correspond with the IB courses on your grade reports and the TiU Statement of Educational Institution form. Ensure your school provides the subject names and levels, including languages and mathematics courses (Analysis & Approaches SL/HL or Applications & Interpretation SL/HL).",
+      "manualReview": false,
+      "notes": "Predicted grades se nepoužívají – rozhoduje finální diplom.",
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 24,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "47",
+      "status": "research"
+    },
+    {
+      "university": "Tilburg University",
+      "field": "Business Management",
+      "name": "Entrepreneurship and Business Innovation BSc",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.tilburguniversity.edu/education/bachelors-programs/entrepreneurship-and-business-innovation",
+      "applicationSystem": "Studielink",
+      "requirementsText": "Tilburg University only accepts the full International Baccalaureate Diploma, which includes the core (Theory of Knowledge, Extended Essay and CAS) and subjects taken from groups 1-5 or groups 1-6 - of which at least three subjects must be at Higher Level. The overall score must be ≥ 24. Individual diploma program course results are not accepted for admission purposes. \nPlease note: Predicted grades are not used for the evaluation. Your school needs to list your IB courses clearly on your grade reports. The subjects you plan to take for your IB exams should correspond with the IB courses on your grade reports and the TiU Statement of Educational Institution form. Ensure your school provides the subject names and levels, including languages and mathematics courses (Analysis & Approaches SL/HL or Applications & Interpretation SL/HL).",
+      "manualReview": false,
+      "notes": "Predicted grades se nepoužívají – rozhoduje finální diplom.",
+      "requirementSets": [
+        {
+          "label": "Typical offer",
+          "kind": "typical",
+          "minTotal": 24,
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "47",
+      "status": "research"
+    },
+    {
+      "university": "University of Groningen",
+      "field": "Business Management",
+      "name": "International Business",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.rug.nl/bachelors/international-business/",
+      "mastersInfo": "maji jich vice",
+      "tuitionFee": 2694,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "Studielink",
+      "requirementsText": "The selection tests aim to give you a realistic idea of what the IB programme offers and what will be expected from you. The test involves studying literature that is representative of the programme and watching video lectures. Later, you will be tested through two tests with multiple-choice and/or open questions based on similar materials.\nMathematics: Analysis and approaches SL/HL\nor Mathematics: Applications and interpretation HL\n\n(IB Mathematics before 2019: Mathematics at least SL)",
+      "manualReview": true,
+      "notes": "Výběrové testy.",
+      "requirementSets": [
+        {
+          "label": "matematika",
+          "kind": "typical",
+          "totalBasis": "with_core",
+          "requiresFullDiploma": true,
+          "subjectRules": [
+            {
+              "subjects": [
+                "MATH_AA"
+              ],
+              "level": "ANY",
+              "minGrade": 1,
+              "count": 1,
+              "note": "AA SL/HL nebo AI HL"
+            }
+          ],
+          "sortOrder": 0
+        }
+      ],
+      "subjectWorldRankText": "69",
+      "status": "research"
+    },
+    {
+      "university": "Maastricht University",
+      "field": "Business Management",
+      "name": "International Business Economics",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.maastrichtuniversity.nl/education/bachelor/programmes/international-business",
+      "applicationSystem": "Studielink",
+      "requirementsText": "If you submit the International Classroom essay and if you meet the other admission criteria (diploma requirement and mathematics requirement), your application will be assessed by the International Classroom committee. If the outcome of your essay is sufficient, you will be admitted to the programme.",
+      "manualReview": true,
+      "notes": "Esej „International Classroom“ a požadavek na matematiku.",
+      "requirementSets": [],
+      "subjectWorldRankText": "78",
+      "status": "research"
+    },
+    {
+      "university": "University of Amsterdam",
+      "field": "Business Management",
+      "name": "Liberal Arts and Sciences (Amsterdam University College)",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.uva.nl/en/programmes/bachelors/amsterdam-university-college/amsterdam-university-college.html?origin=0UW%2FNlzHRVCfgfmL3cdmVg",
+      "tuitionFee": 5400,
+      "tuitionCurrency": "EUR",
+      "applicationSystem": "Studielink",
+      "manualReview": false,
+      "notes": "Požadavky v Excelu neuvedeny.",
+      "requirementSets": [],
+      "subjectWorldRankText": "58",
+      "status": "research"
+    },
+    {
+      "university": "Aarhus University",
+      "field": "Business Management",
+      "name": "Economics and Business Administration",
+      "programUrl": "https://bachelor.au.dk/en/economics-and-business-administration/",
+      "applicationSystem": "direct",
+      "manualReview": false,
+      "notes": "Požadavky v Excelu neuvedeny.",
+      "requirementSets": [],
+      "status": "research"
+    },
+    {
+      "university": "Lund University",
+      "field": "Business Management",
+      "name": "International Business – Bachelor's Programme",
+      "durationYears": 3,
+      "programUrl": "https://www.lunduniversity.lu.se/lubas/i-uoh-lu-EGIBU",
+      "tuitionFee": 0,
+      "tuitionCurrency": "SEK",
+      "applicationSystem": "direct",
+      "requirementsText": "In the early international admissions round seats are allocated entirely through the general average (GPA) of your higher secondary school leaving certificate. In the later national admissions round seats are allocated according to the following: The general average (GPA) of your higher secondary school leaving certificate: 66 %, The Swedish national university aptitude test: 34 %. The University board has decided that applicants with equal merits (in the GPA group) should be separated by the use of a valid result from the Swedish national university aptitude test.",
+      "manualReview": true,
+      "notes": "Výběr podle GPA.",
+      "requirementSets": [],
+      "subjectWorldRankText": "95",
+      "status": "research"
+    },
+    {
+      "university": "University of Lausanne",
+      "field": "Business Management",
+      "name": "Bachelor of Science in Management",
+      "degree": "BSc",
+      "durationYears": 3,
+      "programUrl": "https://www.unil.ch/unil/en/home/menuinst/etudier/bachelors/management.html",
+      "applicationSystem": "direct",
+      "manualReview": false,
+      "notes": "Požadavky v Excelu neuvedeny.",
+      "requirementSets": [],
+      "subjectWorldRankText": "134",
+      "status": "research"
+    },
+    {
+      "university": "University of Warwick",
+      "field": "Sport Management",
+      "name": "(program k doplnění)",
+      "status": "research",
+      "notes": "Kandidát z poznámky v Excelu („warwick, St. Andrews, UCL“).",
+      "requirementSets": [],
+      "manualReview": false
+    },
+    {
+      "university": "University of St Andrews",
+      "field": "Sport Management",
+      "name": "(program k doplnění)",
+      "status": "research",
+      "notes": "Kandidát z poznámky v Excelu („warwick, St. Andrews, UCL“).",
+      "requirementSets": [],
+      "manualReview": false
+    },
+    {
+      "university": "University College London",
+      "field": "Sport Management",
+      "name": "(program k doplnění)",
+      "status": "research",
+      "notes": "Kandidát z poznámky v Excelu („warwick, St. Andrews, UCL“).",
+      "requirementSets": [],
+      "manualReview": false
+    }
+  ]
+}

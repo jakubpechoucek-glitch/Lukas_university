@@ -79,6 +79,16 @@ GET             /api/export                (JSON záloha)
 - HTTPS (Render ho poskytuje), hesla hashovaná bcryptem, rate-limit loginu.
 - Záloha: tlačítko „Export JSON“ a volitelně noční cron se zálohou (jako `jobs/` v project_tracker).
 
+## Nasazení (stav)
+
+- Render web service `lukas-university`, plán Starter, region Singapore (nejblíž Manile),
+  URL https://lukas-university.onrender.com, auto-deploy z větve `claude/amazing-cori-0abi6p`.
+- Proměnné: `NODE_ENV`, `NODE_VERSION=22`, `JWT_SECRET`, `BCRYPT_ROUNDS`, `DATABASE_URL`,
+  `BOOTSTRAP_USERS`, `INITIAL_PASSWORD`, volitelně `PRIVATE_SEED_JSON`.
+- Build: `npm install && npm run build`. Klientský build si doinstaluje devDependencies sám
+  (Render nastavuje `NODE_ENV=production`, takže by jinak chyběl `vite`).
+- **Disk** se přes API přidat nedá. Je nutné ho přidat ručně v dashboardu.
+
 ## Napojení na rozcestník
 
 Po nasazení přidat dlaždici do repozitáře `rozcestnik` (`index.html`) s odkazem na aplikaci.

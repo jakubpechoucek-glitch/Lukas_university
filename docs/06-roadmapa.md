@@ -13,12 +13,13 @@
   s 17 unit testy podle [04](04-vypocty.md#testovací-případy-pro-unit-testy) a 6 testy API.
 - Navigace a prázdné stránky ve frontendu.
 
-### Fáze 2 – Import dat
+### Fáze 2 – Import dat ✅
 - Skript `import-xlsx`: rozdělí buňky s více programy, sloučí duplicitní univerzity,
   přesune omylem zkopírované řádky, opraví překlepy v názvech, doplní měnu.
 - **Ruční převod požadavků** (sloupec R) do strukturovaných sad. Je to cca 50 programů.
   Návrh převede Claude, uživatel ho zkontroluje. Programy s nejasnými požadavky
   dostanou `manual_review`.
+- Hotovo: 67 programů / 36 univerzit, 28 testů. Podrobnosti a body k ověření v [07](07-import-dat.md).
 
 ### Fáze 3 – MVP obrazovky
 1. **Predikce**: tabulka scénářů jako v Excelu, editace buněk, živý součet, výběr aktivního scénáře.
@@ -28,8 +29,10 @@
    kritérium), vážený průměr, pokrytí vah, přepínač pololetí.
 4. **Matice** program × scénář.
 
-### Fáze 4 – Nasazení
-- Render, doména, uživatelské účty, dlaždice v rozcestníku.
+### Fáze 4 – Nasazení (částečně ✅)
+- ✅ Render služba `lukas-university` (Starter, Singapore), 3 účty.
+- ⏳ Persistent disk – nutno přidat v dashboardu (API ho neumí), jinak se DB při deployi maže.
+- ⏳ Merge do `main` a přepnutí deploy větve, dlaždice v rozcestníku.
 
 ### Fáze 5 – Rozšíření (podle potřeby)
 - Nadcházející termíny a kalendář (export do Google Calendar).
@@ -47,13 +50,12 @@
 | Q3 | Účty | **3 účty**: rodiče Jakub a Jana (role `parent`), Lukas (role `student`). E-maily jsou jen v proměnné prostředí `BOOTSTRAP_USERS` na Renderu, ne v repozitáři. |
 | Q4 | Private repo | **ne**, repozitář zůstane veřejný, osobní data jen v DB |
 | Q5 | SL Math | **Mathematics: Analysis & Approaches** (`MATH_AA`) |
-| Q6 | English | **Language A** (`ENG_A`). Spanish se zatím předpokládá B (`SPA_B`) – nepotvrzeno. |
+| Q6 | English / Spanish | **English A** (`ENG_A`), **Spanish B** (`SPA_B`) |
 
 ## Otevřené otázky
 
 | # | Otázka | Proč je důležitá | Výchozí předpoklad |
 |---|---|---|---|
-| Q6b | Je Spanish **B**, nebo **ab initio**? | jazykové požadavky | B |
 | Q7 | Kde jsou dnes termíny assessmentů (kalendář školy, Google Calendar, ManageBac)? Jde je importovat? | F4.5 | ruční zadání |
 | Q8 | Hranice „hraniční“ (tolerance) = 1 bod? Hranice Reach/Target/Likely? | F3 | 1 bod; Target 0–1, Likely ≥ 2 |
 | Q9 | Má aplikace řešit i školy mimo IB logiku (NL výběrová řízení, Lund GPA) víc než poznámkou? | rozsah | jen poznámka a `manual_review` |

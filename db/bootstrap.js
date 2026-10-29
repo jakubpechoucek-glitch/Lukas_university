@@ -84,6 +84,28 @@ function bootstrap() {
   const db = getDb();
   ensureBaseData(db);
   ensureUsers(db);
+  // Veřejný katalog škol se nahraje jen do prázdné DB (viz db/seed-catalog.js).
+  const { seedCatalog } = require('./seed-catalog');
+  const result = seedCatalog(db);
+  if (!result.skipped) console.log(`  ✓ Katalog nahrán: ${result.universities} univerzit, ${result.programs} programů`);
+  ensurePrivateSeed(db);
 }
 
-module.exports = { bootstrap, ensureUsers, ensureBaseData, parseBootstrapUsers };
+/**
+ * Osobní data (známky, assessmenty) nejsou v repozitáři. V produkci je lze předat jednorázově
+ * v proměnné PRIVATE_SEED_JSON (formát viz docs/07-import-dat.md). Importují se jen do DB,
+ * kde ještě žádné známky ani assessmenty nejsou, takže pozdější úpravy v aplikaci se nepřepíší.
+ */
+function ensurePrivateSeed(db = getDb()) {
+  const raw = process.env.PRIVATE_SEED_JSON;
+  if (!raw) return;
+  const hasData = db.prepare(
+    'SELECT (SELECT COUNT(*) FROM scenario_grades) + (SELECT COUNT(*) FROM assessments) AS n'
+  ).get().n;
+  if (hasData) return;
+  const { importPrivate } = require('./import-private');
+  const stats = importPrivate(db, JSON.parse(raw));
+  console.log(`  ✓ Osobní data importována z PRIVATE_SEED_JSON: ${JSON.stringify(stats)}`);
+}
+
+module.exports = { bootstrap, ensureUsers, ensureBaseData, ensurePrivateSeed, parseBootstrapUsers };

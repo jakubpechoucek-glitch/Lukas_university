@@ -55,7 +55,8 @@ dalšího (sourozence) bez změny schématu.
 | degree | text | BSc / MSci / BA / … |
 | duration_years | numeric | |
 | program_url | text | (Excel sl. L) |
-| field_rank | int | oborový žebříček (Excel sl. D) |
+| field_rank | int | oborový žebříček UK (Excel sl. D) |
+| subject_world_rank_text | text | oborový světový žebříček (list Business Management, sl. C) |
 | masters_info | text | (Excel sl. M) |
 | tuition_fee | int | za rok |
 | tuition_currency | char(3) | GBP / EUR / CHF / … |

@@ -17,11 +17,12 @@ runMigrations();
 bootstrap();
 
 app.use(cors({ origin: isDev ? 'http://localhost:5173' : false, credentials: true }));
-app.use(express.json());
+app.use(express.json({ limit: '1mb' }));
 
 app.get('/api/health', (req, res) => res.json({ success: true, data: { status: 'ok' } }));
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/fields', require('./routes/fields.routes'));
+app.use('/api/import', require('./routes/import.routes'));
 
 // Serve React in production
 if (!isDev) {
