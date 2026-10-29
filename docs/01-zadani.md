@@ -19,7 +19,7 @@ podkladem pro realistickou predikci.
 
 | Uživatel | Co dělá |
 |---|---|
-| Rodič (Jakub) | Spravuje katalog škol, nastavuje scénáře predikce, vyhodnocuje |
+| Rodiče (Jakub, Jana) | Spravují katalog škol, nastavují scénáře predikce, vyhodnocují |
 | Lukas | Zapisuje známky z assessmentů, termíny, prohlíží si vyhodnocení |
 
 Aplikace je soukromá a má 1–3 uživatele. Nejde o veřejnou službu.
@@ -42,7 +42,7 @@ Aplikace je soukromá a má 1–3 uživatele. Nejde o veřejnou službu.
 
 ### F2 – Predikce IB (MVP)
 - F2.1 Tabulka předmětů: 3× HL, 3× SL (dnes HL Sports Exercise & Health Science, Biology,
-  Business Management; SL English, Spanish, Math). Předměty a úrovně lze změnit.
+  Business Management; SL English A, Spanish, Math AA). Předměty a úrovně lze změnit.
 - F2.2 Několik **scénářů** vedle sebe, stejně jako v Excelu: „kašle na to“, „průměr“,
   „dře/maká“, „zázrak“, „moje predikce“. Scénáře lze přidat, přejmenovat a smazat.
   Jeden scénář je aktivní a podle něj se vyhodnocují školy.

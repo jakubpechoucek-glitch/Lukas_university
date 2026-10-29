@@ -3,7 +3,8 @@
 Webová aplikace pro výběr vysoké školy v Evropě podle oboru a podle predikce
 výsledků IB Diploma. Nahrazuje Excel `Srovnání univerzit 2026 – Lukas.xlsx`.
 
-> **Stav:** fáze 0 – analýza a dokumentace. Kód zatím neexistuje.
+> **Stav:** fáze 1 hotová. Hotová je kostra aplikace, přihlášení a výpočetní modul s testy.
+> Obrazovky katalogu, predikce a předmětů přijdou ve fázi 3 (viz [roadmapa](docs/06-roadmapa.md)).
 
 ## Co bude aplikace umět (MVP)
 
@@ -16,6 +17,36 @@ výsledků IB Diploma. Nahrazuje Excel `Srovnání univerzit 2026 – Lukas.xlsx
    (škrtnuté), nebo je nelze vyhodnotit automaticky ❔.
 4. **Hodnocení předmětů G11/G12**: editovatelná tabulka assessmentů (název,
    váha, známka, termín) a automatický vážený průměr pro každý předmět.
+
+## Spuštění lokálně
+
+```bash
+cp .env.example .env      # vyplnit BOOTSTRAP_USERS a INITIAL_PASSWORD
+npm run setup             # závislosti serveru i klienta + migrace
+npm run dev               # backend :3000, frontend :5173
+npm test                  # unit testy výpočtů + API
+```
+
+Požadavek: Node.js ≥ 22.12 (server načítá sdílené ES moduly z `shared/calc`).
+
+## Nasazení na Render
+
+1. V Renderu: **New → Blueprint** → vybrat tento repozitář (`render.yaml`).
+2. V nastavení služby doplnit proměnné, které nejsou v repozitáři:
+   - `BOOTSTRAP_USERS` = `Jakub|<email>|parent;Jana|<email>|parent;Lukas|<email>|student`
+   - `INITIAL_PASSWORD` = dočasné heslo (každý si ho při prvním přihlášení změní)
+3. Účty se vytvoří při startu serveru. Existující účty se nemění.
+
+## Struktura
+
+```
+client/         React + Vite + Tailwind (build → server/public)
+server/         Express API (routes → controllers → services → repositories)
+shared/calc/    výpočty IB skóre, vyhodnocení škol a váženého průměru (server i klient)
+db/             SQLite, migrace, bootstrap účtů a základních dat
+tests/          node:test (calc.test.mjs, api.test.js)
+docs/           dokumentace
+```
 
 ## Dokumentace
 

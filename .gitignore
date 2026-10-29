@@ -2,7 +2,9 @@ node_modules/
 dist/
 .env
 *.db
+*.db-*
 # osobní data (známky, predikce, zdrojový Excel) – nikdy necommitovat
-data/private/
+data/
 *.xlsx
 *.xls
+server/public/

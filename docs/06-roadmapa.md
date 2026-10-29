@@ -2,12 +2,16 @@
 
 ## Fáze
 
-### Fáze 0 – Analýza a dokumentace ✅ (tento commit)
+### Fáze 0 – Analýza a dokumentace ✅
 - Rozbor Excelu, zadání, datový model, výpočetní pravidla, návrh architektury.
 
-### Fáze 1 – Základ a výpočty
-- Kostra projektu (client/server/db), migrace, autentizace.
-- Modul `shared/calc` (IB skóre, vyhodnocení, vážený průměr) s unit testy podle [04](04-vypocty.md#testovací-případy-pro-unit-testy).
+### Fáze 1 – Základ a výpočty ✅
+- Kostra projektu (client/server/db), migrace celého datového modelu, přihlášení
+  (3 účty z `BOOTSTRAP_USERS`, povinná změna hesla při prvním přihlášení).
+- Bootstrap základních dat: 4 obory, 6 předmětů s průměry ISM/World 2025, 5 scénářů (bez známek).
+- Modul `shared/calc` (IB skóre, podmínky diplomu, vyhodnocení, Reach/Target/Likely, vážený průměr)
+  s 17 unit testy podle [04](04-vypocty.md#testovací-případy-pro-unit-testy) a 6 testy API.
+- Navigace a prázdné stránky ve frontendu.
 
 ### Fáze 2 – Import dat
 - Skript `import-xlsx`: rozdělí buňky s více programy, sloučí duplicitní univerzity,
@@ -34,16 +38,22 @@
 - Srovnání nákladů (školné + život) v jedné měně.
 - Mapa škol.
 
+## Rozhodnutí (29. 10. 2026)
+
+| # | Otázka | Rozhodnutí |
+|---|---|---|
+| Q1 | „Cenové skóre“ | překlep, myslí se **celkové skóre IB** (max. 45) |
+| Q2 | Hosting | **Render** (varianta A: Express + SQLite + persistent disk) |
+| Q3 | Účty | **3 účty**: rodiče Jakub a Jana (role `parent`), Lukas (role `student`). E-maily jsou jen v proměnné prostředí `BOOTSTRAP_USERS` na Renderu, ne v repozitáři. |
+| Q4 | Private repo | **ne**, repozitář zůstane veřejný, osobní data jen v DB |
+| Q5 | SL Math | **Mathematics: Analysis & Approaches** (`MATH_AA`) |
+| Q6 | English | **Language A** (`ENG_A`). Spanish se zatím předpokládá B (`SPA_B`) – nepotvrzeno. |
+
 ## Otevřené otázky
 
 | # | Otázka | Proč je důležitá | Výchozí předpoklad |
 |---|---|---|---|
-| Q1 | „Cenové skóre“ v zadání znamená **celkové skóre** IB (součet bodů, max. 45)? | výpočet F2 | ano, celkové skóre |
-| Q2 | Kterou variantu hostingu zvolit (A–D v [05](05-architektura.md#zvážené-alternativy))? Je OK platit ~7 USD/měsíc? | architektura | A (jako project_tracker) |
-| Q3 | Bude data editovat i Lukas (vlastní účet), nebo jen rodič? | autentizace, role | dva účty |
-| Q4 | Převést repo na **private**? | soukromí, seed dat | zůstane public, osobní data jen v DB |
-| Q5 | Která matematika je SL Math, **AA, nebo AI**? | některé školy (Erasmus, Groningen, TCD) to rozlišují | AA |
-| Q6 | Je English **Language A (Lang & Lit)**, nebo **B**? A Spanish B, nebo ab initio? | požadavky na angličtinu a jazykové výjimky | English A Lang & Lit, Spanish B |
+| Q6b | Je Spanish **B**, nebo **ab initio**? | jazykové požadavky | B |
 | Q7 | Kde jsou dnes termíny assessmentů (kalendář školy, Google Calendar, ManageBac)? Jde je importovat? | F4.5 | ruční zadání |
 | Q8 | Hranice „hraniční“ (tolerance) = 1 bod? Hranice Reach/Target/Likely? | F3 | 1 bod; Target 0–1, Likely ≥ 2 |
 | Q9 | Má aplikace řešit i školy mimo IB logiku (NL výběrová řízení, Lund GPA) víc než poznámkou? | rozsah | jen poznámka a `manual_review` |

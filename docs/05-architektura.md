@@ -9,12 +9,12 @@ autentizaci, deploy i strukturu.
 | Vrstva | Volba | Proč |
 |---|---|---|
 | Frontend | React + Vite + Tailwind | známé, rychlé. Tabulky s editací v buňkách přes TanStack Table |
-| Výpočty | čistý TypeScript/JS modul `shared/calc` | **stejný kód na klientovi (okamžitý přepočet) i na serveru (testy, export)** |
+| Výpočty | čistý JS modul (ES modules) `shared/calc` | **stejný kód na klientovi (okamžitý přepočet) i na serveru (testy, export)** |
 | Backend | Node.js + Express, REST API | jednoduché CRUD |
 | Databáze | SQLite (better-sqlite3), migrace v SQL | 1–3 uživatelé, desítky až stovky řádků |
-| Autentizace | e-mail + heslo, JWT (převzít z project_tracker) | data nezletilého |
+| Autentizace | e-mail + heslo, JWT (převzato z project_tracker) | data nezletilého |
 | Hosting | Render Web Service + persistent disk (Starter) | stejné jako project_tracker |
-| Testy | Jest (výpočty, API) | testovací případy viz [04](04-vypocty.md#testovací-případy-pro-unit-testy) |
+| Testy | vestavěný `node:test` + supertest (výpočty, API) – podporuje ES moduly bez konfigurace | testovací případy viz [04](04-vypocty.md#testovací-případy-pro-unit-testy) |
 
 ### Struktura repozitáře (návrh)
 
@@ -61,8 +61,7 @@ GET             /api/export                (JSON záloha)
 | C) Statická SPA + Supabase/Firebase (free tier) | zdarma, sdílení, autentizace v ceně | další služba a nová technologie |
 | D) Express + PostgreSQL (Render) | trvalá data bez disku | Free Postgres na Renderu po 30 dnech vyprší, placený od ≈ 7 USD/měsíc |
 
-**Rozhodnutí čeká na uživatele** (viz [06 – otevřené otázky](06-roadmapa.md#otevřené-otázky)).
-Výpočetní modul `shared/calc` je ve všech variantách stejný, takže na volbě nezávisí.
+**Rozhodnuto: varianta A** (viz [06 – rozhodnutí](06-roadmapa.md#rozhodnutí-29-10-2026)).
 
 ## Soukromí a bezpečnost
 
@@ -70,8 +69,13 @@ Výpočetní modul `shared/calc` je ve všech variantách stejný, takže na vol
   studenta spojené s výsledky, zdrojový Excel ani `.env`. `.gitignore` už ignoruje
   `*.xlsx`, `data/private/` a `*.db`.
 - Do gitu lze dát jen **veřejný katalog** (názvy škol, požadavky, odkazy, školné) jako seed.
-- Zvážit převedení repozitáře na **private**. Pak by šlo verzovat i seed s osobními daty.
-- Všechna API kromě loginu vyžadují přihlášení. Dva účty: rodič (admin) a Lukas (editor).
+- Repozitář zůstává veřejný (rozhodnuto), osobní data jsou jen v databázi na Renderu.
+- Všechna API kromě loginu vyžadují přihlášení. Tři účty: Jakub a Jana (role `parent`),
+  Lukas (role `student`). Obě role mohou editovat katalog, predikce i známky, jen `parent`
+  bude spravovat uživatele.
+- Účty se vytvoří při startu serveru z proměnné `BOOTSTRAP_USERS`
+  (`Jméno|email|role;…`) s dočasným heslem `INITIAL_PASSWORD`. Při prvním přihlášení
+  je nutné heslo změnit. E-maily tak nejsou v repozitáři.
 - HTTPS (Render ho poskytuje), hesla hashovaná bcryptem, rate-limit loginu.
 - Záloha: tlačítko „Export JSON“ a volitelně noční cron se zálohou (jako `jobs/` v project_tracker).
 
