@@ -1,7 +1,9 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { DEMO, demoAdapter } from '../demo/demo';
 
-const api = axios.create({ baseURL: '/api' });
+// V ukázkovém režimu odpovídá místo serveru paměťová náhrada (demo/demo.js).
+const api = axios.create({ baseURL: '/api', ...(DEMO && { adapter: demoAdapter }) });
 
 api.interceptors.request.use(config => {
   const token = localStorage.getItem('token');

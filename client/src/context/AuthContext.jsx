@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import api from '../services/api';
+import { DEMO, leaveDemo } from '../demo/demo';
 
 const AuthContext = createContext(null);
 
@@ -9,7 +10,7 @@ export function AuthProvider({ children }) {
 
   const loadUser = useCallback(async () => {
     const token = localStorage.getItem('token');
-    if (!token) { setLoading(false); return; }
+    if (!token && !DEMO) { setLoading(false); return; }
     try {
       const { data } = await api.get('/auth/me');
       setUser(data.data);
@@ -30,6 +31,7 @@ export function AuthProvider({ children }) {
   }
 
   async function logout() {
+    if (DEMO) { leaveDemo(); return; }
     try { await api.post('/auth/logout'); } catch {}
     localStorage.removeItem('token');
     setUser(null);

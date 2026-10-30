@@ -40,6 +40,9 @@ export default function Login() {
         </label>
         {error && <p className="text-sm text-red-600">{error}</p>}
         <button className="btn-primary w-full" disabled={busy}>Přihlásit</button>
+        <p className="text-center text-sm text-slate-500">
+          Nemáte účet? <a href="/?demo" className="font-medium text-slate-700 underline underline-offset-2">Vyzkoušet ukázku</a> se smyšlenými známkami.
+        </p>
       </form>
     </div>
   );

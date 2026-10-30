@@ -1,0 +1,25 @@
+{
+  "scenarios": [
+    { "name": "kašle na to",   "corePoints": 0, "grades": { "SEHS": 4, "BIO": 3, "BM": 4, "ENG_A": 4, "SPA_B": 4, "MATH_AA": 3 } },
+    { "name": "průměr",        "corePoints": 1, "grades": { "SEHS": 5, "BIO": 4, "BM": 5, "ENG_A": 5, "SPA_B": 5, "MATH_AA": 4 } },
+    { "name": "dře/maká",      "corePoints": 2, "grades": { "SEHS": 6, "BIO": 5, "BM": 6, "ENG_A": 6, "SPA_B": 5, "MATH_AA": 5 } },
+    { "name": "zázrak",        "corePoints": 3, "grades": { "SEHS": 7, "BIO": 6, "BM": 7, "ENG_A": 6, "SPA_B": 6, "MATH_AA": 6 } },
+    { "name": "moje predikce", "corePoints": 2, "grades": { "SEHS": 6, "BIO": 5, "BM": 6, "ENG_A": 5, "SPA_B": 5, "MATH_AA": 5 } }
+  ],
+  "assessments": [
+    { "subject": "SEHS",    "term": "G11-S1", "name": "Unit 1 – Anatomy test",        "criterion": "KU", "weight": 0.3, "grade": 6, "sortOrder": 0 },
+    { "subject": "SEHS",    "term": "G11-S1", "name": "Lab report – Fitness testing", "criterion": "IA", "weight": 0.4, "grade": 5, "sortOrder": 1 },
+    { "subject": "SEHS",    "term": "G11-S1", "name": "Unit 2 – Physiology quiz",     "criterion": "KU", "weight": 0.3, "grade": 6, "sortOrder": 2 },
+    { "subject": "BIO",     "term": "G11-S1", "name": "Cells and molecules test",     "criterion": "KU", "weight": 0.5, "grade": 5, "sortOrder": 0 },
+    { "subject": "BIO",     "term": "G11-S1", "name": "Practical – Enzymes",          "criterion": "IA", "weight": 0.5, "grade": 4, "sortOrder": 1 },
+    { "subject": "BM",      "term": "G11-S1", "name": "Case study – Marketing",       "criterion": "A",  "weight": 0.6, "grade": 6, "sortOrder": 0 },
+    { "subject": "BM",      "term": "G11-S1", "name": "Finance quiz",                 "criterion": "B",  "weight": 0.4, "grade": 5, "sortOrder": 1 },
+    { "subject": "ENG_A",   "term": "G11-S1", "name": "Literary essay",               "criterion": "A",  "weight": 0.5, "grade": 5, "sortOrder": 0 },
+    { "subject": "ENG_A",   "term": "G11-S1", "name": "Individual oral",              "criterion": "B",  "weight": 0.5, "grade": 6, "sortOrder": 1 },
+    { "subject": "SPA_B",   "term": "G11-S1", "name": "Writing task",                 "criterion": "A",  "weight": 0.5, "grade": 5, "sortOrder": 0 },
+    { "subject": "SPA_B",   "term": "G11-S1", "name": "Listening test",               "criterion": "B",  "weight": 0.5, "grade": 5, "sortOrder": 1 },
+    { "subject": "MATH_AA", "term": "G11-S1", "name": "Functions test",               "criterion": "A",  "weight": 0.5, "grade": 4, "sortOrder": 0 },
+    { "subject": "MATH_AA", "term": "G11-S1", "name": "Statistics test",              "criterion": "A",  "weight": 0.5, "grade": 5, "sortOrder": 1 },
+    { "subject": "SEHS",    "term": "G11-S2", "name": "Biomechanics test",            "criterion": "KU", "weight": 0.5, "grade": null, "dueDate": "2027-02-15", "sortOrder": 0 }
+  ]
+}
