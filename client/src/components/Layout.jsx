@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth, ROZCESTNIK_URL } from '../context/AuthContext';
 import { SECTIONS, sectionFor } from '../lib/theme';
 
 export default function Layout({ children }) {
@@ -12,7 +12,13 @@ export default function Layout({ children }) {
       {/* Spodní okraj hlavičky má barvu aktuální sekce – na první pohled je vidět, kde jsem. */}
       <header className={`sticky top-0 z-30 border-b-4 bg-white/95 backdrop-blur ${current.border}`}>
         <div className="mx-auto flex max-w-6xl items-center gap-x-6 gap-y-2 px-4 py-2">
-          <span className="font-semibold text-slate-900">Lukas University</span>
+          <div className="flex items-center gap-2">
+            <a href={ROZCESTNIK_URL} title="Zpět na Rozcestník" className="rounded-lg px-1.5 py-1 text-sm text-slate-500 hover:bg-slate-100 hover:text-slate-900">
+              ← <span className="hidden sm:inline">Rozcestník</span>
+            </a>
+            <span className="text-slate-300" aria-hidden="true">|</span>
+            <span className="font-semibold text-slate-900">Lukas University</span>
+          </div>
 
           {/* Desktop: navigace nahoře */}
           <nav className="hidden gap-1 text-sm sm:flex">

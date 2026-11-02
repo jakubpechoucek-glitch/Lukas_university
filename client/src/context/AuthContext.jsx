@@ -5,7 +5,8 @@ import { DEMO, leaveDemo } from '../demo/demo';
 const AuthContext = createContext(null);
 
 // Adresa Rozcestníku – po přihlášení tam nás vrátí s tokenem v #sso=…
-export const ROZCESTNIK_SSO_URL = 'https://jakubpechoucek-glitch.github.io/rozcestnik/?sso=lukas';
+export const ROZCESTNIK_URL = 'https://jakubpechoucek-glitch.github.io/rozcestnik/';
+export const ROZCESTNIK_SSO_URL = `${ROZCESTNIK_URL}?sso=lukas`;
 
 // Token z Rozcestníku přichází v části adresy za # (neposílá se serveru
 // v běžném požadavku). Hned ho z adresy odstraníme.
