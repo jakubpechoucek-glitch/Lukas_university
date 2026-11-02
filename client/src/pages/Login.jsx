@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth, ROZCESTNIK_SSO_URL } from '../context/AuthContext';
 
 export default function Login() {
-  const { user, login } = useAuth();
+  const { user, login, ssoError } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,6 +30,9 @@ export default function Login() {
     <div className="flex min-h-screen items-center justify-center px-4">
       <form onSubmit={submit} className="card w-full max-w-sm space-y-4">
         <h1 className="text-xl font-semibold">Lukas University</h1>
+        <a className="btn-primary block w-full text-center" href={ROZCESTNIK_SSO_URL}>Přihlásit přes Rozcestník</a>
+        {ssoError && <p className="text-sm text-red-600">{ssoError}</p>}
+        <div className="text-center text-xs text-slate-400">nebo e-mailem a heslem</div>
         <label className="block text-sm">
           E-mail
           <input className="input mt-1" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
@@ -39,7 +42,7 @@ export default function Login() {
           <input className="input mt-1" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </label>
         {error && <p className="text-sm text-red-600">{error}</p>}
-        <button className="btn-primary w-full" disabled={busy}>Přihlásit</button>
+        <button className="btn-secondary w-full" disabled={busy}>Přihlásit heslem</button>
       </form>
     </div>
   );

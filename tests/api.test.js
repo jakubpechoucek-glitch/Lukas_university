@@ -84,3 +84,31 @@ test('první přihlášení, změna hesla a přístup k API', async () => {
   assert.deepEqual(res.body.data.map((f) => f.name),
     ['Sport Science', 'Sport Management', 'Physiotherapy', 'Business Management']);
 });
+
+test('přihlášení přes Rozcestník (token Supabase)', async (t) => {
+  const realFetch = global.fetch;
+  t.after(() => { global.fetch = realFetch; });
+  const sbUsers = {
+    'ok-token': { email: 'Student@Example.com', email_confirmed_at: '2026-01-01T00:00:00Z' },
+    'cizi-token': { email: 'cizi@example.com', email_confirmed_at: '2026-01-01T00:00:00Z' },
+    'neovereny-token': { email: 'student@example.com', email_confirmed_at: null },
+  };
+  global.fetch = async (url, opts) => {
+    assert.match(String(url), /\/auth\/v1\/user$/);
+    const tok = opts.headers.Authorization.slice(7);
+    const u = sbUsers[tok];
+    return { ok: !!u, json: async () => u };
+  };
+  const sso = (accessToken) => request(app).post('/api/auth/supabase').send({ accessToken });
+
+  let res = await sso('ok-token');
+  assert.equal(res.status, 200);
+  assert.equal(res.body.data.user.email, 'student@example.com');
+  res = await request(app).get('/api/auth/me').set('Authorization', `Bearer ${res.body.data.token}`);
+  assert.equal(res.status, 200);
+
+  assert.equal((await sso('neplatny')).status, 401);
+  assert.equal((await sso('neovereny-token')).status, 401);
+  assert.equal((await sso('cizi-token')).status, 403);
+  assert.equal((await sso('')).status, 400);
+});
