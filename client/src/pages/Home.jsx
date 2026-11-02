@@ -115,10 +115,15 @@ export default function Home() {
 
   if (!catalog || !student) return null;
   const totals = scenarioTotals(student.subjects, activeScenario);
-  const upcoming = student.assessments
+  const now = new Date();
+  const todayIso = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const ungraded = student.assessments
     .filter((a) => a.dueDate && a.grade === null)
-    .sort((a, b) => a.dueDate.localeCompare(b.dueDate))
-    .slice(0, 5);
+    .sort((a, b) => a.dueDate.localeCompare(b.dueDate));
+  // Budoucí (vč. dneška) nahoře, proběhlé bez známky dole pod čarou.
+  const upcoming = ungraded.filter((a) => a.dueDate >= todayIso).slice(0, 5);
+  const awaitingGrade = ungraded.filter((a) => a.dueDate < todayIso);
+  const subjectName = (id) => student.subjects.find((s) => s.id === id)?.displayName;
   const tracked = catalog.programs.filter((p) => !['research', 'considering', 'dropped'].includes(p.status));
   const uni = (id) => catalog.universities.find((u) => u.id === id)?.name;
 
@@ -180,13 +185,31 @@ export default function Home() {
                 {upcoming.map((a) => (
                   <li key={a.id} className="flex gap-3">
                     <span className="w-24 shrink-0 tabular-nums text-slate-600">{formatDate(a.dueDate)}</span>
-                    <span className="text-slate-500">{student.subjects.find((s) => s.id === a.subjectId)?.displayName}</span>
+                    <span className="text-slate-500">{subjectName(a.subjectId)}</span>
                     <span>{a.name}</span>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="text-sm text-slate-500">Žádné termíny – doplňte je u assessmentů v <Link className="text-emerald-700 hover:underline" to="/predmety">Předmětech</Link>.</p>
+              <p className="text-sm text-slate-500">
+                {awaitingGrade.length
+                  ? 'Žádné budoucí termíny.'
+                  : <>Žádné termíny – doplňte je u assessmentů v <Link className="text-emerald-700 hover:underline" to="/predmety">Předmětech</Link>.</>}
+              </p>
+            )}
+            {awaitingGrade.length > 0 && (
+              <div className="mt-3 border-t border-slate-200 pt-2">
+                <div className="mb-1 text-xs font-medium uppercase tracking-wide text-amber-700">Čeká na známku</div>
+                <ul className="space-y-1 text-sm">
+                  {awaitingGrade.map((a) => (
+                    <li key={a.id} className="flex gap-3">
+                      <span className="w-24 shrink-0 tabular-nums text-slate-400">{formatDate(a.dueDate)}</span>
+                      <span className="text-slate-400">{subjectName(a.subjectId)}</span>
+                      <span className="text-slate-600">{a.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </div>
           {tracked.length > 0 && (
