@@ -69,10 +69,50 @@ async function changePassword(userId, currentPassword, newPassword) {
   usersRepo.updatePassword(userId, hash);
 }
 
+// Přihlášení přes Rozcestník: Rozcestník předá přístupový token Supabase,
+// ověříme ho přímo u Supabase a pustíme jen e-mail, který tu má účet.
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://unoefgbzymlwwehgzusf.supabase.co';
+const SUPABASE_KEY = process.env.SUPABASE_KEY || 'sb_publishable_0slnWPDezyFgiOmUGDal4Q_B5ZGz7i_'; // veřejný publishable klíč
+
+async function loginWithSupabase(accessToken) {
+  if (!accessToken || typeof accessToken !== 'string' || accessToken.length > 4096) {
+    throw { status: 400, message: 'Chybí token z Rozcestníku' };
+  }
+
+  let res;
+  try {
+    res = await fetch(`${SUPABASE_URL}/auth/v1/user`, {
+      headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${accessToken}` },
+      signal: AbortSignal.timeout(10000),
+    });
+  } catch {
+    throw { status: 502, message: 'Rozcestník (Supabase) teď neodpovídá, zkuste to znovu' };
+  }
+  if (!res.ok) {
+    throw { status: 401, message: 'Přihlášení z Rozcestníku vypršelo, přihlaste se znovu' };
+  }
+
+  const sbUser = await res.json();
+  if (!sbUser?.email || !sbUser.email_confirmed_at) {
+    throw { status: 401, message: 'Účet na Rozcestníku nemá ověřený e-mail' };
+  }
+
+  const user = usersRepo.findByEmail(String(sbUser.email).trim());
+  if (!user) {
+    throw { status: 403, message: `Účet ${sbUser.email} nemá v Lukas University přístup` };
+  }
+  if (!user.is_active) {
+    throw { status: 403, message: 'Účet je deaktivovaný' };
+  }
+
+  usersRepo.resetLoginAttempts(user.id);
+  return { token: issueToken(user), user: publicUser(user) };
+}
+
 function me(userId) {
   const user = usersRepo.findById(userId);
   if (!user) throw { status: 404, message: 'Uživatel neexistuje' };
   return publicUser(user);
 }
 
-module.exports = { login, changePassword, me, PASSWORD_POLICY };
+module.exports = { login, loginWithSupabase, changePassword, me, PASSWORD_POLICY };

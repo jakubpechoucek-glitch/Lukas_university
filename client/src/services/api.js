@@ -16,10 +16,10 @@ api.interceptors.response.use(
   err => {
     const status = err.response?.status;
     const message = err.response?.data?.error;
-    if (status === 401) {
+    if (status === 401 && err.config?.url !== '/auth/supabase') {
       localStorage.removeItem('token');
       if (window.location.pathname !== '/login') window.location.href = '/login';
-    } else if (status === 403) {
+    } else if (status === 403 && err.config?.url !== '/auth/supabase') {
       toast.error(message || 'Přístup odepřen');
     }
     return Promise.reject(err);
