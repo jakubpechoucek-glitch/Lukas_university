@@ -75,4 +75,4 @@ function me(userId) {
   return publicUser(user);
 }
 
-module.exports = { login, changePassword, me, PASSWORD_POLICY };
+module.exports = { login, changePassword, me, issueToken, publicUser, PASSWORD_POLICY };

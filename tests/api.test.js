@@ -84,3 +84,37 @@ test('první přihlášení, změna hesla a přístup k API', async () => {
   assert.deepEqual(res.body.data.map((f) => f.name),
     ['Sport Science', 'Sport Management', 'Physiotherapy', 'Business Management']);
 });
+
+test('SSO přes Supabase: člen rodiny projde, ostatní ne', async (t) => {
+  const realFetch = global.fetch;
+  const members = ['jana@example.com', 'matej@example.com'];
+  const json = (body, status = 200) => ({ ok: status < 400, status, json: async () => body });
+  global.fetch = async (url, opts) => {
+    const token = opts.headers.Authorization.replace('Bearer ', '');
+    const email = token.replace('tok-', '');
+    if (url.endsWith('/auth/v1/user')) return token.startsWith('tok-') ? json({ email }) : json({}, 401);
+    if (url.endsWith('/rpc/je_clen')) return json(members.includes(email));
+    if (url.endsWith('/rpc/moje_jmeno')) return json('Matěj Test');
+    throw new Error('neočekávané volání ' + url);
+  };
+  t.after(() => { global.fetch = realFetch; });
+
+  let res = await request(app).post('/api/auth/sso').send({ token: 'tok-matej@example.com' });
+  assert.equal(res.status, 200);
+  assert.equal(res.body.data.user.name, 'Matěj Test');
+  assert.equal(res.body.data.user.isFirstLogin, false);
+  const me = await request(app).get('/api/auth/me').set('Authorization', `Bearer ${res.body.data.token}`);
+  assert.equal(me.status, 200);
+
+  // Druhé přihlášení použije stejný účet.
+  res = await request(app).post('/api/auth/sso').send({ token: 'tok-matej@example.com' });
+  assert.equal(res.status, 200);
+  assert.equal(getDb().prepare("SELECT COUNT(*) n FROM users WHERE email = 'matej@example.com'").get().n, 1);
+
+  res = await request(app).post('/api/auth/sso').send({ token: 'tok-cizi@example.com' });
+  assert.equal(res.status, 403);
+  res = await request(app).post('/api/auth/sso').send({ token: 'spatny' });
+  assert.equal(res.status, 401);
+  res = await request(app).post('/api/auth/sso').send({});
+  assert.equal(res.status, 401);
+});

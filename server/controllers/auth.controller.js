@@ -11,6 +11,15 @@ async function login(req, res) {
   }
 }
 
+async function sso(req, res) {
+  try {
+    const result = await require('../services/sso.service').loginWithSupabaseToken(req.body && req.body.token);
+    success(res, result);
+  } catch (err) {
+    error(res, err.message, err.status || 500);
+  }
+}
+
 async function changePassword(req, res) {
   try {
     const { currentPassword, newPassword } = req.body;
@@ -35,4 +44,4 @@ function logout(req, res) {
   success(res, { message: 'Logged out successfully' });
 }
 
-module.exports = { login, changePassword, me, logout };
+module.exports = { login, sso, changePassword, me, logout };

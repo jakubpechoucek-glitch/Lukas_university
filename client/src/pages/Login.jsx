@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
-  const { user, login } = useAuth();
+  const { user, login, ssoError } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,8 +38,11 @@ export default function Login() {
           Heslo
           <input className="input mt-1" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </label>
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {(error || ssoError) && <p className="text-sm text-red-600">{error || ssoError}</p>}
         <button className="btn-primary w-full" disabled={busy}>Přihlásit</button>
+        <a className="block text-center text-sm underline" href="https://jakubpechoucek-glitch.github.io/rozcestnik/?sso=lukas">
+          Přihlásit přes rozcestník (Google)
+        </a>
       </form>
     </div>
   );
