@@ -144,12 +144,15 @@ async function callTool(tool, content) {
   for (let attempt = 0; attempt < 2; attempt++) {
     const msg = await getClient().messages.create({
       model: model(),
-      max_tokens: 10000,
+      max_tokens: 16000,
       system: `${SYSTEM}\n\nYou MUST deliver the feedback by calling the \`${tool.name}\` tool exactly once. Do not answer in plain text.`,
       tools: [tool],
       tool_choice: { type: 'auto' },
       messages,
     });
+    if (msg.stop_reason === 'max_tokens') {
+      throw { status: 502, message: 'The answer was cut off because it was too long. Evaluate fewer criteria at once, or a shorter text.' };
+    }
     const block = (msg.content || []).find((b) => b.type === 'tool_use' && b.name === tool.name);
     if (block) return block.input;
     messages.push({ role: 'assistant', content: msg.content || [{ type: 'text', text: '(no answer)' }] });
@@ -179,7 +182,12 @@ For each criterion, judge the three (or two) descriptors of the 5-6 band in orde
     content.push({ type: 'text', text: `<report>\n${report.text}\n</report>` });
   }
   const raw = await callTool(reviewTool(rubric, ids), content);
-  return { model: model(), result: normalizeReview(raw, rubric, ids) };
+  const result = normalizeReview(raw, rubric, ids);
+  // Chybějící kritérium se nesmí tiše přeskočit (výsledek by vypadal kompletně, ale nebyl).
+  if (result.criteria.length < ids.length) {
+    throw { status: 502, message: 'The model returned an incomplete evaluation, please run it again' };
+  }
+  return { model: model(), result };
 }
 
 const RQ_TOOL = {

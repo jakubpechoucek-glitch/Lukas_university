@@ -221,3 +221,28 @@ test('model, který nevolá nástroj, dostane jednu připomínku; požadavek nev
   assert.deepEqual(calls[0].tool_choice, { type: 'auto' });
   assert.equal(calls[1].messages.at(-1).role, 'user');
 });
+
+test('useknutá nebo neúplná odpověď modelu je chyba, ne tichý neúplný výsledek', async (t) => {
+  const subjectId = getDb().prepare("SELECT id FROM subjects WHERE code = 'SEHS'").get().id;
+  t.after(() => ai._setClientForTests(null));
+  const text = 'word '.repeat(80);
+
+  ai._setClientForTests({ messages: { create: async () => ({ stop_reason: 'max_tokens', content: [{ type: 'tool_use', name: 'submit_review', input: {} }] }) } });
+  let start = await api('post', `/api/ia/subjects/${subjectId}/review-report`).send({ source: 'paste', text });
+  let done = await waitFor(start.body.data.id);
+  assert.equal(done.status, 'error');
+  assert.match(done.error, /cut off/);
+
+  // Model vrátí jen jedno ze dvou požadovaných kritérií.
+  ai._setClientForTests({
+    messages: { create: async (req) => {
+      const input = reportInput(req);
+      input.criteria = input.criteria.slice(0, 1);
+      return { stop_reason: 'tool_use', content: [{ type: 'tool_use', name: req.tools[0].name, input }] };
+    } },
+  });
+  start = await api('post', `/api/ia/subjects/${subjectId}/review-report`).send({ source: 'paste', text, criteria: ['research_design', 'evaluation'] });
+  done = await waitFor(start.body.data.id);
+  assert.equal(done.status, 'error');
+  assert.match(done.error, /incomplete/);
+});
