@@ -9,6 +9,7 @@ import Catalog from './pages/Catalog';
 import Prediction from './pages/Prediction';
 import Subjects from './pages/Subjects';
 import Matrix from './pages/Matrix';
+import IA from './pages/IA';
 
 function DataGate() {
   const { catalog, student, error, reload } = useData();
@@ -52,6 +53,7 @@ export default function App() {
             <Route path="/predikce" element={<Prediction />} />
             <Route path="/predmety" element={<Subjects />} />
             <Route path="/matice" element={<Matrix />} />
+            <Route path="/ia" element={<IA />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

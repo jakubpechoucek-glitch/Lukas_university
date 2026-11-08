@@ -1,0 +1,287 @@
+{
+  "SEHS": {
+    "subject": "Sports, exercise and health science (SEHS)",
+    "title": "Scientific investigation – Internal assessment",
+    "source": "SEHS textbook, chapter Internal assessment (IA) and practical work, pp. 620–627, Tables 2–6",
+    "maxWords": 3200,
+    "wordCountNote": "Not counted towards the limit: charts and diagrams, data tables, equations, formulae and calculations, citations/references, bibliography and headers. The investigation must involve the collection and analysis of quantitative data.",
+    "totalMarks": 24,
+    "weightOfFinalPct": 24,
+    "rules": [
+      "The research question is your own, based on something you are interested in, and must lead to collecting and analysing quantitative data.",
+      "The report must be your own work. Even when data is collected in a group, a group report is not permitted and you describe the methodology individually.",
+      "Your teacher may give feedback on your first draft. If you cannot complete the work without substantial support, you cannot gain full marks.",
+      "Maximum 3,200 words."
+    ],
+    "rqGuide": {
+      "title": "What a strong research question contains (for band 5–6 in Research design)",
+      "items": [
+        "Independent variable (IV) with specific levels, units and uncertainty (e.g. time 15, 30, 45, 60 s, ±0.5 s).",
+        "Dependent variable (DV) defined precisely: what is measured, in which units (e.g. mean RMS EMG amplitude in mV, or in % MVC), with what device and uncertainty.",
+        "The system it is embedded in: type of exercise/test, population (age, sex, level, number of participants) and setting.",
+        "“To what extent…” or similar wording that leads to quantification (effect size, statistical test), not just a yes/no answer.",
+        "One focused question. Two dependent variables are possible, but they double the analysis and the word count needed.",
+        "A question you can actually answer with data you are able to collect and process."
+      ]
+    },
+    "criteria": [
+      {
+        "id": "research_design",
+        "name": "Research design",
+        "max": 6,
+        "assesses": "The extent to which you effectively communicate the methodology (purpose and practice) used to address the research question.",
+        "bands": [
+          {
+            "marks": "0",
+            "descriptors": [
+              "The report does not reach the standard described by the descriptors below."
+            ]
+          },
+          {
+            "marks": "1-2",
+            "descriptors": [
+              "The research question is stated without context.",
+              "Methodological considerations associated with collecting data relevant to the research question are stated.",
+              "The description of the methodology for collecting or selecting data lacks the detail to allow for the investigation to be reproduced."
+            ]
+          },
+          {
+            "marks": "3-4",
+            "descriptors": [
+              "The research question is outlined within a broad context.",
+              "Methodological considerations associated with collecting relevant and sufficient data to answer the research question are described.",
+              "The description of the methodology for collecting or selecting data allows for the investigation to be reproduced with few ambiguities or omissions."
+            ]
+          },
+          {
+            "marks": "5-6",
+            "descriptors": [
+              "The research question is described within a specific and appropriate context.",
+              "Methodological considerations associated with collecting relevant and sufficient data to answer the research question are explained.",
+              "The description of the methodology for collecting or selecting data allows for the investigation to be reproduced."
+            ]
+          }
+        ],
+        "checklist": [
+          "In the research question, are the independent and dependent variables fully described, with units and the correct unit of uncertainty, where applicable?",
+          "Does the research question fully describe the system in which it is embedded?",
+          "While referencing relevant scholarly works, does the background information discuss both the independent and dependent variables, and discuss why there might be a link between the two that is worth investigating?",
+          "Does the background information help justify the chosen methodology?",
+          "Have the choices of the conditions of the independent variable and the method of measuring the dependent variable been justified?",
+          "Have all of the important variables been controlled and the reason for control justified?",
+          "Will the method collect sufficient, relevant data?",
+          "Have the confounding variables been discussed and mitigated where possible?",
+          "Have your decisions regarding the subject selection and basic design been explained?",
+          "Have you included a risk assessment that correctly identifies the risks to the subjects, and includes information on how the risks were mitigated?",
+          "When using human subjects, have ethical issues such as informed consent, subject confidentiality and the right to withdraw been addressed?",
+          "Is the method clear and repeatable?",
+          "Have non-generic materials been listed?",
+          "Have you added clarity to the method by including diagrams or images?",
+          "If secondary data were used, have the data been verified by a second source, and is the process used to extract the data clear?",
+          "If secondary data were used, was the confidentiality of the original subjects maintained?"
+        ],
+        "tips": [
+          "Research question: IV and DV with units and uncertainty, a clear system (type of exercise, population, number of participants).",
+          "Background: explain both variables and why a relationship between them is worth investigating. Cite scholarly sources (PubMed, Google Scholar), not just websites.",
+          "Justify every methodological decision: why these IV levels, why this device and way of measuring the DV, why these participants and this sample size.",
+          "Controlled variables table: what you hold constant, how and why. Discuss confounding variables separately and how you mitigated them.",
+          "Ethics and safety: informed consent (for minors also parental consent), confidentiality (codes instead of names), right to withdraw, and a risk assessment with mitigations.",
+          "Write the method so that it can be repeated: numbered steps, specific materials with models and versions, a photo or diagram of the set-up."
+        ],
+        "topicTips": [
+          "Define “activation”: e.g. mean RMS EMG amplitude in a window (e.g. 5 s around 15/30/45/60 s), ideally normalised to MVC.",
+          "State the uncertainty of the SpikerBox Pro (resolution, resting noise, sampling rate) and of time (±0.5 s). Fill in the empty ±[uncertainty].",
+          "Justify the muscles: rectus abdominis (trunk flexion, control of pelvic tilt) and rectus femoris (hip flexion, knee extension, biarticular). Why should they behave differently with fatigue?",
+          "Electrode placement following SENIAM recommendations, skin preparation (shaving, cleaning), reference electrode on a bony prominence. A photo or diagram of the placement helps.",
+          "Standardise the plank: forearms on the floor, 90° elbow angle, neutral spine, foot width, and how you monitor and end the hold when form breaks down. Same time of day, warm-up and rest before the test.",
+          "Decide and justify: one continuous plank with windows at 15/30/45/60 s, or separate trials. In one continuous plank, time is also fatigue; that is the mechanism, not an error, but say so.",
+          "Confounding: skin-fold thickness, sweat, electrode movement, crosstalk from neighbouring muscles (obliques, vastus muscles), breathing, 50 Hz mains noise, pelvic compensation.",
+          "Sample: number n, sex, sport and age 15–18. Justify why varsity athletes and why this many.",
+          "Ethics: participants are minors, so parental consent plus participant assent, anonymisation, the option to stop at any time, and the risks (muscle fatigue, skin irritation from electrodes) with mitigations."
+        ]
+      },
+      {
+        "id": "data_analysis",
+        "name": "Data analysis",
+        "max": 6,
+        "assesses": "The extent to which your report provides evidence that you have recorded, processed and presented the data in ways that are relevant to the research question.",
+        "bands": [
+          {
+            "marks": "0",
+            "descriptors": [
+              "The report does not reach a standard described by the descriptors below."
+            ]
+          },
+          {
+            "marks": "1-2",
+            "descriptors": [
+              "The recording and processing of the data is communicated but is neither clear nor precise.",
+              "The recording and processing of data shows limited evidence of the consideration of uncertainties.",
+              "Some processing of data relevant to addressing the research question is carried out but with major omissions, inaccuracies or inconsistencies."
+            ]
+          },
+          {
+            "marks": "3-4",
+            "descriptors": [
+              "The communication of the recording and processing of the data is either clear or precise.",
+              "The recording and processing of data shows evidence of a consideration of uncertainties but with some significant omissions or inaccuracies.",
+              "The processing of data relevant to addressing the research question is carried out but with some significant omissions, inaccuracies or inconsistencies."
+            ]
+          },
+          {
+            "marks": "5-6",
+            "descriptors": [
+              "The communication of the recording and processing of the data is both clear and precise.",
+              "The recording and processing of data shows evidence of an appropriate consideration of uncertainties.",
+              "The processing of data relevant to addressing the research question is carried out appropriately and accurately."
+            ]
+          }
+        ],
+        "checklist": [
+          "Is the method of processing clear?",
+          "Does the paper include sample calculations or a clear description of what spreadsheet formulae were used?",
+          "Has/have the correct graph(s) been chosen, and are the data presented in a way that is clear to the reader?",
+          "Have the data tables and graphs been correctly presented, and are there few to no errors in the use of SEHS-specific conventions?",
+          "Where mathematically sound, have standard deviation, coefficient of variability or other measures of variability, such as standard error, been calculated?",
+          "Are the unit uncertainties correct and justified?",
+          "Has the variability of the data been discussed?",
+          "Are the error bars on the graph(s) correct and have they been explained?",
+          "Has the effect of the uncertainty and/or reliability of the data been discussed?",
+          "Have outlying data been correctly determined, and correctly included or excluded?",
+          "Has the correct inferential test been chosen, executed and interpreted properly?",
+          "Will the processing allow a valid and detailed answer to the research question?"
+        ],
+        "tips": [
+          "Raw data tables: title, units and uncertainties in the headers, number of decimal places consistent with the uncertainty.",
+          "Show one sample calculation step by step, or describe the spreadsheet formulae.",
+          "For each group calculate the mean and a measure of variability (SD, SE or CV) and say which one you use and why.",
+          "Graphs: IV on the x-axis, DV on the y-axis, axis labels with units, a title, error bars (state what they represent), a readable scale.",
+          "Uncertainties: instrument and time uncertainty, their effect on the result, random vs systematic error.",
+          "A rule for outliers (e.g. 1.5×IQR or ±2 SD) and a decision on whether to include them.",
+          "Choose the inferential test according to the design (related vs independent groups, normality), state H0/H1, significance level α, the test statistic, degrees of freedom and p-value, and interpret them correctly."
+        ],
+        "topicTips": [
+          "EMG processing: describe filtering (band-pass, mains noise removal), rectification and RMS in a window, normalisation (% MVC or relative to the 15 s value), and the same procedure for every window.",
+          "Repeated measurements on the same participants (15, 30, 45, 60 s): repeated-measures ANOVA (check normality and sphericity); if assumptions fail, the Friedman test; Bonferroni post-hoc. Run it separately for each muscle.",
+          "Add an effect size so that “to what extent” is answered, not just significance.",
+          "Put two muscles on one graph only if they are in the same (normalised) units, otherwise use two panels. Absolute amplitudes of different muscles cannot be compared directly.",
+          "Reliability: discuss device noise, between-participant variability (large SDs are common in EMG) and the effect of a small n."
+        ]
+      },
+      {
+        "id": "conclusion",
+        "name": "Conclusion",
+        "max": 6,
+        "assesses": "The extent to which you successfully answer your research question with regard to your analysis and the accepted scientific context.",
+        "bands": [
+          {
+            "marks": "0",
+            "descriptors": [
+              "The report does not reach a standard described by the descriptors below."
+            ]
+          },
+          {
+            "marks": "1-2",
+            "descriptors": [
+              "A conclusion is stated that is relevant to the research question but is not supported by the analysis presented.",
+              "The conclusion makes superficial comparison to the accepted scientific context.",
+              "Practical implications of the findings are stated."
+            ]
+          },
+          {
+            "marks": "3-4",
+            "descriptors": [
+              "A conclusion is described that is relevant to the research question but is not fully consistent with the analysis presented.",
+              "A conclusion is described that makes some relevant comparison to the accepted scientific context.",
+              "Practical implications of the findings are outlined."
+            ]
+          },
+          {
+            "marks": "5-6",
+            "descriptors": [
+              "A conclusion is justified that is relevant to the research question and fully consistent with the analysis presented.",
+              "A conclusion is justified through relevant comparison to the accepted scientific context.",
+              "Practical implications of the findings are explained."
+            ]
+          }
+        ],
+        "checklist": [
+          "Does the conclusion answer the research question correctly and directly?",
+          "Has the conclusion been justified by referring to the data and to the results of the inferential testing?",
+          "Have you considered the strength of conclusion and its validity, considering uncertainty?",
+          "Is the conclusion described in detail, and does it consider the system in which the research is embedded?",
+          "Have you provided a scientific explanation for the conclusion, using scholarly sources not previously discussed?",
+          "Do other, similar published studies justify the conclusion, or do they show that the result is not supported by other research?",
+          "Are the implications presented practical, and are they explained with reference to a valid extension?"
+        ],
+        "tips": [
+          "The first sentence answers the research question directly, with numbers (differences, p-values, effect size).",
+          "Support every claim with specific data and the inferential test results. Do not claim more than the data supports.",
+          "Evaluate the strength and validity of the conclusion considering uncertainty and variability (do error bars overlap? how large is n?).",
+          "Give a scientific explanation using new sources not used in the background, and compare with similar published studies: do they agree, and why or why not.",
+          "Explain the practical implications, do not just list them: who benefits and how, and which follow-up investigation (extension) the result supports."
+        ],
+        "topicTips": [
+          "Answer separately for rectus abdominis and rectus femoris: direction of change, its size, and between which time points a significant difference occurs.",
+          "Explain physiologically: during sustained submaximal isometric contraction EMG amplitude usually rises with fatigue (recruitment of additional motor units, synchronisation). Compare with your data and explain any difference between the muscles (synergists, hip compensation).",
+          "Set it in its system: the result applies to athletes aged 15–18 and this type of plank, not to everyone.",
+          "Practical implications: a sensible plank duration in training, whether holding longer adds activation (if your data show it plateaus), consequences for core-training programming and injury prevention.",
+          "Extension: MVC normalisation, other muscles (obliques, erector spinae), side plank, non-athletes, longer durations."
+        ]
+      },
+      {
+        "id": "evaluation",
+        "name": "Evaluation",
+        "max": 6,
+        "assesses": "The extent to which your report provides evidence of evaluation of the investigation methodology and has suggested improvements.",
+        "bands": [
+          {
+            "marks": "0",
+            "descriptors": [
+              "The report does not reach a standard described by the descriptors below."
+            ]
+          },
+          {
+            "marks": "1-2",
+            "descriptors": [
+              "The report states generic methodological weaknesses or limitations.",
+              "Realistic improvements to the investigation are stated."
+            ]
+          },
+          {
+            "marks": "3-4",
+            "descriptors": [
+              "The report describes specific methodological weaknesses or limitations.",
+              "Realistic improvements to the investigation, which are relevant to the identified weaknesses or limitations, are described."
+            ]
+          },
+          {
+            "marks": "5-6",
+            "descriptors": [
+              "The report explains the relative impact of specific methodological weaknesses or limitations.",
+              "Realistic improvements to the investigation, which are relevant to the identified weaknesses or limitations, are explained."
+            ]
+          }
+        ],
+        "checklist": [
+          "Are multiple methodological weaknesses and/or limitations identified?",
+          "Is there a description of the weaknesses or limitations?",
+          "Is there a correct explanation of why and to what extent the weaknesses and/or limitations affected or limited the strength of the conclusion?",
+          "Are the improvements suggested realistic and relevant to the stated weakness or limitations?",
+          "Is there an explanation of why the suggested improvements would work?"
+        ],
+        "tips": [
+          "At least 3–5 specific methodological weaknesses. Generic “human error” or “more time” is not enough.",
+          "For each weakness: what exactly happened, how it affected the data and the conclusion (direction and size, random vs systematic error).",
+          "Rank the weaknesses by relative impact and say which is the most serious and why. This is the difference between band 3–4 and 5–6.",
+          "For each weakness propose a realistic improvement (feasible at school) and explain why it would solve the problem."
+        ],
+        "topicTips": [
+          "Typical specific weaknesses: un-normalised amplitudes (no MVC), small n, electrode shift and different skin preparation, crosstalk, a single trial per person, order and fatigue effects in a continuous plank, loosely controlled plank form, limitations of a low-cost device (noise, uncalibrated amplitude), ±0.5 s timing uncertainty.",
+          "Explain the impact: e.g. without MVC you cannot compare participants or muscles, so between-person variance inflates the SD and weakens statistical power.",
+          "Improvements with justification: MVC normalisation, a larger sample and a power calculation for the needed n, electrode fixation and position marking, video check of form, repeated trials, calibrating the device against a reference signal."
+        ]
+      }
+    ]
+  }
+}

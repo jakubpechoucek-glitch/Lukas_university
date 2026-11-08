@@ -59,7 +59,7 @@ export default function Layout({ children }) {
       <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>
 
       {/* Mobil: spodní lišta s ikonami */}
-      <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-slate-200 bg-white pb-[env(safe-area-inset-bottom)] sm:hidden">
+      <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-6 border-t border-slate-200 bg-white pb-[env(safe-area-inset-bottom)] sm:hidden">
         {SECTIONS.map((s) => {
           const SectionIcon = s.icon;
           return (
