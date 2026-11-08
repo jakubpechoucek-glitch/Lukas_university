@@ -23,6 +23,9 @@ services:
         sync: false
       - key: INITIAL_PASSWORD
         sync: false
+      # Internal Assessment: AI kontrola práce (console.anthropic.com → API keys)
+      - key: ANTHROPIC_API_KEY
+        sync: false
     disk:
       name: lukas-data
       mountPath: /opt/render/project/src/data

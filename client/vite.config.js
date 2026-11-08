@@ -6,7 +6,11 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     // Výpočty sdílené se serverem (shared/calc)
-    alias: { '@calc': fileURLToPath(new URL('../shared/calc/index.mjs', import.meta.url)) },
+    alias: {
+      '@calc': fileURLToPath(new URL('../shared/calc/index.mjs', import.meta.url)),
+      // Rubriky Internal Assessment sdílené se serverem (shared/ia)
+      '@ia': fileURLToPath(new URL('../shared/ia', import.meta.url)),
+    },
   },
   server: {
     port: 5173,

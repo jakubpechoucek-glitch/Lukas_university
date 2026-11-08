@@ -39,6 +39,7 @@ const ROUTES = [
   ['post', /^\/auth\/change-password$/, () => null],
   ['get', /^\/catalog$/, () => db.catalog],
   ['get', /^\/student$/, () => db.student],
+  ['get', /^\/ia$/, () => ({ aiAvailable: false, demo: true, subjects: [] })],
 
   ['post', /^\/catalog\/programs$/, (_, b) => { const p = { ...b, id: nextId++ }; db.catalog.programs.push(p); return p; }],
   ['put', /^\/catalog\/programs\/(\d+)$/, ([id], b) => Object.assign(find(db.catalog.programs, id, 'Program'), b, { id })],

@@ -1,0 +1,291 @@
+{
+  "SEHS": {
+    "subject": "Sports, exercise and health science (SEHS)",
+    "title": "Scientific investigation – Internal assessment",
+    "source": "Učebnice SEHS, kap. Internal assessment (IA) and practical work, s. 620–627, Tables 2–6",
+    "maxWords": 3200,
+    "wordCountNote": "Do limitu se nepočítají grafy a diagramy, tabulky dat, rovnice a výpočty, citace/reference, bibliografie a nadpisy. Práce musí obsahovat sběr a analýzu kvantitativních dat.",
+    "totalMarks": 24,
+    "weightOfFinalPct": 24,
+    "rules": [
+      "Výzkumná otázka je tvoje vlastní, o co ses zajímal, a musí vést ke sběru a analýze kvantitativních dat.",
+      "Zpráva musí být tvoje vlastní práce, i při skupinové spolupráci při sběru dat. Skupinová zpráva není povolená a metodiku popisuješ sám.",
+      "Učitel smí dát zpětnou vazbu na první koncept. Bez podstatné pomoci to ale nesmíš nezvládnout, jinak nelze získat plný počet bodů.",
+      "Maximum 3 200 slov."
+    ],
+    "rqGuide": {
+      "title": "Co má obsahovat dobrá výzkumná otázka (pro pásmo 5–6 v Research design)",
+      "items": [
+        "Nezávislá proměnná (IV) s konkrétními úrovněmi, jednotkou a nejistotou měření (např. čas 15, 30, 45, 60 s, ±0,5 s).",
+        "Závislá proměnná (DV) přesně definovaná: co se měří, v jakých jednotkách (např. RMS amplituda EMG v mV, nebo v % MVC), čím a s jakou nejistotou přístroje.",
+        "Systém, ve kterém se měří: typ cviku/testu, populace (věk, pohlaví, úroveň, počet účastníků) a prostředí.",
+        "Formulace „To what extent…“ nebo podobná, která vede ke kvantifikaci (velikost efektu, statistický test), ne jen k odpovědi ano/ne.",
+        "Jedna soustředěná otázka. Dvě závislé proměnné jsou možné, ale zdvojnásobí analýzu i počet slov.",
+        "Otázka musí být zodpověditelná daty, která opravdu umíš sebrat a zpracovat."
+      ]
+    },
+    "criteria": [
+      {
+        "id": "research_design",
+        "name": "Research design",
+        "czech": "Návrh výzkumu",
+        "max": 6,
+        "assesses": "Do jaké míry efektivně sdělujete metodiku (účel a postup) použitou k zodpovězení výzkumné otázky.",
+        "bands": [
+          {
+            "marks": "0",
+            "descriptors": [
+              "The report does not reach the standard described by the descriptors below."
+            ]
+          },
+          {
+            "marks": "1-2",
+            "descriptors": [
+              "The research question is stated without context.",
+              "Methodological considerations associated with collecting data relevant to the research question are stated.",
+              "The description of the methodology for collecting or selecting data lacks the detail to allow for the investigation to be reproduced."
+            ]
+          },
+          {
+            "marks": "3-4",
+            "descriptors": [
+              "The research question is outlined within a broad context.",
+              "Methodological considerations associated with collecting relevant and sufficient data to answer the research question are described.",
+              "The description of the methodology for collecting or selecting data allows for the investigation to be reproduced with few ambiguities or omissions."
+            ]
+          },
+          {
+            "marks": "5-6",
+            "descriptors": [
+              "The research question is described within a specific and appropriate context.",
+              "Methodological considerations associated with collecting relevant and sufficient data to answer the research question are explained.",
+              "The description of the methodology for collecting or selecting data allows for the investigation to be reproduced."
+            ]
+          }
+        ],
+        "checklist": [
+          "In the research question, are the independent and dependent variables fully described, with units and the correct unit of uncertainty, where applicable?",
+          "Does the research question fully describe the system in which it is embedded?",
+          "While referencing relevant scholarly works, does the background information discuss both the independent and dependent variables, and discuss why there might be a link between the two that is worth investigating?",
+          "Does the background information help justify the chosen methodology?",
+          "Have the choices of the conditions of the independent variable and the method of measuring the dependent variable been justified?",
+          "Have all of the important variables been controlled and the reason for control justified?",
+          "Will the method collect sufficient, relevant data?",
+          "Have the confounding variables been discussed and mitigated where possible?",
+          "Have your decisions regarding the subject selection and basic design been explained?",
+          "Have you included a risk assessment that correctly identifies the risks to the subjects, and includes information on how the risks were mitigated?",
+          "When using human subjects, have ethical issues such as informed consent, subject confidentiality and the right to withdraw been addressed?",
+          "Is the method clear and repeatable?",
+          "Have non-generic materials been listed?",
+          "Have you added clarity to the method by including diagrams or images?",
+          "If secondary data were used, have the data been verified by a second source, and is the process used to extract the data clear?",
+          "If secondary data were used, was the confidentiality of the original subjects maintained?"
+        ],
+        "tips": [
+          "Výzkumná otázka: IV i DV s jednotkami a nejistotou, jasný systém (typ cviku, populace, počet účastníků).",
+          "Background: vysvětli obě proměnné a proč má smysl hledat mezi nimi vztah. Cituj vědecké zdroje (PubMed, Google Scholar), ne jen weby.",
+          "Zdůvodni každé rozhodnutí v metodice: proč právě tyto úrovně IV, proč tento přístroj a způsob měření DV, proč tito účastníci a tento počet.",
+          "Tabulka řízených proměnných: co držíš konstantní, jak a proč. Zvlášť rozveď confounding variables a jak jsi je omezil.",
+          "Etika a bezpečnost: informovaný souhlas, u nezletilých i souhlas rodičů, důvěrnost (kódy místo jmen), právo odstoupit, risk assessment s opatřeními.",
+          "Metodu napiš tak, aby ji šlo zopakovat: číslované kroky, konkrétní materiály s modely a verzemi, fotka nebo schéma uspořádání."
+        ],
+        "topicTips": [
+          "Definuj „activation“: např. průměrná RMS amplituda EMG v okně (např. 5 s kolem 15/30/45/60 s), ideálně normalizovaná na MVC.",
+          "Uveď nejistotu SpikerBox Pro (rozlišení, šum naprázdno, vzorkovací frekvence) a ±0,5 s u času. Doplň prázdné ±[uncertainty].",
+          "Zdůvodni výběr svalů: m. rectus abdominis (flexe trupu, kontrola tilt pánve) a m. rectus femoris (flexe kyčle, extenze kolena, dvoukloubový sval). Proč se mají chovat při únavě různě?",
+          "Umístění elektrod podle doporučení SENIAM, příprava kůže (oholení, očištění), referenční elektroda na kostěnou prominenci. Foto/schéma umístění je plus.",
+          "Standardizuj plank: předloktí na zemi, úhel v lokti 90°, neutrální páteř, šířka nohou, jak kontroluješ a ukončuješ špatnou formu. Stejná denní doba, rozcvička a odpočinek před testem.",
+          "Rozhodni a zdůvodni: jeden souvislý plank s okny v 15/30/45/60 s, nebo oddělené pokusy. Při souvislém planku je čas zároveň únava, což je mechanismus, ne chyba, ale musíš to říct.",
+          "Confounding: tloušťka podkožního tuku, pot, posun elektrod, crosstalk z okolních svalů (šikmé břišní svaly, vastus), dýchání, síťový šum 50 Hz, kompenzace pohybem pánve.",
+          "Výběr vzorku: počet n, pohlaví, sport a věk 15–18. Zdůvodni, proč jsi zvolil varsity atlety a kolik jich je dost.",
+          "Etika: účastníci jsou nezletilí, souhlas rodičů plus souhlas účastníka, anonymizace, možnost přerušit, riziko svalové únavy nebo podráždění kůže od elektrod a opatření."
+        ]
+      },
+      {
+        "id": "data_analysis",
+        "name": "Data analysis",
+        "czech": "Analýza dat",
+        "max": 6,
+        "assesses": "Do jaké míry zpráva dokládá, že data byla zaznamenána, zpracována a prezentována způsobem relevantním pro výzkumnou otázku.",
+        "bands": [
+          {
+            "marks": "0",
+            "descriptors": [
+              "The report does not reach a standard described by the descriptors below."
+            ]
+          },
+          {
+            "marks": "1-2",
+            "descriptors": [
+              "The recording and processing of the data is communicated but is neither clear nor precise.",
+              "The recording and processing of data shows limited evidence of the consideration of uncertainties.",
+              "Some processing of data relevant to addressing the research question is carried out but with major omissions, inaccuracies or inconsistencies."
+            ]
+          },
+          {
+            "marks": "3-4",
+            "descriptors": [
+              "The communication of the recording and processing of the data is either clear or precise.",
+              "The recording and processing of data shows evidence of a consideration of uncertainties but with some significant omissions or inaccuracies.",
+              "The processing of data relevant to addressing the research question is carried out but with some significant omissions, inaccuracies or inconsistencies."
+            ]
+          },
+          {
+            "marks": "5-6",
+            "descriptors": [
+              "The communication of the recording and processing of the data is both clear and precise.",
+              "The recording and processing of data shows evidence of an appropriate consideration of uncertainties.",
+              "The processing of data relevant to addressing the research question is carried out appropriately and accurately."
+            ]
+          }
+        ],
+        "checklist": [
+          "Is the method of processing clear?",
+          "Does the paper include sample calculations or a clear description of what spreadsheet formulae were used?",
+          "Has/have the correct graph(s) been chosen, and are the data presented in a way that is clear to the reader?",
+          "Have the data tables and graphs been correctly presented, and are there few to no errors in the use of SEHS-specific conventions?",
+          "Where mathematically sound, have standard deviation, coefficient of variability or other measures of variability, such as standard error, been calculated?",
+          "Are the unit uncertainties correct and justified?",
+          "Has the variability of the data been discussed?",
+          "Are the error bars on the graph(s) correct and have they been explained?",
+          "Has the effect of the uncertainty and/or reliability of the data been discussed?",
+          "Have outlying data been correctly determined, and correctly included or excluded?",
+          "Has the correct inferential test been chosen, executed and interpreted properly?",
+          "Will the processing allow a valid and detailed answer to the research question?"
+        ],
+        "tips": [
+          "Tabulky surových dat: název, jednotky a nejistoty v záhlaví, počet desetinných míst odpovídá nejistotě.",
+          "Ukaž jeden vzorový výpočet krok za krokem nebo popiš vzorce v tabulkovém procesoru.",
+          "Pro každou skupinu spočítej průměr a míru variability (SD, SE nebo CV) a řekni, kterou používáš a proč.",
+          "Grafy: IV na ose x, DV na ose y, popisky os s jednotkami, název, chybové úsečky (uveď, co znamenají), čitelné měřítko.",
+          "Nejistoty: nejistota přístroje a času, jejich vliv na výsledek, rozdíl mezi náhodnou a systematickou chybou.",
+          "Pravidlo pro odlehlé hodnoty (např. 1,5×IQR nebo ±2 SD) a rozhodnutí, zda je zahrnout.",
+          "Inferenční test zvol podle designu (závislé vs. nezávislé skupiny, normalita), uveď hypotézy H0/H1, hladinu α, testovou statistiku, stupně volnosti a p-hodnotu a správně je interpretuj."
+        ],
+        "topicTips": [
+          "Zpracování EMG: popiš filtrování (pásmová propust, odstranění síťového šumu), usměrnění a RMS v okně, normalizaci (% MVC nebo relativně k hodnotě v 15 s) a stejný postup pro všechna okna.",
+          "Opakované měření na stejných účastnících (15, 30, 45, 60 s): repeated-measures ANOVA (ověř normalitu a sféricitu), při porušení předpokladů Friedmanův test, případně Bonferroni post-hoc. Provede se zvlášť pro každý sval.",
+          "Přidej velikost efektu, aby bylo vidět „to what extent“, nejen významnost.",
+          "Dva svaly na jednom grafu jen pokud jsou ve stejných (normalizovaných) jednotkách, jinak dva panely. Absolutní amplitudy mezi svaly nelze přímo porovnávat.",
+          "Reliabilita: diskutuj šum přístroje, variabilitu mezi účastníky (velká směrodatná odchylka u EMG je běžná) a vliv malého n."
+        ]
+      },
+      {
+        "id": "conclusion",
+        "name": "Conclusion",
+        "czech": "Závěr",
+        "max": 6,
+        "assesses": "Do jaké míry úspěšně odpovídáte na výzkumnou otázku s ohledem na analýzu a přijatý vědecký kontext.",
+        "bands": [
+          {
+            "marks": "0",
+            "descriptors": [
+              "The report does not reach a standard described by the descriptors below."
+            ]
+          },
+          {
+            "marks": "1-2",
+            "descriptors": [
+              "A conclusion is stated that is relevant to the research question but is not supported by the analysis presented.",
+              "The conclusion makes superficial comparison to the accepted scientific context.",
+              "Practical implications of the findings are stated."
+            ]
+          },
+          {
+            "marks": "3-4",
+            "descriptors": [
+              "A conclusion is described that is relevant to the research question but is not fully consistent with the analysis presented.",
+              "A conclusion is described that makes some relevant comparison to the accepted scientific context.",
+              "Practical implications of the findings are outlined."
+            ]
+          },
+          {
+            "marks": "5-6",
+            "descriptors": [
+              "A conclusion is justified that is relevant to the research question and fully consistent with the analysis presented.",
+              "A conclusion is justified through relevant comparison to the accepted scientific context.",
+              "Practical implications of the findings are explained."
+            ]
+          }
+        ],
+        "checklist": [
+          "Does the conclusion answer the research question correctly and directly?",
+          "Has the conclusion been justified by referring to the data and to the results of the inferential testing?",
+          "Have you considered the strength of conclusion and its validity, considering uncertainty?",
+          "Is the conclusion described in detail, and does it consider the system in which the research is embedded?",
+          "Have you provided a scientific explanation for the conclusion, using scholarly sources not previously discussed?",
+          "Do other, similar published studies justify the conclusion, or do they show that the result is not supported by other research?",
+          "Are the implications presented practical, and are they explained with reference to a valid extension?"
+        ],
+        "tips": [
+          "První věta odpovídá přímo na výzkumnou otázku, s čísly (rozdíly, p-hodnoty, velikost efektu).",
+          "Každé tvrzení opři o konkrétní data a výsledky inferenčního testu. Neříkej víc, než data unesou.",
+          "Zhodnoť sílu a platnost závěru s ohledem na nejistoty a variabilitu (překrývají se chybové úsečky? jak velké je n?).",
+          "Vědecké vysvětlení z nových zdrojů, které ses nepoužil v úvodu, a porovnání s podobnými studiemi: souhlasí, nebo ne, a proč.",
+          "Praktické důsledky vysvětli, nejen vyjmenuj: komu a k čemu je výsledek užitečný a jaké navazující zkoumání (extension) to podporuje."
+        ],
+        "topicTips": [
+          "Odpověz zvlášť pro rectus abdominis a rectus femoris: směr změny, velikost, kdy mezi časovými body nastává významný rozdíl.",
+          "Vysvětli fyziologicky: u trvalé submaximální izometrické kontrakce amplituda EMG obvykle roste s únavou (nábor dalších motorických jednotek, synchronizace). Porovnej, zda to platí i u tvých dat a proč mezi svaly případně vyšla odlišnost (synergisté, kompenzace kyčlí).",
+          "Zasaď do systému: výsledek platí pro atlety 15–18 let a daný typ planku, ne pro všechny.",
+          "Praktické důsledky: smysluplná délka držení planku v tréninku, kdy další prodlužování nepřináší větší aktivaci svalu (pokud to data ukážou), vliv na programování core tréninku a prevenci úrazů.",
+          "Extension: normalizace na MVC, další svaly (šikmé břišní svaly, erector spinae), boční plank, neatleti, delší časy."
+        ]
+      },
+      {
+        "id": "evaluation",
+        "name": "Evaluation",
+        "czech": "Hodnocení",
+        "max": 6,
+        "assesses": "Do jaké míry zpráva dokládá hodnocení metodiky šetření a navrhuje zlepšení.",
+        "bands": [
+          {
+            "marks": "0",
+            "descriptors": [
+              "The report does not reach a standard described by the descriptors below."
+            ]
+          },
+          {
+            "marks": "1-2",
+            "descriptors": [
+              "The report states generic methodological weaknesses or limitations.",
+              "Realistic improvements to the investigation are stated."
+            ]
+          },
+          {
+            "marks": "3-4",
+            "descriptors": [
+              "The report describes specific methodological weaknesses or limitations.",
+              "Realistic improvements to the investigation, which are relevant to the identified weaknesses or limitations, are described."
+            ]
+          },
+          {
+            "marks": "5-6",
+            "descriptors": [
+              "The report explains the relative impact of specific methodological weaknesses or limitations.",
+              "Realistic improvements to the investigation, which are relevant to the identified weaknesses or limitations, are explained."
+            ]
+          }
+        ],
+        "checklist": [
+          "Are multiple methodological weaknesses and/or limitations identified?",
+          "Is there a description of the weaknesses or limitations?",
+          "Is there a correct explanation of why and to what extent the weaknesses and/or limitations affected or limited the strength of the conclusion?",
+          "Are the improvements suggested realistic and relevant to the stated weakness or limitations?",
+          "Is there an explanation of why the suggested improvements would work?"
+        ],
+        "tips": [
+          "Aspoň 3–5 konkrétních slabin metodiky. Obecné „human error“ nebo „more time“ nestačí.",
+          "U každé slabiny: co přesně se stalo, jak to ovlivnilo data a závěr (směr a velikost, náhodná vs. systematická chyba).",
+          "Seřaď slabiny podle relativního dopadu a řekni, která je nejzávažnější a proč. To je rozdíl mezi pásmem 3–4 a 5–6.",
+          "Ke každé slabině navrhni realistické zlepšení (proveditelné ve škole) a vysvětli, proč by problém odstranilo."
+        ],
+        "topicTips": [
+          "Typické konkrétní slabiny: nenormalizované amplitudy (bez MVC), malé n, posun elektrod a různá příprava kůže, crosstalk, jediný pokus na osobu, pořadí a únava u souvislého planku, nepevně kontrolovaná forma planku, omezení levného přístroje (šum, nekalibrovaná amplituda), nejistota času ±0,5 s.",
+          "Vysvětli dopad: např. bez MVC nelze porovnávat účastníky ani svaly, takže rozptyl mezi osobami zvětší SD a zeslabí statistickou sílu.",
+          "Zlepšení s odůvodněním: MVC normalizace, větší vzorek a výpočet potřebného n, fixace elektrod a značení polohy, video kontrola formy, opakování měření, kalibrace přístroje oproti referenčnímu signálu."
+        ]
+      }
+    ]
+  }
+}

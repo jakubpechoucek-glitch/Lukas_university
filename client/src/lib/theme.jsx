@@ -20,6 +20,7 @@ export const Icons = {
   trophy: (p) => <Icon {...p}><path d="M7 4h10v5a5 5 0 0 1-10 0z" /><path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3" /><path d="M12 14v4M8 21h8M9.5 18h5" /></Icon>,
   heart: (p) => <Icon {...p}><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8.5 2.5z" /><path d="M3.5 12h4l2-3 3 6 2-3h6" /></Icon>,
   briefcase: (p) => <Icon {...p}><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" /><path d="M3 13h18" /></Icon>,
+  clipboard: (p) => <Icon {...p}><rect x="6" y="4" width="12" height="17" rx="2" /><path d="M9 4V3h6v1" /><path d="m9 12 1.5 1.5L14 10M9 17h6" /></Icon>,
   layers: (p) => <Icon {...p}><path d="m12 3 9 5-9 5-9-5z" /><path d="m3 13 9 5 9-5" /></Icon>,
 };
 
@@ -43,6 +44,10 @@ export const SECTIONS = [
   {
     to: '/matice', label: 'Matice scénářů', short: 'Matice', icon: Icons.grid,
     text: 'text-amber-700', bg: 'bg-amber-50', solid: 'bg-amber-500', border: 'border-amber-500', ring: 'ring-amber-200',
+  },
+  {
+    to: '/ia', label: 'Internal Assessment', short: 'IA', icon: Icons.clipboard,
+    text: 'text-fuchsia-700', bg: 'bg-fuchsia-50', solid: 'bg-fuchsia-600', border: 'border-fuchsia-600', ring: 'ring-fuchsia-200',
   },
 ];
 

@@ -21,6 +21,8 @@ výsledků IB Diploma. Nahrazuje Excel `Srovnání univerzit 2026 – Lukas.xlsx
    (škrtnuté), nebo je nelze vyhodnotit automaticky ❔.
 4. **Hodnocení předmětů G11/G12**: editovatelná tabulka assessmentů (název,
    váha, známka, termín) a automatický vážený průměr pro každý předmět.
+5. **Internal Assessment** (sekce IA): uložená výzkumná otázka, AI zpětná vazba k otázce a ke zprávě podle
+   oficiálních kritérií IB (SEHS), průvodce „co obsahovat pro maximum bodů“ a checklisty. Viz [docs/08-internal-assessment.md](docs/08-internal-assessment.md).
 
 ## Spuštění lokálně
 
@@ -41,6 +43,7 @@ Požadavek: Node.js ≥ 22.12 (server načítá sdílené ES moduly z `shared/ca
 2. V nastavení služby doplnit proměnné, které nejsou v repozitáři:
    - `BOOTSTRAP_USERS` = `Jakub|<email>|parent;Jana|<email>|parent;Lukas|<email>|student`
    - `INITIAL_PASSWORD` = dočasné heslo (každý si ho při prvním přihlášení změní)
+   - `ANTHROPIC_API_KEY` = klíč pro AI kontrolu v sekci IA (bez něj funguje jen průvodce a checklisty)
    - volitelně `PRIVATE_SEED_JSON` = obsah `data/private/lukas-private.json` (jednorázový import známek)
 3. Účty se vytvoří při startu serveru. Existující účty se nemění.
 4. **Persistent disk** (Settings → Disks) s mount path `/opt/render/project/src/data` – bez něj se databáze
