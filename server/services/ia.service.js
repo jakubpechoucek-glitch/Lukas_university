@@ -60,7 +60,7 @@ function humanError(err) {
   if (err && !(err instanceof Error) && err.status && err.message) return err.message; // naše chyby (prosté objekty); chyby SDK jsou Error
   if (err?.status === 401) return 'Invalid or missing API key (ANTHROPIC_API_KEY)';
   if (err?.status === 429) return 'The service is overloaded or the usage limit is reached, please try again in a moment';
-  if (err?.status === 413 || err?.status === 400) return 'The model did not accept the document (too large or unreadable). Try pasting the text.';
+  if (err?.status === 413 || err?.status === 400) return 'The AI service rejected the request (details are in the server log). If you uploaded a file, try pasting the text instead.';
   return 'The evaluation failed, please try again';
 }
 

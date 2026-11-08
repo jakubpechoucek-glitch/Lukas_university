@@ -27,7 +27,8 @@ Pomůcka pro psaní vědecké zprávy (Scientific investigation) v předmětech 
   (DB, běh na pozadí), `ia-extract.service.js` (PDF/Word/Google Doc, počítání slov), `ia-ai.service.js` (Claude API).
 - Kontrola běží **na pozadí**: `POST …/review-*` hned vrátí `id`, klient se každé 3 s ptá na `GET /api/ia/reviews/:id`.
   Rozběhlá kontrola přerušená restartem se po 10 min označí jako chyba.
-- Strukturovaný výstup přes vynucené volání nástroje (`tool_choice`), server body ořízne na rozsah 0–6 a pásmo
+- Strukturovaný výstup přes volání nástroje (`tool_choice: auto` + instrukce; novější modely vynucený `tool_choice` nepodporují,
+  při chybějícím volání se jednou zopakuje), server body ořízne na rozsah 0–6 a pásmo
   dopočítá sám, takže model nemůže vrátit nekonzistentní hodnoty.
 - Tabulky: `ia_projects` (výzkumná otázka), `ia_reviews` (historie), migrace `006_ia.sql`.
 
