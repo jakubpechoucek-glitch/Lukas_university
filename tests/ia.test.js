@@ -100,12 +100,15 @@ test('bez API klíče se AI kontrola odmítne', async () => {
   assert.equal(res.status, 503);
 });
 
-test('kontrola výzkumné otázky přes AI', async (t) => {
+test('kontrola výzkumné otázky přes AI (otázka je pevná, hodnotí se, co musí udělat zpráva)', async (t) => {
   const subjectId = getDb().prepare("SELECT id FROM subjects WHERE code = 'SEHS'").get().id;
   const client = fakeClient(() => ({
     summary: 'Chybí nejistota.', strengths: ['dobré úrovně IV'],
-    issues: [{ aspect: 'Uncertainty', severity: 'high', problem: 'prázdné ±', suggestion: 'doplnit' }, { aspect: 'X', severity: 'bogus', problem: 'p', suggestion: 's' }],
-    questions_to_answer: ['Jak normalizuješ?'], improved_structure: 'To what extent … [unit] …',
+    gaps: [
+      { aspect: 'Uncertainty', severity: 'high', risk: 'prázdné ±', address_in_report: 'uvést nejistotu v metodice', where: 'Methodology' },
+      { aspect: 'X', severity: 'bogus', risk: 'r', address_in_report: 'a', where: 'Nesmysl' },
+    ],
+    must_define: ['activation = RMS v % MVC'], questions_to_answer: ['Jak normalizuješ?'],
   }));
   ai._setClientForTests(client);
   t.after(() => ai._setClientForTests(null));
@@ -114,9 +117,14 @@ test('kontrola výzkumné otázky přes AI', async (t) => {
   assert.equal(start.status, 201);
   const done = await waitFor(start.body.data.id);
   assert.equal(done.status, 'done');
-  assert.equal(done.result.issues[1].severity, 'medium', 'neplatná závažnost se opraví');
-  assert.equal(done.result.questionsToAnswer.length, 1);
-  assert.match(client.calls[0].messages[0].content[0].text, /To what extent does time into a plank/);
+  assert.equal(done.result.gaps[0].addressInReport, 'uvést nejistotu v metodice');
+  assert.equal(done.result.gaps[1].severity, 'medium', 'neplatná závažnost se opraví');
+  assert.equal(done.result.gaps[1].where, 'Methodology', 'neplatná sekce se opraví');
+  assert.deepEqual(done.result.mustDefine, ['activation = RMS v % MVC']);
+  assert.equal(done.result.improvedStructure, undefined, 'žádná kostra k přepsání otázky');
+  const prompt = client.calls[0].messages[0].content[0].text;
+  assert.match(prompt, /To what extent does time into a plank/);
+  assert.match(prompt, /FIXED/);
 });
 
 test('kontrola zprávy: marks se ořežou, checklist doplní, součet se spočítá', async (t) => {
@@ -212,4 +220,29 @@ test('model, který nevolá nástroj, dostane jednu připomínku; požadavek nev
   assert.equal(calls.length, 2);
   assert.deepEqual(calls[0].tool_choice, { type: 'auto' });
   assert.equal(calls[1].messages.at(-1).role, 'user');
+});
+
+test('useknutá nebo neúplná odpověď modelu je chyba, ne tichý neúplný výsledek', async (t) => {
+  const subjectId = getDb().prepare("SELECT id FROM subjects WHERE code = 'SEHS'").get().id;
+  t.after(() => ai._setClientForTests(null));
+  const text = 'word '.repeat(80);
+
+  ai._setClientForTests({ messages: { create: async () => ({ stop_reason: 'max_tokens', content: [{ type: 'tool_use', name: 'submit_review', input: {} }] }) } });
+  let start = await api('post', `/api/ia/subjects/${subjectId}/review-report`).send({ source: 'paste', text });
+  let done = await waitFor(start.body.data.id);
+  assert.equal(done.status, 'error');
+  assert.match(done.error, /cut off/);
+
+  // Model vrátí jen jedno ze dvou požadovaných kritérií.
+  ai._setClientForTests({
+    messages: { create: async (req) => {
+      const input = reportInput(req);
+      input.criteria = input.criteria.slice(0, 1);
+      return { stop_reason: 'tool_use', content: [{ type: 'tool_use', name: req.tools[0].name, input }] };
+    } },
+  });
+  start = await api('post', `/api/ia/subjects/${subjectId}/review-report`).send({ source: 'paste', text, criteria: ['research_design', 'evaluation'] });
+  done = await waitFor(start.body.data.id);
+  assert.equal(done.status, 'error');
+  assert.match(done.error, /incomplete/);
 });

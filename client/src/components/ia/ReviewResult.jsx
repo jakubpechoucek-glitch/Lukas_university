@@ -104,42 +104,39 @@ const SEVERITY_LABEL = { high: 'important', medium: 'moderate', low: 'minor' };
 
 export function RqResult({ review }) {
   const r = review.result;
+  const gaps = r.gaps ?? [];
   return (
     <div className="space-y-4">
       <div className="card border-fuchsia-200 bg-fuchsia-50/40">
-        <h2 className="text-lg font-semibold">Feedback on the research question</h2>
+        <h2 className="text-lg font-semibold">How the report should handle your research question</h2>
         {review.researchQuestion && <blockquote className="mt-2 border-l-2 border-fuchsia-300 pl-3 text-sm italic text-slate-700">{review.researchQuestion}</blockquote>}
         <p className="mt-3 text-sm text-slate-700">{r.summary}</p>
-        <List title="What went well" items={r.strengths} tone="text-emerald-800" />
+        <List title="What already works" items={r.strengths} tone="text-emerald-800" />
       </div>
 
-      {r.issues.length > 0 && (
+      {gaps.length > 0 && (
         <div className="card">
-          <h3 className="text-sm font-semibold">What to improve</h3>
+          <h3 className="text-sm font-semibold">Gaps to cover in the report</h3>
           <ul className="mt-2 space-y-3">
-            {r.issues.map((i, k) => (
+            {gaps.map((g, k) => (
               <li key={k} className="rounded-lg border border-slate-200 p-3 text-sm">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-semibold">{i.aspect}</span>
-                  <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${SEVERITY[i.severity]}`}>{SEVERITY_LABEL[i.severity]}</span>
+                  <span className="font-semibold">{g.aspect}</span>
+                  <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${SEVERITY[g.severity]}`}>{SEVERITY_LABEL[g.severity]}</span>
+                  <span className="rounded-full bg-fuchsia-100 px-2 py-0.5 text-xs font-medium text-fuchsia-800">in: {g.where}</span>
                 </div>
-                <p className="mt-1 text-slate-700">{i.problem}</p>
-                <p className="mt-1 text-slate-600"><span className="font-medium">What to do:</span> {i.suggestion}</p>
+                <p className="mt-1 text-slate-700">{g.risk}</p>
+                <p className="mt-1 text-slate-600"><span className="font-medium">In the report:</span> {g.addressInReport}</p>
               </li>
             ))}
           </ul>
         </div>
       )}
 
-      {(r.questionsToAnswer.length > 0 || r.improvedStructure) && (
+      {(r.mustDefine?.length > 0 || r.questionsToAnswer?.length > 0) && (
         <div className="card">
-          <List title="What you must be able to answer in Research design" items={r.questionsToAnswer} />
-          {r.improvedStructure && (
-            <>
-              <h4 className="mt-4 text-sm font-semibold">Question template to complete</h4>
-              <p className="mt-1 rounded-lg bg-slate-50 p-3 text-sm italic text-slate-700">{r.improvedStructure}</p>
-            </>
-          )}
+          <List title="Define explicitly in the report" items={r.mustDefine} />
+          <List title="Questions you must be able to answer in Research design" items={r.questionsToAnswer} />
         </div>
       )}
     </div>

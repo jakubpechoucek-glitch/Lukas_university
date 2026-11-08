@@ -14,14 +14,14 @@
       "Maximum 3,200 words."
     ],
     "rqGuide": {
-      "title": "What a strong research question contains (for band 5–6 in Research design)",
+      "title": "Making your fixed research question work in the report (Research design, band 5–6)",
       "items": [
-        "Independent variable (IV) with specific levels, units and uncertainty (e.g. time 15, 30, 45, 60 s, ±0.5 s).",
-        "Dependent variable (DV) defined precisely: what is measured, in which units (e.g. mean RMS EMG amplitude in mV, or in % MVC), with what device and uncertainty.",
-        "The system it is embedded in: type of exercise/test, population (age, sex, level, number of participants) and setting.",
-        "“To what extent…” or similar wording that leads to quantification (effect size, statistical test), not just a yes/no answer.",
-        "One focused question. Two dependent variables are possible, but they double the analysis and the word count needed.",
-        "A question you can actually answer with data you are able to collect and process."
+        "Define the independent variable precisely in the methodology: levels, units and the uncertainty of measuring it (e.g. time 15, 30, 45, 60 s, ±0.5 s).",
+        "Define the dependent variable operationally: what exactly is measured, in which units (e.g. mean RMS EMG amplitude in mV or % MVC), with which device and what uncertainty.",
+        "Describe the system and context right after the question: type of exercise, population (age, sex, level, n), setting. The question itself does not have to say it all.",
+        "If the question contains a placeholder or a missing value (e.g. the device uncertainty), ask your teacher whether you may fill it in, and state the value clearly in the methodology.",
+        "Explain why the question can be answered with quantitative data and an inferential test, and how “to what extent” will be quantified (effect size).",
+        "Justify the measurement choices the question leaves open: normalisation, windows of analysis, electrode placement, number of participants."
       ]
     },
     "criteria": [
