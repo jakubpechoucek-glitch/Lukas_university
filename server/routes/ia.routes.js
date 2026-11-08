@@ -4,7 +4,7 @@ const ctrl = require('../controllers/ia.controller');
 const { authenticate } = require('../middleware/auth.middleware');
 
 // AI volání jsou placená, proto strop na počet spuštění.
-const aiLimiter = rateLimit({ windowMs: 60 * 60 * 1000, max: 40, message: { success: false, error: 'Příliš mnoho kontrol za hodinu, zkuste to později' } });
+const aiLimiter = rateLimit({ windowMs: 60 * 60 * 1000, max: 40, message: { success: false, error: 'Too many reviews this hour, please try again later' } });
 
 router.use(authenticate);
 

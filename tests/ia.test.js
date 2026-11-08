@@ -159,7 +159,7 @@ test('chyba modelu se uloží jako srozumitelná chyba', async (t) => {
   const start = await api('post', `/api/ia/subjects/${subjectId}/review-report`).send({ source: 'paste', text: 'slovo '.repeat(80) });
   const done = await waitFor(start.body.data.id);
   assert.equal(done.status, 'error');
-  assert.match(done.error, /API klíč/);
+  assert.match(done.error, /API key/);
 });
 
 test('PDF se posílá modelu jako dokument', async (t) => {

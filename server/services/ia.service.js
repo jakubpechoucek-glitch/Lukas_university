@@ -10,8 +10,8 @@ const fail = (status, message) => { throw { status, message }; };
 
 function subjectWithRubric(subjectId) {
   const s = getDb().prepare('SELECT id, code, display_name, level FROM subjects WHERE id = ?').get(subjectId);
-  if (!s) fail(404, 'Předmět neexistuje');
-  if (!rubrics[s.code]) fail(404, 'Pro tento předmět zatím není rubrika');
+  if (!s) fail(404, 'Subject does not exist');
+  if (!rubrics[s.code]) fail(404, 'There is no rubric for this subject yet');
   return s;
 }
 
@@ -45,7 +45,7 @@ function overview() {
 function setResearchQuestion(subjectId, researchQuestion) {
   subjectWithRubric(subjectId);
   const text = String(researchQuestion ?? '').trim();
-  if (text.length > MAX_RQ_CHARS) fail(422, `Výzkumná otázka je příliš dlouhá (max. ${MAX_RQ_CHARS} znaků)`);
+  if (text.length > MAX_RQ_CHARS) fail(422, `The research question is too long (max. ${MAX_RQ_CHARS} characters)`);
   getDb().prepare(`
     INSERT INTO ia_projects (subject_id, research_question, updated_at) VALUES (?, ?, datetime('now'))
     ON CONFLICT(subject_id) DO UPDATE SET research_question = excluded.research_question, updated_at = datetime('now')
@@ -58,10 +58,10 @@ const researchQuestionOf = (subjectId) =>
 
 function humanError(err) {
   if (err && !(err instanceof Error) && err.status && err.message) return err.message; // naše chyby (prosté objekty); chyby SDK jsou Error
-  if (err?.status === 401) return 'Neplatný nebo chybějící API klíč (ANTHROPIC_API_KEY)';
-  if (err?.status === 429) return 'Služba je přetížená nebo je vyčerpaný limit, zkuste to za chvíli';
-  if (err?.status === 413 || err?.status === 400) return 'Model dokument nepřijal (příliš velký nebo nečitelný). Zkuste vložit text.';
-  return 'Vyhodnocení se nepodařilo, zkuste to znovu';
+  if (err?.status === 401) return 'Invalid or missing API key (ANTHROPIC_API_KEY)';
+  if (err?.status === 429) return 'The service is overloaded or the usage limit is reached, please try again in a moment';
+  if (err?.status === 413 || err?.status === 400) return 'The model did not accept the document (too large or unreadable). Try pasting the text.';
+  return 'The evaluation failed, please try again';
 }
 
 /** Spustí práci na pozadí. Klient si výsledek vyzvedává dotazováním (GET /ia/reviews/:id). */
@@ -80,14 +80,14 @@ function runInBackground(reviewId, job) {
 }
 
 function requireAi() {
-  if (!ai.isAvailable()) fail(503, 'AI kontrola není zapnutá: na serveru chybí ANTHROPIC_API_KEY');
+  if (!ai.isAvailable()) fail(503, 'AI review is not enabled: ANTHROPIC_API_KEY is missing on the server');
 }
 
 function startRqReview(subjectId) {
   const s = subjectWithRubric(subjectId);
   requireAi();
   const rq = researchQuestionOf(subjectId);
-  if (rq.length < 10) fail(422, 'Nejdřív uložte výzkumnou otázku');
+  if (rq.length < 10) fail(422, 'Save the research question first');
   const id = getDb().prepare("INSERT INTO ia_reviews (subject_id, kind, input_text) VALUES (?, 'rq', ?)").run(subjectId, rq).lastInsertRowid;
   runInBackground(id, () => ai.reviewResearchQuestion({ subjectCode: s.code, researchQuestion: rq }));
   return { id: Number(id), status: 'pending' };
@@ -98,7 +98,7 @@ async function startReportReview(subjectId, body = {}) {
   requireAi();
   const all = rubrics[s.code].criteria.map((c) => c.id);
   const criteria = Array.isArray(body.criteria) && body.criteria.length ? all.filter((id) => body.criteria.includes(id)) : all;
-  if (!criteria.length) fail(400, 'Vyberte aspoň jedno kritérium');
+  if (!criteria.length) fail(400, 'Select at least one criterion');
 
   const report = await extract(body);
   const id = getDb().prepare(
@@ -115,19 +115,19 @@ async function startReportReview(subjectId, body = {}) {
 function getReview(id) {
   const db = getDb();
   const r = db.prepare('SELECT * FROM ia_reviews WHERE id = ?').get(id);
-  if (!r) fail(404, 'Kontrola neexistuje');
+  if (!r) fail(404, 'Review does not exist');
   if (r.status === 'pending' && Date.now() - new Date(r.created_at.replace(' ', 'T') + 'Z') > STALE_MINUTES * 60000) {
     db.prepare("UPDATE ia_reviews SET status = 'error', error = ?, finished_at = datetime('now') WHERE id = ?")
-      .run('Vyhodnocení se přerušilo (restart serveru nebo časový limit), spusťte ho znovu', id);
+      .run('The evaluation was interrupted (server restart or time limit), please run it again', id);
     r.status = 'error';
-    r.error = 'Vyhodnocení se přerušilo (restart serveru nebo časový limit), spusťte ho znovu';
+    r.error = 'The evaluation was interrupted (server restart or time limit), please run it again';
   }
   return { ...toSummary(r), error: r.error, model: r.model, result: parse(r.result_json), researchQuestion: r.kind === 'rq' ? r.input_text : null };
 }
 
 function deleteReview(id) {
   const info = getDb().prepare('DELETE FROM ia_reviews WHERE id = ?').run(id);
-  if (!info.changes) fail(404, 'Kontrola neexistuje');
+  if (!info.changes) fail(404, 'Review does not exist');
 }
 
 module.exports = { overview, setResearchQuestion, startRqReview, startReportReview, getReview, deleteReview };

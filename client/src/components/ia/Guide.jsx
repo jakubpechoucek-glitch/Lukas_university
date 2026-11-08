@@ -28,10 +28,10 @@ export default function Guide({ rubric, code }) {
     <div className="space-y-4">
       <div className="card text-sm text-slate-700">
         <p className="font-semibold">{rubric.title}</p>
-        <p className="mt-1">4 kritéria po 6 bodech = {rubric.totalMarks} bodů, tj. {rubric.weightOfFinalPct} % výsledné známky ze SEHS. Rozsah max. {rubric.maxWords} slov.</p>
+        <p className="mt-1">4 criteria × 6 marks = {rubric.totalMarks} marks, i.e. {rubric.weightOfFinalPct}% of the final SEHS assessment. Maximum {rubric.maxWords} words.</p>
         <p className="mt-1 text-slate-600">{rubric.wordCountNote}</p>
         <ul className="mt-2 list-disc space-y-1 pl-5 text-slate-600">{rubric.rules.map((r, i) => <li key={i}>{r}</li>)}</ul>
-        <p className="mt-2 text-xs text-slate-500">Zdroj: {rubric.source}</p>
+        <p className="mt-2 text-xs text-slate-500">Source: {rubric.source}</p>
       </div>
 
       {rubric.criteria.map((c) => {
@@ -39,17 +39,17 @@ export default function Guide({ rubric, code }) {
         return (
           <details key={c.id} className="card group" open={c.id === 'research_design'}>
             <summary className="flex cursor-pointer flex-wrap items-center justify-between gap-2">
-              <span className="text-lg font-semibold">{c.name} <span className="text-sm font-normal text-slate-500">({c.czech}, max {c.max} b.)</span></span>
+              <span className="text-lg font-semibold">{c.name} <span className="text-sm font-normal text-slate-500">(max {c.max} marks)</span></span>
               <span className="text-xs text-slate-500">checklist {done} / {c.checklist.length}</span>
             </summary>
             <p className="mt-2 text-sm text-slate-600">{c.assesses}</p>
 
             <div className="mt-4 grid gap-4 md:grid-cols-2">
-              <Tips title="Co má obsahovat pro maximum bodů" items={c.tips} tone="text-emerald-700" />
-              <Tips title="K tvému tématu: plank a EMG" items={c.topicTips} tone="text-fuchsia-700" />
+              <Tips title="What to include for maximum marks" items={c.tips} tone="text-emerald-700" />
+              <Tips title="For your topic: plank and EMG" items={c.topicTips} tone="text-fuchsia-700" />
             </div>
 
-            <h4 className="mt-5 text-sm font-semibold">Oficiální pásma</h4>
+            <h4 className="mt-5 text-sm font-semibold">Official bands</h4>
             <div className="mt-1 overflow-x-auto">
               <table className="w-full text-left text-sm">
                 <tbody>
@@ -63,7 +63,7 @@ export default function Guide({ rubric, code }) {
               </table>
             </div>
 
-            <h4 className="mt-4 text-sm font-semibold">Checklist k odškrtávání při psaní</h4>
+            <h4 className="mt-4 text-sm font-semibold">Checklist to tick off while writing</h4>
             <ul className="mt-1 space-y-1 text-sm">
               {c.checklist.map((q, i) => {
                 const k = `${c.id}-${i}`;

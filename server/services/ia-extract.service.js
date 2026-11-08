@@ -31,10 +31,10 @@ function estimateCountedWords(text) {
 function fail(status, message) { throw { status, message }; }
 
 function decodeBase64(b64) {
-  if (typeof b64 !== 'string' || !b64) fail(400, 'Soubor je prázdný');
+  if (typeof b64 !== 'string' || !b64) fail(400, 'The file is empty');
   const buf = Buffer.from(b64, 'base64');
-  if (!buf.length) fail(400, 'Soubor je prázdný');
-  if (buf.length > MAX_FILE_BYTES) fail(413, 'Soubor je větší než 10 MB');
+  if (!buf.length) fail(400, 'The file is empty');
+  if (buf.length > MAX_FILE_BYTES) fail(413, 'The file is larger than 10 MB');
   return buf;
 }
 
@@ -44,7 +44,7 @@ async function fromDocx(buf) {
     const { value } = await mammoth.extractRawText({ buffer: buf });
     return value;
   } catch {
-    fail(422, 'Word dokument se nepodařilo přečíst (zkuste uložit znovu jako .docx nebo PDF)');
+    fail(422, 'The Word document could not be read (try saving it again as .docx or PDF)');
   }
 }
 
@@ -54,22 +54,22 @@ async function fromPdf(buf) {
     const { text } = await pdfParse(buf);
     return text;
   } catch {
-    fail(422, 'PDF se nepodařilo přečíst');
+    fail(422, 'The PDF could not be read');
   }
 }
 
 async function fromGoogleDoc(url) {
   const m = /^https:\/\/docs\.google\.com\/document\/d\/([A-Za-z0-9_-]{20,})/.exec(String(url || '').trim());
-  if (!m) fail(400, 'Zadejte odkaz ve tvaru https://docs.google.com/document/d/…');
+  if (!m) fail(400, 'Enter a link like https://docs.google.com/document/d/…');
   let res;
   try {
     res = await fetch(`https://docs.google.com/document/d/${m[1]}/export?format=txt`, { signal: AbortSignal.timeout(15000) });
   } catch {
-    fail(502, 'Google Doc se nepodařilo stáhnout, zkuste to znovu');
+    fail(502, 'The Google Doc could not be downloaded, please try again');
   }
   const type = res.headers.get('content-type') || '';
   if (!res.ok || !type.includes('text/plain')) {
-    fail(422, 'Dokument je soukromý. Nastavte sdílení „Kdokoli s odkazem“ (čtenář), nebo ho stáhněte jako PDF/Word a nahrajte, nebo vložte text.');
+    fail(422, 'The document is private. Set sharing to “Anyone with the link” (viewer), or download it as PDF/Word and upload it, or paste the text.');
   }
   return (await res.text()).replace(/^﻿/, '');
 }
@@ -100,15 +100,15 @@ async function extract(input) {
       text = await fromDocx(buf);
       src = 'docx';
     } else {
-      fail(415, 'Podporované soubory jsou PDF a Word (.docx). Z Google Docs: Soubor → Stáhnout → PDF nebo .docx.');
+      fail(415, 'Supported files are PDF and Word (.docx). In Google Docs: File → Download → PDF or .docx.');
     }
   } else {
-    fail(400, 'Neznámý typ vstupu');
+    fail(400, 'Unknown input type');
   }
 
   text = text.replace(/\r\n/g, '\n').trim();
-  if (text.length > MAX_TEXT_CHARS) fail(413, 'Text je příliš dlouhý (max. 200 000 znaků)');
-  if (countWords(text) < 50 && !pdfBase64) fail(422, 'Text je příliš krátký na vyhodnocení');
+  if (text.length > MAX_TEXT_CHARS) fail(413, 'The text is too long (max. 200,000 characters)');
+  if (countWords(text) < 50 && !pdfBase64) fail(422, 'The text is too short to evaluate');
   return { source: src, text, pdfBase64, wordCount: countWords(text), countedWords: estimateCountedWords(text) };
 }
 

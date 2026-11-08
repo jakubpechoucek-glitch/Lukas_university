@@ -2,35 +2,34 @@
   "SEHS": {
     "subject": "Sports, exercise and health science (SEHS)",
     "title": "Scientific investigation – Internal assessment",
-    "source": "Učebnice SEHS, kap. Internal assessment (IA) and practical work, s. 620–627, Tables 2–6",
+    "source": "SEHS textbook, chapter Internal assessment (IA) and practical work, pp. 620–627, Tables 2–6",
     "maxWords": 3200,
-    "wordCountNote": "Do limitu se nepočítají grafy a diagramy, tabulky dat, rovnice a výpočty, citace/reference, bibliografie a nadpisy. Práce musí obsahovat sběr a analýzu kvantitativních dat.",
+    "wordCountNote": "Not counted towards the limit: charts and diagrams, data tables, equations, formulae and calculations, citations/references, bibliography and headers. The investigation must involve the collection and analysis of quantitative data.",
     "totalMarks": 24,
     "weightOfFinalPct": 24,
     "rules": [
-      "Výzkumná otázka je tvoje vlastní, o co ses zajímal, a musí vést ke sběru a analýze kvantitativních dat.",
-      "Zpráva musí být tvoje vlastní práce, i při skupinové spolupráci při sběru dat. Skupinová zpráva není povolená a metodiku popisuješ sám.",
-      "Učitel smí dát zpětnou vazbu na první koncept. Bez podstatné pomoci to ale nesmíš nezvládnout, jinak nelze získat plný počet bodů.",
-      "Maximum 3 200 slov."
+      "The research question is your own, based on something you are interested in, and must lead to collecting and analysing quantitative data.",
+      "The report must be your own work. Even when data is collected in a group, a group report is not permitted and you describe the methodology individually.",
+      "Your teacher may give feedback on your first draft. If you cannot complete the work without substantial support, you cannot gain full marks.",
+      "Maximum 3,200 words."
     ],
     "rqGuide": {
-      "title": "Co má obsahovat dobrá výzkumná otázka (pro pásmo 5–6 v Research design)",
+      "title": "What a strong research question contains (for band 5–6 in Research design)",
       "items": [
-        "Nezávislá proměnná (IV) s konkrétními úrovněmi, jednotkou a nejistotou měření (např. čas 15, 30, 45, 60 s, ±0,5 s).",
-        "Závislá proměnná (DV) přesně definovaná: co se měří, v jakých jednotkách (např. RMS amplituda EMG v mV, nebo v % MVC), čím a s jakou nejistotou přístroje.",
-        "Systém, ve kterém se měří: typ cviku/testu, populace (věk, pohlaví, úroveň, počet účastníků) a prostředí.",
-        "Formulace „To what extent…“ nebo podobná, která vede ke kvantifikaci (velikost efektu, statistický test), ne jen k odpovědi ano/ne.",
-        "Jedna soustředěná otázka. Dvě závislé proměnné jsou možné, ale zdvojnásobí analýzu i počet slov.",
-        "Otázka musí být zodpověditelná daty, která opravdu umíš sebrat a zpracovat."
+        "Independent variable (IV) with specific levels, units and uncertainty (e.g. time 15, 30, 45, 60 s, ±0.5 s).",
+        "Dependent variable (DV) defined precisely: what is measured, in which units (e.g. mean RMS EMG amplitude in mV, or in % MVC), with what device and uncertainty.",
+        "The system it is embedded in: type of exercise/test, population (age, sex, level, number of participants) and setting.",
+        "“To what extent…” or similar wording that leads to quantification (effect size, statistical test), not just a yes/no answer.",
+        "One focused question. Two dependent variables are possible, but they double the analysis and the word count needed.",
+        "A question you can actually answer with data you are able to collect and process."
       ]
     },
     "criteria": [
       {
         "id": "research_design",
         "name": "Research design",
-        "czech": "Návrh výzkumu",
         "max": 6,
-        "assesses": "Do jaké míry efektivně sdělujete metodiku (účel a postup) použitou k zodpovězení výzkumné otázky.",
+        "assesses": "The extent to which you effectively communicate the methodology (purpose and practice) used to address the research question.",
         "bands": [
           {
             "marks": "0",
@@ -82,31 +81,30 @@
           "If secondary data were used, was the confidentiality of the original subjects maintained?"
         ],
         "tips": [
-          "Výzkumná otázka: IV i DV s jednotkami a nejistotou, jasný systém (typ cviku, populace, počet účastníků).",
-          "Background: vysvětli obě proměnné a proč má smysl hledat mezi nimi vztah. Cituj vědecké zdroje (PubMed, Google Scholar), ne jen weby.",
-          "Zdůvodni každé rozhodnutí v metodice: proč právě tyto úrovně IV, proč tento přístroj a způsob měření DV, proč tito účastníci a tento počet.",
-          "Tabulka řízených proměnných: co držíš konstantní, jak a proč. Zvlášť rozveď confounding variables a jak jsi je omezil.",
-          "Etika a bezpečnost: informovaný souhlas, u nezletilých i souhlas rodičů, důvěrnost (kódy místo jmen), právo odstoupit, risk assessment s opatřeními.",
-          "Metodu napiš tak, aby ji šlo zopakovat: číslované kroky, konkrétní materiály s modely a verzemi, fotka nebo schéma uspořádání."
+          "Research question: IV and DV with units and uncertainty, a clear system (type of exercise, population, number of participants).",
+          "Background: explain both variables and why a relationship between them is worth investigating. Cite scholarly sources (PubMed, Google Scholar), not just websites.",
+          "Justify every methodological decision: why these IV levels, why this device and way of measuring the DV, why these participants and this sample size.",
+          "Controlled variables table: what you hold constant, how and why. Discuss confounding variables separately and how you mitigated them.",
+          "Ethics and safety: informed consent (for minors also parental consent), confidentiality (codes instead of names), right to withdraw, and a risk assessment with mitigations.",
+          "Write the method so that it can be repeated: numbered steps, specific materials with models and versions, a photo or diagram of the set-up."
         ],
         "topicTips": [
-          "Definuj „activation“: např. průměrná RMS amplituda EMG v okně (např. 5 s kolem 15/30/45/60 s), ideálně normalizovaná na MVC.",
-          "Uveď nejistotu SpikerBox Pro (rozlišení, šum naprázdno, vzorkovací frekvence) a ±0,5 s u času. Doplň prázdné ±[uncertainty].",
-          "Zdůvodni výběr svalů: m. rectus abdominis (flexe trupu, kontrola tilt pánve) a m. rectus femoris (flexe kyčle, extenze kolena, dvoukloubový sval). Proč se mají chovat při únavě různě?",
-          "Umístění elektrod podle doporučení SENIAM, příprava kůže (oholení, očištění), referenční elektroda na kostěnou prominenci. Foto/schéma umístění je plus.",
-          "Standardizuj plank: předloktí na zemi, úhel v lokti 90°, neutrální páteř, šířka nohou, jak kontroluješ a ukončuješ špatnou formu. Stejná denní doba, rozcvička a odpočinek před testem.",
-          "Rozhodni a zdůvodni: jeden souvislý plank s okny v 15/30/45/60 s, nebo oddělené pokusy. Při souvislém planku je čas zároveň únava, což je mechanismus, ne chyba, ale musíš to říct.",
-          "Confounding: tloušťka podkožního tuku, pot, posun elektrod, crosstalk z okolních svalů (šikmé břišní svaly, vastus), dýchání, síťový šum 50 Hz, kompenzace pohybem pánve.",
-          "Výběr vzorku: počet n, pohlaví, sport a věk 15–18. Zdůvodni, proč jsi zvolil varsity atlety a kolik jich je dost.",
-          "Etika: účastníci jsou nezletilí, souhlas rodičů plus souhlas účastníka, anonymizace, možnost přerušit, riziko svalové únavy nebo podráždění kůže od elektrod a opatření."
+          "Define “activation”: e.g. mean RMS EMG amplitude in a window (e.g. 5 s around 15/30/45/60 s), ideally normalised to MVC.",
+          "State the uncertainty of the SpikerBox Pro (resolution, resting noise, sampling rate) and of time (±0.5 s). Fill in the empty ±[uncertainty].",
+          "Justify the muscles: rectus abdominis (trunk flexion, control of pelvic tilt) and rectus femoris (hip flexion, knee extension, biarticular). Why should they behave differently with fatigue?",
+          "Electrode placement following SENIAM recommendations, skin preparation (shaving, cleaning), reference electrode on a bony prominence. A photo or diagram of the placement helps.",
+          "Standardise the plank: forearms on the floor, 90° elbow angle, neutral spine, foot width, and how you monitor and end the hold when form breaks down. Same time of day, warm-up and rest before the test.",
+          "Decide and justify: one continuous plank with windows at 15/30/45/60 s, or separate trials. In one continuous plank, time is also fatigue; that is the mechanism, not an error, but say so.",
+          "Confounding: skin-fold thickness, sweat, electrode movement, crosstalk from neighbouring muscles (obliques, vastus muscles), breathing, 50 Hz mains noise, pelvic compensation.",
+          "Sample: number n, sex, sport and age 15–18. Justify why varsity athletes and why this many.",
+          "Ethics: participants are minors, so parental consent plus participant assent, anonymisation, the option to stop at any time, and the risks (muscle fatigue, skin irritation from electrodes) with mitigations."
         ]
       },
       {
         "id": "data_analysis",
         "name": "Data analysis",
-        "czech": "Analýza dat",
         "max": 6,
-        "assesses": "Do jaké míry zpráva dokládá, že data byla zaznamenána, zpracována a prezentována způsobem relevantním pro výzkumnou otázku.",
+        "assesses": "The extent to which your report provides evidence that you have recorded, processed and presented the data in ways that are relevant to the research question.",
         "bands": [
           {
             "marks": "0",
@@ -154,28 +152,27 @@
           "Will the processing allow a valid and detailed answer to the research question?"
         ],
         "tips": [
-          "Tabulky surových dat: název, jednotky a nejistoty v záhlaví, počet desetinných míst odpovídá nejistotě.",
-          "Ukaž jeden vzorový výpočet krok za krokem nebo popiš vzorce v tabulkovém procesoru.",
-          "Pro každou skupinu spočítej průměr a míru variability (SD, SE nebo CV) a řekni, kterou používáš a proč.",
-          "Grafy: IV na ose x, DV na ose y, popisky os s jednotkami, název, chybové úsečky (uveď, co znamenají), čitelné měřítko.",
-          "Nejistoty: nejistota přístroje a času, jejich vliv na výsledek, rozdíl mezi náhodnou a systematickou chybou.",
-          "Pravidlo pro odlehlé hodnoty (např. 1,5×IQR nebo ±2 SD) a rozhodnutí, zda je zahrnout.",
-          "Inferenční test zvol podle designu (závislé vs. nezávislé skupiny, normalita), uveď hypotézy H0/H1, hladinu α, testovou statistiku, stupně volnosti a p-hodnotu a správně je interpretuj."
+          "Raw data tables: title, units and uncertainties in the headers, number of decimal places consistent with the uncertainty.",
+          "Show one sample calculation step by step, or describe the spreadsheet formulae.",
+          "For each group calculate the mean and a measure of variability (SD, SE or CV) and say which one you use and why.",
+          "Graphs: IV on the x-axis, DV on the y-axis, axis labels with units, a title, error bars (state what they represent), a readable scale.",
+          "Uncertainties: instrument and time uncertainty, their effect on the result, random vs systematic error.",
+          "A rule for outliers (e.g. 1.5×IQR or ±2 SD) and a decision on whether to include them.",
+          "Choose the inferential test according to the design (related vs independent groups, normality), state H0/H1, significance level α, the test statistic, degrees of freedom and p-value, and interpret them correctly."
         ],
         "topicTips": [
-          "Zpracování EMG: popiš filtrování (pásmová propust, odstranění síťového šumu), usměrnění a RMS v okně, normalizaci (% MVC nebo relativně k hodnotě v 15 s) a stejný postup pro všechna okna.",
-          "Opakované měření na stejných účastnících (15, 30, 45, 60 s): repeated-measures ANOVA (ověř normalitu a sféricitu), při porušení předpokladů Friedmanův test, případně Bonferroni post-hoc. Provede se zvlášť pro každý sval.",
-          "Přidej velikost efektu, aby bylo vidět „to what extent“, nejen významnost.",
-          "Dva svaly na jednom grafu jen pokud jsou ve stejných (normalizovaných) jednotkách, jinak dva panely. Absolutní amplitudy mezi svaly nelze přímo porovnávat.",
-          "Reliabilita: diskutuj šum přístroje, variabilitu mezi účastníky (velká směrodatná odchylka u EMG je běžná) a vliv malého n."
+          "EMG processing: describe filtering (band-pass, mains noise removal), rectification and RMS in a window, normalisation (% MVC or relative to the 15 s value), and the same procedure for every window.",
+          "Repeated measurements on the same participants (15, 30, 45, 60 s): repeated-measures ANOVA (check normality and sphericity); if assumptions fail, the Friedman test; Bonferroni post-hoc. Run it separately for each muscle.",
+          "Add an effect size so that “to what extent” is answered, not just significance.",
+          "Put two muscles on one graph only if they are in the same (normalised) units, otherwise use two panels. Absolute amplitudes of different muscles cannot be compared directly.",
+          "Reliability: discuss device noise, between-participant variability (large SDs are common in EMG) and the effect of a small n."
         ]
       },
       {
         "id": "conclusion",
         "name": "Conclusion",
-        "czech": "Závěr",
         "max": 6,
-        "assesses": "Do jaké míry úspěšně odpovídáte na výzkumnou otázku s ohledem na analýzu a přijatý vědecký kontext.",
+        "assesses": "The extent to which you successfully answer your research question with regard to your analysis and the accepted scientific context.",
         "bands": [
           {
             "marks": "0",
@@ -218,26 +215,25 @@
           "Are the implications presented practical, and are they explained with reference to a valid extension?"
         ],
         "tips": [
-          "První věta odpovídá přímo na výzkumnou otázku, s čísly (rozdíly, p-hodnoty, velikost efektu).",
-          "Každé tvrzení opři o konkrétní data a výsledky inferenčního testu. Neříkej víc, než data unesou.",
-          "Zhodnoť sílu a platnost závěru s ohledem na nejistoty a variabilitu (překrývají se chybové úsečky? jak velké je n?).",
-          "Vědecké vysvětlení z nových zdrojů, které ses nepoužil v úvodu, a porovnání s podobnými studiemi: souhlasí, nebo ne, a proč.",
-          "Praktické důsledky vysvětli, nejen vyjmenuj: komu a k čemu je výsledek užitečný a jaké navazující zkoumání (extension) to podporuje."
+          "The first sentence answers the research question directly, with numbers (differences, p-values, effect size).",
+          "Support every claim with specific data and the inferential test results. Do not claim more than the data supports.",
+          "Evaluate the strength and validity of the conclusion considering uncertainty and variability (do error bars overlap? how large is n?).",
+          "Give a scientific explanation using new sources not used in the background, and compare with similar published studies: do they agree, and why or why not.",
+          "Explain the practical implications, do not just list them: who benefits and how, and which follow-up investigation (extension) the result supports."
         ],
         "topicTips": [
-          "Odpověz zvlášť pro rectus abdominis a rectus femoris: směr změny, velikost, kdy mezi časovými body nastává významný rozdíl.",
-          "Vysvětli fyziologicky: u trvalé submaximální izometrické kontrakce amplituda EMG obvykle roste s únavou (nábor dalších motorických jednotek, synchronizace). Porovnej, zda to platí i u tvých dat a proč mezi svaly případně vyšla odlišnost (synergisté, kompenzace kyčlí).",
-          "Zasaď do systému: výsledek platí pro atlety 15–18 let a daný typ planku, ne pro všechny.",
-          "Praktické důsledky: smysluplná délka držení planku v tréninku, kdy další prodlužování nepřináší větší aktivaci svalu (pokud to data ukážou), vliv na programování core tréninku a prevenci úrazů.",
-          "Extension: normalizace na MVC, další svaly (šikmé břišní svaly, erector spinae), boční plank, neatleti, delší časy."
+          "Answer separately for rectus abdominis and rectus femoris: direction of change, its size, and between which time points a significant difference occurs.",
+          "Explain physiologically: during sustained submaximal isometric contraction EMG amplitude usually rises with fatigue (recruitment of additional motor units, synchronisation). Compare with your data and explain any difference between the muscles (synergists, hip compensation).",
+          "Set it in its system: the result applies to athletes aged 15–18 and this type of plank, not to everyone.",
+          "Practical implications: a sensible plank duration in training, whether holding longer adds activation (if your data show it plateaus), consequences for core-training programming and injury prevention.",
+          "Extension: MVC normalisation, other muscles (obliques, erector spinae), side plank, non-athletes, longer durations."
         ]
       },
       {
         "id": "evaluation",
         "name": "Evaluation",
-        "czech": "Hodnocení",
         "max": 6,
-        "assesses": "Do jaké míry zpráva dokládá hodnocení metodiky šetření a navrhuje zlepšení.",
+        "assesses": "The extent to which your report provides evidence of evaluation of the investigation methodology and has suggested improvements.",
         "bands": [
           {
             "marks": "0",
@@ -275,15 +271,15 @@
           "Is there an explanation of why the suggested improvements would work?"
         ],
         "tips": [
-          "Aspoň 3–5 konkrétních slabin metodiky. Obecné „human error“ nebo „more time“ nestačí.",
-          "U každé slabiny: co přesně se stalo, jak to ovlivnilo data a závěr (směr a velikost, náhodná vs. systematická chyba).",
-          "Seřaď slabiny podle relativního dopadu a řekni, která je nejzávažnější a proč. To je rozdíl mezi pásmem 3–4 a 5–6.",
-          "Ke každé slabině navrhni realistické zlepšení (proveditelné ve škole) a vysvětli, proč by problém odstranilo."
+          "At least 3–5 specific methodological weaknesses. Generic “human error” or “more time” is not enough.",
+          "For each weakness: what exactly happened, how it affected the data and the conclusion (direction and size, random vs systematic error).",
+          "Rank the weaknesses by relative impact and say which is the most serious and why. This is the difference between band 3–4 and 5–6.",
+          "For each weakness propose a realistic improvement (feasible at school) and explain why it would solve the problem."
         ],
         "topicTips": [
-          "Typické konkrétní slabiny: nenormalizované amplitudy (bez MVC), malé n, posun elektrod a různá příprava kůže, crosstalk, jediný pokus na osobu, pořadí a únava u souvislého planku, nepevně kontrolovaná forma planku, omezení levného přístroje (šum, nekalibrovaná amplituda), nejistota času ±0,5 s.",
-          "Vysvětli dopad: např. bez MVC nelze porovnávat účastníky ani svaly, takže rozptyl mezi osobami zvětší SD a zeslabí statistickou sílu.",
-          "Zlepšení s odůvodněním: MVC normalizace, větší vzorek a výpočet potřebného n, fixace elektrod a značení polohy, video kontrola formy, opakování měření, kalibrace přístroje oproti referenčnímu signálu."
+          "Typical specific weaknesses: un-normalised amplitudes (no MVC), small n, electrode shift and different skin preparation, crosstalk, a single trial per person, order and fatigue effects in a continuous plank, loosely controlled plank form, limitations of a low-cost device (noise, uncalibrated amplitude), ±0.5 s timing uncertainty.",
+          "Explain the impact: e.g. without MVC you cannot compare participants or muscles, so between-person variance inflates the SD and weakens statistical power.",
+          "Improvements with justification: MVC normalisation, a larger sample and a power calculation for the needed n, electrode fixation and position marking, video check of form, repeated trials, calibrating the device against a reference signal."
         ]
       }
     ]

@@ -34,7 +34,7 @@ function useReview(id) {
         setReview(data.data);
         if (data.data.status === 'pending') timer = setTimeout(load, 3000);
       } catch (err) {
-        if (!stop) setReview({ id, status: 'error', error: errText(err, 'Kontrolu se nepodařilo načíst') });
+        if (!stop) setReview({ id, status: 'error', error: errText(err, 'Could not load the review') });
       }
     };
     load();
@@ -49,7 +49,7 @@ function ReviewView({ review }) {
     return (
       <div className="card flex items-center gap-3 text-sm text-slate-600">
         <div className="h-5 w-5 animate-spin rounded-full border-2 border-fuchsia-600 border-t-transparent" />
-        Vyhodnocuji… Trvá to obvykle 30–90 sekund, stránku můžeš nechat otevřenou.
+        Evaluating… This usually takes 30–90 seconds. You can leave the page open.
       </div>
     );
   }
@@ -61,7 +61,7 @@ function AiNotice({ available }) {
   if (available) return null;
   return (
     <div className="card border-amber-200 bg-amber-50 text-sm text-amber-900">
-      AI kontrola zatím není zapnutá. Na Renderu chybí proměnná <code>ANTHROPIC_API_KEY</code>. Průvodce a checklisty fungují i bez ní.
+      AI review is not enabled yet: the <code>ANTHROPIC_API_KEY</code> variable is missing on Render. The guide and checklists work without it.
     </div>
   );
 }
@@ -76,9 +76,9 @@ function ResearchQuestionTab({ subject, rubric, aiAvailable, onChanged, review, 
     try {
       await api.put(`/ia/subjects/${subject.subjectId}/research-question`, { researchQuestion: draft });
       await onChanged();
-      toast.success('Výzkumná otázka uložena');
+      toast.success('Research question saved');
     } catch (err) {
-      toast.error(errText(err, 'Uložení se nezdařilo'));
+      toast.error(errText(err, 'Saving failed'));
     } finally { setBusy(false); }
   }
 
@@ -90,7 +90,7 @@ function ResearchQuestionTab({ subject, rubric, aiAvailable, onChanged, review, 
       await onChanged();
       setReviewId(data.data.id);
     } catch (err) {
-      toast.error(errText(err, 'Kontrola se nespustila'));
+      toast.error(errText(err, 'The review did not start'));
     } finally { setBusy(false); }
   }
 
@@ -98,13 +98,13 @@ function ResearchQuestionTab({ subject, rubric, aiAvailable, onChanged, review, 
     <div className="space-y-4">
       <div className="card space-y-3">
         <label className="block text-sm font-medium">
-          Výzkumná otázka
+          Research question
           <textarea className="input mt-1 min-h-[120px]" value={draft} onChange={(e) => setDraft(e.target.value)}
             placeholder="To what extent does … affect … , measured using … , in …?" />
         </label>
         <div className="flex flex-wrap gap-2">
-          <button className="btn-secondary" disabled={busy || saved} onClick={save}>Uložit</button>
-          <button className="btn-primary" disabled={busy || !aiAvailable || draft.trim().length < 10} onClick={check}>Zkontrolovat otázku (AI)</button>
+          <button className="btn-secondary" disabled={busy || saved} onClick={save}>Save</button>
+          <button className="btn-primary" disabled={busy || !aiAvailable || draft.trim().length < 10} onClick={check}>Check the question (AI)</button>
         </div>
       </div>
       <AiNotice available={aiAvailable} />
@@ -137,18 +137,18 @@ function ReportTab({ subject, rubric, aiAvailable, onChanged, review, setReviewI
       if (mode === 'paste') Object.assign(body, { source: 'paste', text });
       else if (mode === 'gdoc') Object.assign(body, { source: 'gdoc', url: url.trim() });
       else {
-        if (file.size > MAX_FILE_BYTES) { toast.error('Soubor je větší než 10 MB'); return; }
+        if (file.size > MAX_FILE_BYTES) { toast.error('The file is larger than 10 MB'); return; }
         Object.assign(body, { source: 'file', file: { name: file.name, mimeType: file.type, dataBase64: await readBase64(file) } });
       }
       const { data } = await api.post(`/ia/subjects/${subject.subjectId}/review-report`, body);
       await onChanged();
       setReviewId(data.data.id);
     } catch (err) {
-      toast.error(errText(err, 'Kontrola se nespustila'));
+      toast.error(errText(err, 'The review did not start'));
     } finally { setBusy(false); }
   }
 
-  const modes = [['paste', 'Vložit text'], ['file', 'Nahrát PDF / Word'], ['gdoc', 'Odkaz na Google Doc']];
+  const modes = [['paste', 'Paste text'], ['file', 'Upload PDF / Word'], ['gdoc', 'Google Doc link']];
   return (
     <div className="space-y-4">
       <div className="card space-y-4">
@@ -162,9 +162,9 @@ function ReportTab({ subject, rubric, aiAvailable, onChanged, review, setReviewI
         {mode === 'paste' && (
           <div>
             <textarea className="input min-h-[220px] font-mono text-xs" value={text} onChange={(e) => setText(e.target.value)}
-              placeholder="V Google Docs: Ctrl+A, Ctrl+C a sem Ctrl+V. Grafy se jako obrázky nepřenesou, stačí popisky." />
+              placeholder="In Google Docs: Ctrl+A, Ctrl+C, then Ctrl+V here. Graphs are not copied as images; captions are enough." />
             <p className={`mt-1 text-xs ${words > rubric.maxWords ? 'text-red-600' : 'text-slate-500'}`}>
-              {words} slov (limit {rubric.maxWords} se počítá bez tabulek, grafů, rovnic a referencí)
+              {words} words (the {rubric.maxWords}-word limit excludes tables, graphs, equations and references)
             </p>
           </div>
         )}
@@ -172,7 +172,7 @@ function ReportTab({ subject, rubric, aiAvailable, onChanged, review, setReviewI
           <div className="text-sm">
             <input ref={fileRef} type="file" accept=".pdf,.docx,application/pdf" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
             <p className="mt-2 text-xs text-slate-500">
-              V Google Docs: Soubor → Stáhnout → PDF nebo Microsoft Word (.docx). U PDF model vidí i grafy a tabulky. Max. 10 MB.
+              In Google Docs: File → Download → PDF or Microsoft Word (.docx). With a PDF the model also sees graphs and tables. Max. 10 MB.
             </p>
           </div>
         )}
@@ -180,13 +180,13 @@ function ReportTab({ subject, rubric, aiAvailable, onChanged, review, setReviewI
           <div className="text-sm">
             <input className="input" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://docs.google.com/document/d/…" />
             <p className="mt-2 text-xs text-slate-500">
-              Dokument musí mít sdílení „Kdokoli s odkazem“ (čtenář). Pokud ho sdílet nechceš, použij PDF nebo vložení textu.
+              The document must be shared as “Anyone with the link” (viewer). If you do not want to share it, use a PDF or paste the text.
             </p>
           </div>
         )}
 
         <fieldset>
-          <legend className="text-sm font-medium">Co vyhodnotit</legend>
+          <legend className="text-sm font-medium">What to evaluate</legend>
           <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm">
             {rubric.criteria.map((c) => (
               <label key={c.id} className="flex items-center gap-1.5">
@@ -194,10 +194,10 @@ function ReportTab({ subject, rubric, aiAvailable, onChanged, review, setReviewI
               </label>
             ))}
           </div>
-          <p className="mt-1 text-xs text-slate-500">Rozepsanou zprávu můžeš kontrolovat po částech, třeba jen Research design.</p>
+          <p className="mt-1 text-xs text-slate-500">You can check an unfinished report part by part, e.g. only Research design.</p>
         </fieldset>
 
-        <button className="btn-primary" disabled={busy || !aiAvailable || !ready} onClick={submit}>{busy ? 'Odesílám…' : 'Vyhodnotit'}</button>
+        <button className="btn-primary" disabled={busy || !aiAvailable || !ready} onClick={submit}>{busy ? 'Sending…' : 'Evaluate'}</button>
       </div>
       <AiNotice available={aiAvailable} />
       <ReviewView review={review && (review.kind === 'report' || !review.kind) ? review : null} />
@@ -207,32 +207,32 @@ function ReportTab({ subject, rubric, aiAvailable, onChanged, review, setReviewI
 
 function HistoryTab({ subject, onOpen, onChanged }) {
   async function remove(id) {
-    if (!window.confirm('Smazat tuto kontrolu?')) return;
+    if (!window.confirm('Delete this review?')) return;
     try {
       await api.delete(`/ia/reviews/${id}`);
       await onChanged();
-    } catch (err) { toast.error(errText(err, 'Smazání se nezdařilo')); }
+    } catch (err) { toast.error(errText(err, 'Deleting failed')); }
   }
-  if (!subject.reviews.length) return <div className="card text-sm text-slate-500">Zatím tu nic není. Až spustíš první kontrolu, uloží se sem.</div>;
-  const STATUS = { pending: 'běží', error: 'chyba', done: '' };
+  if (!subject.reviews.length) return <div className="card text-sm text-slate-500">Nothing here yet. Your reviews will be saved here.</div>;
+  const STATUS = { pending: 'running', error: 'error', done: '' };
   return (
     <div className="card divide-y divide-slate-100">
       {subject.reviews.map((r) => (
         <div key={r.id} className="flex flex-wrap items-center justify-between gap-2 py-2 text-sm">
           <button className="text-left hover:underline" onClick={() => onOpen(r.id)}>
-            <span className="font-medium">{r.kind === 'rq' ? 'Výzkumná otázka' : 'Zpráva'}</span>
+            <span className="font-medium">{r.kind === 'rq' ? 'Research question' : 'Report'}</span>
             {r.kind === 'report' && r.totalMarks != null && <span className="ml-2 font-semibold text-fuchsia-700">{r.totalMarks} / {r.totalMax}</span>}
             {STATUS[r.status] && <span className="ml-2 text-xs text-slate-500">({STATUS[r.status]})</span>}
-            <span className="ml-2 text-xs text-slate-500">{formatDate((r.createdAt || '').slice(0, 10))}{r.wordCount ? ` · ${r.wordCount} slov` : ''}</span>
+            <span className="ml-2 text-xs text-slate-500">{formatDate((r.createdAt || '').slice(0, 10))}{r.wordCount ? ` · ${r.wordCount} words` : ''}</span>
           </button>
-          <button className="text-xs text-slate-400 hover:text-red-600" onClick={() => remove(r.id)}>Smazat</button>
+          <button className="text-xs text-slate-400 hover:text-red-600" onClick={() => remove(r.id)}>Delete</button>
         </div>
       ))}
     </div>
   );
 }
 
-const TABS = [['rq', 'Výzkumná otázka'], ['report', 'Kontrola práce'], ['guide', 'Průvodce k maximu bodů'], ['history', 'Historie']];
+const TABS = [['rq', 'Research question'], ['report', 'Report review'], ['guide', 'Guide to top marks'], ['history', 'History']];
 
 export default function IA() {
   const [data, setData] = useState(null);
@@ -246,7 +246,7 @@ export default function IA() {
       const { data: res } = await api.get('/ia');
       setData(res.data);
       setSubjectId((id) => id ?? res.data.subjects[0]?.subjectId ?? null);
-    } catch (err) { setError(errText(err, 'Nepodařilo se načíst data')); }
+    } catch (err) { setError(errText(err, 'Could not load the data')); }
   }, []);
   useEffect(() => { reload(); }, [reload]);
 
@@ -256,14 +256,14 @@ export default function IA() {
   useEffect(() => { if (finished) reload(); }, [finished, reload]);
 
   if (error) return <div className="card text-center text-red-600">{error}</div>;
-  if (!data) return <div className="py-16 text-center text-slate-500">Načítám…</div>;
+  if (!data) return <div className="py-16 text-center text-slate-500">Loading…</div>;
   const subject = data.subjects.find((s) => s.subjectId === subjectId);
   if (!subject) {
     return (
       <div className="space-y-4">
-        <PageHeader subtitle="Kontrola vlastní práce podle kritérií IB" />
+        <PageHeader subtitle="Self-check of your work against the IB criteria" />
         <div className="card text-sm text-slate-600">
-          {data.demo ? 'V ukázkovém režimu tato sekce není dostupná.' : 'Zatím není žádný předmět s rubrikou Internal Assessment.'}
+          {data.demo ? 'This section is not available in demo mode.' : 'No subject has an Internal Assessment rubric yet.'}
         </div>
       </div>
     );
@@ -275,7 +275,7 @@ export default function IA() {
   return (
     <div className="space-y-4">
       <PageHeader
-        subtitle={`${subject.displayName} (${subject.level}): vlastní kontrola práce podle kritérií IB`}
+        subtitle={`${subject.displayName} (${subject.level}): self-check of your work against the IB criteria`}
         actions={data.subjects.length > 1 && (
           <select className="input w-auto" value={subjectId} onChange={(e) => { setSubjectId(Number(e.target.value)); setReviewId(null); }}>
             {data.subjects.map((s) => <option key={s.subjectId} value={s.subjectId}>{s.displayName}</option>)}
@@ -284,7 +284,7 @@ export default function IA() {
       />
 
       <div className="flex gap-1 overflow-x-auto border-b border-slate-200" role="tablist">
-        {[...TABS, ...(tab === 'review' ? [['review', 'Výsledek']] : [])].map(([k, label]) => (
+        {[...TABS, ...(tab === 'review' ? [['review', 'Result']] : [])].map(([k, label]) => (
           <button key={k} role="tab" aria-selected={tab === k} onClick={() => setTab(k)}
             className={`whitespace-nowrap border-b-2 px-3 py-2 text-sm ${tab === k ? 'border-fuchsia-600 font-semibold text-fuchsia-700' : 'border-transparent text-slate-600 hover:text-slate-900'}`}>{label}</button>
         ))}

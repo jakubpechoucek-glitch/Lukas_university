@@ -17,7 +17,7 @@ const isAvailable = () => Boolean(process.env.ANTHROPIC_API_KEY) || client !== n
 
 const bandFor = (marks) => (marks <= 0 ? '0' : marks <= 2 ? '1-2' : marks <= 4 ? '3-4' : '5-6');
 
-const SYSTEM = `You are an experienced IB Diploma teacher and moderator giving FORMATIVE feedback to a student on a Sports, Exercise and Health Science (SEHS) internal assessment. Write the feedback in Czech; keep quotes from the student's text, rubric wording and technical terms in English.
+const SYSTEM = `You are an experienced IB Diploma teacher and moderator giving FORMATIVE feedback to a student on a Sports, Exercise and Health Science (SEHS) internal assessment. Write all feedback in clear English suitable for a 17-year-old student.
 
 Rules:
 - Judge ONLY against the official rubric and checklists given in the user message. Be calibrated and fairly strict, as an external moderator would be. Do not inflate marks. If a required element is missing, say so plainly.
@@ -29,7 +29,7 @@ Rules:
 
 function rubricFor(code) {
   const r = rubrics[code];
-  if (!r) throw { status: 404, message: 'Pro tento předmět zatím není rubrika' };
+  if (!r) throw { status: 404, message: 'There is no rubric for this subject yet' };
   return r;
 }
 
@@ -51,8 +51,8 @@ function reviewTool(rubric, criteriaIds) {
       type: 'object',
       required: ['summary', 'criteria', 'top_priorities'],
       properties: {
-        summary: { type: 'string', description: 'Overall impression in 2–4 sentences (Czech).' },
-        top_priorities: { type: 'array', items: { type: 'string' }, description: 'The 3–5 most valuable things to fix first (Czech), most impactful first.' },
+        summary: { type: 'string', description: 'Overall impression in 2–4 sentences.' },
+        top_priorities: { type: 'array', items: { type: 'string' }, description: 'The 3–5 most valuable things to fix first most impactful first.' },
         criteria: {
           type: 'array',
           description: `One entry for each of: ${crit.map((c) => c.id).join(', ')}`,
@@ -62,7 +62,7 @@ function reviewTool(rubric, criteriaIds) {
             properties: {
               id: { type: 'string', enum: crit.map((c) => c.id) },
               marks: { type: 'integer', minimum: 0, maximum: 6, description: 'Estimated marks 0–6.' },
-              rationale: { type: 'string', description: 'Why this band, in 1–3 sentences (Czech).' },
+              rationale: { type: 'string', description: 'Why this band, in 1–3 sentences.' },
               descriptors: {
                 type: 'array',
                 description: 'Assessment of EACH descriptor of the 5-6 band, in the given order.',
@@ -84,7 +84,7 @@ function reviewTool(rubric, criteriaIds) {
                   },
                 },
               },
-              missing_for_next_band: { type: 'array', items: { type: 'string' }, description: 'Concrete things missing for the next band (Czech). Empty if already 5–6.' },
+              missing_for_next_band: { type: 'array', items: { type: 'string' }, description: 'Concrete things missing for the next band. Empty if already 5–6.' },
               strengths: { type: 'array', items: { type: 'string' } },
             },
           },
@@ -147,7 +147,7 @@ async function callTool(tool, content) {
     messages: [{ role: 'user', content }],
   });
   const block = (msg.content || []).find((b) => b.type === 'tool_use' && b.name === tool.name);
-  if (!block) throw { status: 502, message: 'Model nevrátil strukturovanou odpověď, zkuste to znovu' };
+  if (!block) throw { status: 502, message: 'The model did not return a structured answer, please try again' };
   return block.input;
 }
 
@@ -155,7 +155,7 @@ async function callTool(tool, content) {
 async function reviewReport({ subjectCode, criteriaIds, researchQuestion, report, wordCount, countedWords }) {
   const rubric = rubricFor(subjectCode);
   const ids = rubric.criteria.map((c) => c.id).filter((id) => criteriaIds.includes(id));
-  if (!ids.length) throw { status: 400, message: 'Vyberte aspoň jedno kritérium' };
+  if (!ids.length) throw { status: 400, message: 'Select at least one criterion' };
 
   const intro = `Evaluate the student's ${rubric.subject} internal assessment report against the rubric below. Assess only these criteria: ${ids.join(', ')}.
 Word limit: ${rubric.maxWords} (excludes tables, figures, equations, references). Approximate words in the text: ${wordCount}; estimated counted words: ${countedWords}.
@@ -182,7 +182,7 @@ const RQ_TOOL = {
     type: 'object',
     required: ['summary', 'strengths', 'issues', 'questions_to_answer', 'improved_structure'],
     properties: {
-      summary: { type: 'string', description: 'Verdict in 2–3 sentences (Czech), incl. how it would score for context in Research design.' },
+      summary: { type: 'string', description: 'Verdict in 2–3 sentences, incl. how it would score for context in Research design.' },
       strengths: { type: 'array', items: { type: 'string' } },
       issues: {
         type: 'array',
@@ -197,8 +197,8 @@ const RQ_TOOL = {
           },
         },
       },
-      questions_to_answer: { type: 'array', items: { type: 'string' }, description: 'Guiding questions the student must be able to answer in the Research design section (Czech).' },
-      improved_structure: { type: 'string', description: 'A template of the question with [placeholders] for the missing parts, not a finished question (Czech/English).' },
+      questions_to_answer: { type: 'array', items: { type: 'string' }, description: 'Guiding questions the student must be able to answer in the Research design section.' },
+      improved_structure: { type: 'string', description: 'A template of the question with [placeholders] for the missing parts, not a finished question.' },
     },
   },
 };
