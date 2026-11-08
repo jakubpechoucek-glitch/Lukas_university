@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const usersRepo = require('../repositories/users.repository');
@@ -74,6 +75,20 @@ async function changePassword(userId, currentPassword, newPassword) {
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://unoefgbzymlwwehgzusf.supabase.co';
 const SUPABASE_KEY = process.env.SUPABASE_KEY || 'sb_publishable_0slnWPDezyFgiOmUGDal4Q_B5ZGz7i_'; // veřejný publishable klíč
 
+async function supabaseRpc(fn, accessToken) {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${fn}`, {
+      method: 'POST',
+      headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
+      body: '{}',
+      signal: AbortSignal.timeout(10000),
+    });
+    return res.ok ? await res.json() : null;
+  } catch {
+    throw { status: 502, message: 'Rozcestník (Supabase) teď neodpovídá, zkuste to znovu' };
+  }
+}
+
 async function loginWithSupabase(accessToken) {
   if (!accessToken || typeof accessToken !== 'string' || accessToken.length > 4096) {
     throw { status: 400, message: 'Chybí token z Rozcestníku' };
@@ -97,9 +112,23 @@ async function loginWithSupabase(accessToken) {
     throw { status: 401, message: 'Účet na Rozcestníku nemá ověřený e-mail' };
   }
 
-  const user = usersRepo.findByEmail(String(sbUser.email).trim());
+  const email = String(sbUser.email).trim();
+  let user = usersRepo.findByEmail(email);
   if (!user) {
-    throw { status: 403, message: `Účet ${sbUser.email} nemá v Lukas University přístup` };
+    // Člen rodiny z tabulky `clenove` v Supabase (je_clen) smí dovnitř i bez účtu v BOOTSTRAP_USERS – založí se mu.
+    const member = await supabaseRpc('je_clen', accessToken);
+    if (member !== true) {
+      throw { status: 403, message: `Účet ${email} nemá v Lukas University přístup` };
+    }
+    const jmeno = await supabaseRpc('moje_jmeno', accessToken);
+    const name = typeof jmeno === 'string' && jmeno.trim() ? jmeno.trim() : email;
+    const role = (process.env.SSO_STUDENT_EMAILS || '').split(',')
+      .map((e) => e.trim().toLowerCase()).includes(email.toLowerCase()) ? 'student' : 'parent';
+    // Heslo se nepoužívá (přihlašuje se přes Rozcestník); náhodné, aby účet nešel uhodnout.
+    const passwordHash = bcrypt.hashSync(crypto.randomBytes(24).toString('hex'), BCRYPT_ROUNDS);
+    usersRepo.create({ name, email, passwordHash, role, isFirstLogin: 0 });
+    user = usersRepo.findByEmail(email);
+    console.log(`  ✓ Účet vytvořen přes Rozcestník: ${name} (${role})`);
   }
   if (!user.is_active) {
     throw { status: 403, message: 'Účet je deaktivovaný' };

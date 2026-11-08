@@ -92,11 +92,14 @@ test('přihlášení přes Rozcestník (token Supabase)', async (t) => {
     'ok-token': { email: 'Student@Example.com', email_confirmed_at: '2026-01-01T00:00:00Z' },
     'cizi-token': { email: 'cizi@example.com', email_confirmed_at: '2026-01-01T00:00:00Z' },
     'neovereny-token': { email: 'student@example.com', email_confirmed_at: null },
+    'clen-token': { email: 'matej@example.com', email_confirmed_at: '2026-01-01T00:00:00Z' },
   };
   global.fetch = async (url, opts) => {
-    assert.match(String(url), /\/auth\/v1\/user$/);
     const tok = opts.headers.Authorization.slice(7);
     const u = sbUsers[tok];
+    if (/\/rpc\/je_clen$/.test(String(url))) return { ok: true, json: async () => tok === 'clen-token' };
+    if (/\/rpc\/moje_jmeno$/.test(String(url))) return { ok: true, json: async () => 'Matěj Test' };
+    assert.match(String(url), /\/auth\/v1\/user$/);
     return { ok: !!u, json: async () => u };
   };
   const sso = (accessToken) => request(app).post('/api/auth/supabase').send({ accessToken });
@@ -111,4 +114,13 @@ test('přihlášení přes Rozcestník (token Supabase)', async (t) => {
   assert.equal((await sso('neovereny-token')).status, 401);
   assert.equal((await sso('cizi-token')).status, 403);
   assert.equal((await sso('')).status, 400);
+
+  // Člen rodiny bez účtu v BOOTSTRAP_USERS se založí; podruhé se použije stejný účet.
+  res = await sso('clen-token');
+  assert.equal(res.status, 200);
+  assert.equal(res.body.data.user.name, 'Matěj Test');
+  assert.equal(res.body.data.user.role, 'parent');
+  assert.equal(res.body.data.user.isFirstLogin, false);
+  assert.equal((await sso('clen-token')).status, 200);
+  assert.equal(getDb().prepare("SELECT COUNT(*) n FROM users WHERE email = 'matej@example.com'").get().n, 1);
 });
