@@ -184,28 +184,30 @@ For each criterion, judge the three (or two) descriptors of the 5-6 band in orde
 
 const RQ_TOOL = {
   name: 'submit_rq_review',
-  description: 'Submit the research question feedback.',
+  description: 'Submit the feedback on how the report should deal with the fixed research question.',
   input_schema: {
     type: 'object',
-    required: ['summary', 'strengths', 'issues', 'questions_to_answer', 'improved_structure'],
+    required: ['summary', 'strengths', 'gaps', 'must_define', 'questions_to_answer'],
     properties: {
-      summary: { type: 'string', description: 'Verdict in 2–3 sentences, incl. how it would score for context in Research design.' },
+      summary: { type: 'string', description: 'Verdict in 2–3 sentences: how well the question works as it stands and what the report must do to reach band 5–6 in Research design.' },
       strengths: { type: 'array', items: { type: 'string' } },
-      issues: {
+      gaps: {
         type: 'array',
+        description: 'Weak or missing elements of the question as worded, each with how the report can compensate. Do NOT suggest rewording the question.',
         items: {
           type: 'object',
-          required: ['aspect', 'problem', 'suggestion'],
+          required: ['aspect', 'severity', 'risk', 'address_in_report', 'where'],
           properties: {
-            aspect: { type: 'string', description: 'e.g. Dependent variable, Context/system, Uncertainty, Design, Ethics, Feasibility, Wording' },
+            aspect: { type: 'string', description: 'e.g. Dependent variable definition, Context/system, Uncertainty, Design, Ethics, Feasibility' },
             severity: { type: 'string', enum: ['high', 'medium', 'low'] },
-            problem: { type: 'string' },
-            suggestion: { type: 'string' },
+            risk: { type: 'string', description: 'What an assessor could mark down if the report does not handle this.' },
+            address_in_report: { type: 'string', description: 'What the student must do in the report (explain, define, justify), without writing the text for them.' },
+            where: { type: 'string', enum: ['Background', 'Methodology', 'Data analysis', 'Conclusion', 'Evaluation', 'Ethics and safety'] },
           },
         },
       },
+      must_define: { type: 'array', items: { type: 'string' }, description: 'Terms, units and measurement choices the report must define explicitly (operational definitions).' },
       questions_to_answer: { type: 'array', items: { type: 'string' }, description: 'Guiding questions the student must be able to answer in the Research design section.' },
-      improved_structure: { type: 'string', description: 'A template of the question with [placeholders] for the missing parts, not a finished question.' },
     },
   },
 };
@@ -213,28 +215,29 @@ const RQ_TOOL = {
 async function reviewResearchQuestion({ subjectCode, researchQuestion }) {
   const rubric = rubricFor(subjectCode);
   const rd = rubric.criteria.find((c) => c.id === 'research_design');
-  const text = `Give formative feedback on the student's research question for the ${rubric.subject} scientific investigation. It will be assessed under "Research design" (the question must be described within a specific and appropriate context; variables with units and uncertainty; system; checklist below) and must be answerable with quantitative data in a ≤${rubric.maxWords}-word report with an inferential statistical analysis.
+  const text = `The student's research question for the ${rubric.subject} scientific investigation is FIXED: it has been approved and cannot be changed. Do not suggest rewording it or writing a new one. Instead explain how the REPORT should deal with it so that Research design can reach band 5–6: where the question as worded is weak or incomplete (variables, units, uncertainty, definition of the measure, system/context, design logic, validity of the measurement, feasibility with school equipment, ethics with minors, answerability with an inferential test), what the report must define or justify, and in which section (Background, Methodology, Data analysis, Conclusion, Evaluation, Ethics and safety).
+If the question contains an unfilled placeholder (e.g. ±[uncertainty]), flag it as something the student should clarify with the teacher; do not fill it in.
 
 Research design descriptors:\n${rd.bands.map((b) => `Band ${b.marks}: ${b.descriptors.join(' / ')}`).join('\n')}
 Relevant checklist items:\n${rd.checklist.slice(0, 2).map((q, i) => `${i + 1}. ${q}`).join('\n')}
 
-Also consider: placeholders left unfilled, validity of the measurement (e.g. normalisation of EMG), feasibility with school equipment, ethics with minors, and whether the question can be answered with an inferential test.
-
 <research_question>\n${researchQuestion}\n</research_question>`;
   const raw = await callTool(RQ_TOOL, [{ type: 'text', text }]);
+  const WHERE = ['Background', 'Methodology', 'Data analysis', 'Conclusion', 'Evaluation', 'Ethics and safety'];
   return {
     model: model(),
     result: {
       summary: String(raw.summary || ''),
       strengths: (raw.strengths || []).map(String),
-      issues: (raw.issues || []).map((i) => ({
-        aspect: String(i.aspect || ''),
-        severity: ['high', 'medium', 'low'].includes(i.severity) ? i.severity : 'medium',
-        problem: String(i.problem || ''),
-        suggestion: String(i.suggestion || ''),
+      gaps: (raw.gaps || []).map((g) => ({
+        aspect: String(g.aspect || ''),
+        severity: ['high', 'medium', 'low'].includes(g.severity) ? g.severity : 'medium',
+        risk: String(g.risk || ''),
+        addressInReport: String(g.address_in_report || ''),
+        where: WHERE.includes(g.where) ? g.where : 'Methodology',
       })),
+      mustDefine: (raw.must_define || []).map(String),
       questionsToAnswer: (raw.questions_to_answer || []).map(String),
-      improvedStructure: String(raw.improved_structure || ''),
     },
   };
 }

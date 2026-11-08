@@ -98,13 +98,13 @@ function ResearchQuestionTab({ subject, rubric, aiAvailable, onChanged, review, 
     <div className="space-y-4">
       <div className="card space-y-3">
         <label className="block text-sm font-medium">
-          Research question
+          Research question (approved, as submitted)
           <textarea className="input mt-1 min-h-[120px]" value={draft} onChange={(e) => setDraft(e.target.value)}
-            placeholder="To what extent does … affect … , measured using … , in …?" />
+            placeholder="Paste your approved research question here" />
         </label>
         <div className="flex flex-wrap gap-2">
           <button className="btn-secondary" disabled={busy || saved} onClick={save}>Save</button>
-          <button className="btn-primary" disabled={busy || !aiAvailable || draft.trim().length < 10} onClick={check}>Check the question (AI)</button>
+          <button className="btn-primary" disabled={busy || !aiAvailable || draft.trim().length < 10} onClick={check}>What must my report do? (AI)</button>
         </div>
       </div>
       <AiNotice available={aiAvailable} />

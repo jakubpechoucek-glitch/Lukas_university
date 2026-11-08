@@ -4,8 +4,9 @@ Pomůcka pro psaní vědecké zprávy (Scientific investigation) v předmětech 
 (Sports, exercise and health science, 4 kritéria × 6 bodů = 24 b., 24 % výsledné známky, max. 3 200 slov).
 
 ## Co umí
-- **Výzkumná otázka**: uloží se k předmětu; tlačítko „Zkontrolovat otázku (AI)“ vrátí zpětnou vazbu
-  (co se povedlo, co zlepšit, na co musí umět odpovědět v Research design, kostra otázky k doplnění).
+- **Výzkumná otázka**: uloží se k předmětu. Otázka je schválená a **nemění se**, proto tlačítko „What must my report do? (AI)“
+  nenavrhuje přeformulování, ale vrátí, co musí udělat zpráva: mezery otázky s rizikem pro hodnocení a sekcí, kde je
+  ve zprávě vyřešit (Background, Methodology, …), co musí být explicitně definováno a na co musí umět odpovědět v Research design.
 - **Kontrola práce**: vložený text, PDF, Word (.docx) nebo odkaz na Google Doc (sdílený „kdokoli s odkazem“).
   Lze vyhodnotit všechna 4 kritéria, nebo jen vybraná. Výstup pro každé kritérium: odhad pásma a bodů,
   splnění jednotlivých deskriptorů pásma 5–6 s citací z textu, odpovědi na oficiální checklist a co chybí
