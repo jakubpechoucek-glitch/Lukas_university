@@ -42,7 +42,7 @@ function fakeClient(inputFor) {
       create: async (req) => {
         calls.push(req);
         if (inputFor === 'fail') throw Object.assign(new Error('x'), { status: 401 });
-        return { content: [{ type: 'tool_use', name: req.tool_choice.name, input: inputFor(req) }] };
+        return { content: [{ type: 'tool_use', name: req.tools[0].name, input: inputFor(req) }] };
       },
     },
   };
@@ -191,4 +191,25 @@ test('extrakce: počítání slov, nepodporovaný soubor, soukromý Google Doc',
   const r = await extract({ source: 'gdoc', url: `https://docs.google.com/document/d/${id}/edit` });
   assert.equal(r.source, 'gdoc');
   assert.equal(r.wordCount, 60);
+});
+
+test('model, který nevolá nástroj, dostane jednu připomínku; požadavek nevynucuje tool_choice', async (t) => {
+  const subjectId = getDb().prepare("SELECT id FROM subjects WHERE code = 'SEHS'").get().id;
+  const calls = [];
+  ai._setClientForTests({
+    messages: {
+      create: async (req) => {
+        calls.push(req);
+        if (calls.length === 1) return { content: [{ type: 'text', text: 'Here is my feedback in plain text.' }] };
+        return { content: [{ type: 'tool_use', name: req.tools[0].name, input: reportInput(req) }] };
+      },
+    },
+  });
+  t.after(() => ai._setClientForTests(null));
+  const start = await api('post', `/api/ia/subjects/${subjectId}/review-report`).send({ source: 'paste', text: 'word '.repeat(80), criteria: ['conclusion'] });
+  const done = await waitFor(start.body.data.id);
+  assert.equal(done.status, 'done');
+  assert.equal(calls.length, 2);
+  assert.deepEqual(calls[0].tool_choice, { type: 'auto' });
+  assert.equal(calls[1].messages.at(-1).role, 'user');
 });

@@ -137,18 +137,25 @@ function normalizeReview(raw, rubric, criteriaIds) {
   return out;
 }
 
+// Novější modely nepodporují vynucený tool_choice, proto se nástroj jen přikáže v instrukci (tool_choice auto)
+// a při neúspěchu se jednou zopakuje s připomenutím.
 async function callTool(tool, content) {
-  const msg = await getClient().messages.create({
-    model: model(),
-    max_tokens: 10000,
-    system: SYSTEM,
-    tools: [tool],
-    tool_choice: { type: 'tool', name: tool.name },
-    messages: [{ role: 'user', content }],
-  });
-  const block = (msg.content || []).find((b) => b.type === 'tool_use' && b.name === tool.name);
-  if (!block) throw { status: 502, message: 'The model did not return a structured answer, please try again' };
-  return block.input;
+  const messages = [{ role: 'user', content }];
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const msg = await getClient().messages.create({
+      model: model(),
+      max_tokens: 10000,
+      system: `${SYSTEM}\n\nYou MUST deliver the feedback by calling the \`${tool.name}\` tool exactly once. Do not answer in plain text.`,
+      tools: [tool],
+      tool_choice: { type: 'auto' },
+      messages,
+    });
+    const block = (msg.content || []).find((b) => b.type === 'tool_use' && b.name === tool.name);
+    if (block) return block.input;
+    messages.push({ role: 'assistant', content: msg.content || [{ type: 'text', text: '(no answer)' }] });
+    messages.push({ role: 'user', content: `Please submit your feedback now by calling the \`${tool.name}\` tool.` });
+  }
+  throw { status: 502, message: 'The model did not return a structured answer, please try again' };
 }
 
 /** Kontrola zprávy. report: { text, pdfBase64? }. */
