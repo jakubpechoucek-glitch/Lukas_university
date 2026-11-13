@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import api from '../services/api';
-import { ibTotals, evaluateProgram } from '@calc';
+import { ibTotals, evaluateProgramWithCore } from '@calc';
 import { averageGrades } from '../lib/averages';
 
 const DataContext = createContext(null);
@@ -13,8 +13,16 @@ export function scenarioSubjects(subjects, scenario) {
   return subjects.map((s) => ({ code: s.code, level: s.level, grade: scenario?.grades?.[s.id] ?? null }));
 }
 
+// corePoints záměrně bez `?? 0`: nezadané TOK+EE (null) znamená rozpětí 0–3 b., ne nulu.
 export function scenarioTotals(subjects, scenario) {
-  return ibTotals(scenarioSubjects(subjects, scenario), scenario?.corePoints ?? 0, {
+  return ibTotals(scenarioSubjects(subjects, scenario), scenario?.corePoints, {
+    tok: scenario?.tokGrade, ee: scenario?.eeGrade,
+  });
+}
+
+/** Vyhodnocení programu pro scénář s ohledem na TOK+EE (rozpětí, když není zadáno). */
+export function evaluateForScenario(program, subjects, scenario) {
+  return evaluateProgramWithCore(program, scenarioSubjects(subjects, scenario), scenario?.corePoints, {
     tok: scenario?.tokGrade, ee: scenario?.eeGrade,
   });
 }
@@ -158,8 +166,6 @@ export function useEvaluation(scenario) {
   const { catalog, student } = useData();
   return useMemo(() => {
     if (!catalog || !student || !scenario) return new Map();
-    const subjects = scenarioSubjects(student.subjects, scenario);
-    const totals = scenarioTotals(student.subjects, scenario);
-    return new Map(catalog.programs.map((p) => [p.id, evaluateProgram(p, subjects, totals)]));
+    return new Map(catalog.programs.map((p) => [p.id, evaluateForScenario(p, student.subjects, scenario)]));
   }, [catalog, student, scenario]);
 }

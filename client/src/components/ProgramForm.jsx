@@ -1,11 +1,10 @@
 import { useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
-import { evaluateProgram } from '@calc';
 import Modal from './Modal';
 import RequirementEditor from './RequirementEditor';
 import UniversityForm from './UniversityForm';
 import StatusBadge from './StatusBadge';
-import { useData, scenarioSubjects, scenarioTotals } from '../context/DataContext';
+import { useData, evaluateForScenario } from '../context/DataContext';
 import { PROGRAM_STATUSES, describeSet } from '../lib/format';
 
 const TEXT_FIELDS = [
@@ -36,7 +35,7 @@ export default function ProgramForm({ program, defaultFieldId, onClose }) {
   // Živý náhled vyhodnocení s aktivním scénářem.
   const preview = useMemo(() => {
     if (!activeScenario) return null;
-    return evaluateProgram(form, scenarioSubjects(student.subjects, activeScenario), scenarioTotals(student.subjects, activeScenario));
+    return evaluateForScenario(form, student.subjects, activeScenario);
   }, [form, student, activeScenario]);
 
   async function save() {

@@ -34,6 +34,12 @@ export function money(amount, currency) {
   }
 }
 
+/** Celkové skóre: „40“, nebo rozpětí „38–41“, když TOK+EE ještě není zadáno (univerzity počítají celkem včetně jádra). */
+export function scoreText(totals) {
+  if (!totals) return '';
+  return totals.totalMin === totals.totalMax ? String(totals.totalMin) : `${totals.totalMin}–${totals.totalMax}`;
+}
+
 export function marginText(margin) {
   if (margin === null || margin === undefined) return '';
   if (margin === -Infinity) return '✗';

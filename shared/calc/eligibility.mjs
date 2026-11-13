@@ -2,6 +2,7 @@
 // Viz docs/04-vypocty.md#vyhodnocení-dosažitelnosti
 
 import { expandSubjects, subjectLabel } from './subjects.mjs';
+import { ibTotals, MAX_CORE_POINTS } from './ibScore.mjs';
 
 export const STATUS = {
   MEETS: 'meets', // ✅
@@ -133,6 +134,45 @@ export function evaluateProgram(program, subjects, totals, options = {}) {
     reasons: best.reasons,
     bestSetLabel: best.set.label ?? null,
     contextualMet,
+  };
+}
+
+/**
+ * Vyhodnocení programu s ohledem na TOK+EE. Univerzity počítají celkové skóre včetně nich (až +3 b.).
+ * - TOK+EE zadáno → běžné vyhodnocení s tímto skóre.
+ * - TOK+EE nezadáno → program se vyhodnotí s 0 a s 3 body:
+ *   splněno i s 0 → splňuje; nesplněno ani s 3 → nesplňuje;
+ *   jinak „hraniční, záleží na TOK+EE“ (s `coreNeeded` = nejmenší počet bodů, při kterém program vyjde).
+ * @returns výsledek evaluateProgram() + `coreDependent` a `coreNeeded`
+ */
+export function evaluateProgramWithCore(program, subjects, corePoints, core = {}, options = {}) {
+  const totals = ibTotals(subjects, corePoints, core);
+  if (totals.coreKnown) return { ...evaluateProgram(program, subjects, totals, options), coreDependent: false, coreNeeded: null };
+
+  // TOK+EE neznámé: základ = nejhorší případ (0 b.), nejlepší případ = 3 b.
+  const base = evaluateProgram(program, subjects, ibTotals(subjects, 0), options);
+  const plain = { ...base, coreDependent: false, coreNeeded: null };
+  if (base.status === STATUS.UNKNOWN || base.status === STATUS.MEETS) return plain;
+
+  const at = (points) => evaluateProgram(program, subjects, ibTotals(subjects, points), options);
+  const best = at(MAX_CORE_POINTS);
+  if (best.status === STATUS.FAILS) return plain; // nevyjde ani s plnými 3 body
+  if (best.status === base.status) return plain; // stejné s jádrem i bez něj
+
+  let coreNeeded = null;
+  for (let points = 1; points <= MAX_CORE_POINTS; points++) {
+    if (at(points).status === STATUS.MEETS) { coreNeeded = points; break; }
+  }
+  const note = coreNeeded
+    ? `splní se s ${coreNeeded} b. za TOK+EE (zatím nezadáno)`
+    : 'hraniční i s plnými 3 b. za TOK+EE (zatím nezadáno)';
+  return {
+    ...base,
+    status: STATUS.BORDERLINE,
+    margin: best.margin,
+    reasons: [note, ...(base.reasons ?? [])],
+    coreDependent: true,
+    coreNeeded,
   };
 }
 

@@ -23,9 +23,13 @@ export function corePointsFromGrades(tok, ee) {
   return points;
 }
 
+export const MAX_SUBJECT_POINTS = 42; // 6 předmětů × 7
+export const MAX_CORE_POINTS = 3;
+export const MAX_TOTAL_POINTS = MAX_SUBJECT_POINTS + MAX_CORE_POINTS; // 45
+
 /**
  * @param {{code: string, level: 'HL'|'SL', grade: number|null}[]} subjects
- * @param {number|null} corePoints 0–3
+ * @param {number|null} corePoints 0–3; null/undefined = TOK+EE zatím není zadáno (skóre je pak rozpětí 0–3 b.)
  * @param {{tok?: string, ee?: string}} [core] volitelné známky A–E
  */
 export function ibTotals(subjects, corePoints, core = {}) {
@@ -36,6 +40,8 @@ export function ibTotals(subjects, corePoints, core = {}) {
   let core_ = corePoints;
   const fromGrades = corePointsFromGrades(core.tok, core.ee);
   if (fromGrades !== null) core_ = fromGrades === 'fail' ? 0 : fromGrades;
+  // Zadáno = body (i 0) nebo obě známky TOK a EE. Jinak je jádro neznámé a celkem je rozpětí.
+  const coreKnown = fromGrades !== null || Number.isFinite(core_);
   core_ = Number.isFinite(core_) ? core_ : 0;
 
   const subjectsTotal = sum(hl) + sum(sl);
@@ -43,6 +49,10 @@ export function ibTotals(subjects, corePoints, core = {}) {
     subjectsTotal,
     corePoints: core_,
     total: subjectsTotal + core_,
+    coreKnown,
+    // Celkem, jak ho počítají univerzity (předměty + TOK/EE). Bez zadaného jádra rozpětí od 0 do 3 bodů navíc.
+    totalMin: subjectsTotal + core_,
+    totalMax: subjectsTotal + (coreKnown ? core_ : MAX_CORE_POINTS),
     hlSum: sum(hl),
     slSum: sum(sl),
     hlProfile: [...hl].sort((a, b) => b - a),
@@ -54,7 +64,7 @@ export function ibTotals(subjects, corePoints, core = {}) {
 
 function diplomaIssues(grades, t, coreFailed) {
   const issues = [];
-  if (t.total < 24) issues.push(`celkové skóre ${t.total} < 24`);
+  if (t.totalMax < 24) issues.push(`celkové skóre ${t.totalMax} < 24`);
   if (grades.includes(1)) issues.push('známka 1 z předmětu');
   if (grades.filter((g) => g === 2).length > 2) issues.push('více než dvě známky 2');
   if (grades.filter((g) => g <= 3).length > 3) issues.push('více než tři známky 3 a horší');
