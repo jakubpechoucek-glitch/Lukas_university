@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { evaluateProgram } from '@calc';
 import { useAuth } from '../context/AuthContext';
 import { useData, scenarioSubjects, scenarioTotals, useEvaluation } from '../context/DataContext';
-import { STATUS_META, PROGRAM_STATUSES, formatDate } from '../lib/format';
+import { STATUS_META, PROGRAM_STATUSES, formatDate, scoreText } from '../lib/format';
 import PageHeader from '../components/PageHeader';
 import { subjectAverage, fmtAvg } from '../lib/averages';
 import { roundGrade } from '@calc';
@@ -30,7 +30,8 @@ function AveragesCard({ student, activeScenario }) {
         <CardTitle section={SUBJECTS}>Vážené průměry</CardTitle>
         {avgTotals && (
           <div className="text-right text-xs text-slate-500">
-            IB podle průměrů <span className="text-lg font-semibold tabular-nums text-emerald-700">{avgTotals.total}</span> / 45
+            IB podle průměrů <span className="text-lg font-semibold tabular-nums text-emerald-700">{scoreText(avgTotals)}</span> / 45
+            {!avgTotals.coreKnown && <div className="text-amber-700" title="Univerzity počítají celkové skóre včetně TOK+EE (až +3 b.)">bez TOK+EE (0–3 b.)</div>}
           </div>
         )}
       </div>
@@ -134,8 +135,16 @@ export default function Home() {
       <div className="grid gap-4 md:grid-cols-3">
         <Link to="/predikce" className="card block border-l-4 border-l-violet-500 hover:shadow-md">
           <CardTitle section={PREDICTION}>Aktivní scénář „{activeScenario?.name}“</CardTitle>
-          <div className="mt-1 text-4xl font-semibold tabular-nums">{totals.total}<span className="text-lg text-slate-400"> / 45</span></div>
+          <div className="mt-1 text-4xl font-semibold tabular-nums">{scoreText(totals)}<span className="text-lg text-slate-400"> / 45</span></div>
+          <div className="text-sm text-slate-600" title="Univerzity počítají celkové skóre včetně TOK+EE (až +3 b.)">
+            předměty {totals.subjectsTotal} / 42 + TOK+EE {totals.coreKnown ? `${totals.corePoints} / 3` : 'nezadáno'}
+          </div>
           <div className="text-sm text-slate-600">HL {totals.hlProfile.join('-')} · SL součet {totals.slSum}</div>
+          {!totals.coreKnown && (
+            <div className="mt-1 rounded bg-amber-50 px-2 py-1 text-xs text-amber-800">
+              ⚠️ Rozpětí, protože TOK+EE zatím není zadáno (0–3 b.). Univerzity počítají celkové skóre včetně nich. Zadejte v Predikci.
+            </div>
+          )}
           {totals.diplomaIssues.length > 0 && <div className="mt-1 text-sm text-red-600">Diplom: {totals.diplomaIssues.join(', ')}</div>}
         </Link>
 

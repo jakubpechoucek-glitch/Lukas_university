@@ -1,7 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  ibTotals, corePointsFromGrades, evaluateProgram, evaluateSet, category, STATUS,
+  ibTotals, corePointsFromGrades, evaluateProgram, evaluateProgramWithCore, evaluateSet, category, STATUS,
+  MAX_CORE_POINTS, MAX_TOTAL_POINTS,
   weightedAverage, averageByCriterion, yearAverage, roundGrade,
 } from '../shared/calc/index.mjs';
 
@@ -180,4 +181,68 @@ test('průměr podle kritéria a roční průměr', () => {
   assert.deepEqual(averageByCriterion(list), { KU: 5, TL: 6 });
   assert.equal(yearAverage([{ term: 'G11-S1', average: 5 }, { term: 'G11-S2', average: 6 }]), 5.5);
   assert.equal(yearAverage([{ term: 'G11-S1', average: 5 }, { term: 'G11-S2', average: null }]), 5);
+});
+
+test('ibTotals: bez zadaného TOK+EE je celkové skóre rozpětí 0–3 b., se zadaným jedna hodnota', () => {
+  const unknown = ibTotals(subjects, null);
+  assert.equal(unknown.coreKnown, false);
+  assert.equal(unknown.subjectsTotal, 34);
+  assert.equal(unknown.totalMin, 34);
+  assert.equal(unknown.totalMax, 34 + MAX_CORE_POINTS);
+  assert.equal(MAX_TOTAL_POINTS, 45);
+
+  const zero = ibTotals(subjects, 0);
+  assert.equal(zero.coreKnown, true, '0 bodů zadáno vědomě je známá hodnota');
+  assert.equal(zero.totalMax, 34);
+
+  const two = ibTotals(subjects, 2);
+  assert.deepEqual([two.coreKnown, two.total, two.totalMin, two.totalMax], [true, 36, 36, 36]);
+
+  const grades = ibTotals(subjects, null, { tok: 'A', ee: 'B' });
+  assert.deepEqual([grades.coreKnown, grades.total, grades.totalMax], [true, 37, 37]);
+});
+
+const programMin = (minTotal) => ({
+  requirementSets: [{ label: `min ${minTotal}`, kind: 'typical', minTotal, totalBasis: 'with_core' }],
+});
+
+test('evaluateProgramWithCore: bez TOK+EE rozhoduje rozpětí 0–3 b.', () => {
+  const ev = (min, core) => evaluateProgramWithCore(programMin(min), subjects, core);
+
+  // Splněno i bez jádra (34 ≥ 33) → splňuje, nezávisí na TOK+EE.
+  let r = ev(33, null);
+  assert.deepEqual([r.status, r.coreDependent], [STATUS.MEETS, false]);
+
+  // 35: bez jádra o 1 pod → hraničně, s 1 b. vyjde → záleží na TOK+EE.
+  r = ev(35, null);
+  assert.deepEqual([r.status, r.coreDependent, r.coreNeeded], [STATUS.BORDERLINE, true, 1]);
+  assert.match(r.reasons[0], /1 b\. za TOK\+EE/);
+
+  // 37: bez jádra nesplňuje, s 3 b. vyjde → hraniční, záleží na TOK+EE (min. 3 b.).
+  r = ev(37, null);
+  assert.deepEqual([r.status, r.coreDependent, r.coreNeeded], [STATUS.BORDERLINE, true, 3]);
+
+  // 40: nevyjde ani s plnými 3 b. → nesplňuje.
+  r = ev(40, null);
+  assert.deepEqual([r.status, r.coreDependent], [STATUS.FAILS, false]);
+
+  // Zadané jádro = běžné vyhodnocení.
+  assert.equal(ev(37, 3).status, STATUS.MEETS);
+  assert.equal(ev(37, 0).status, STATUS.FAILS);
+  assert.equal(ev(37, 0).coreDependent, false);
+});
+
+test('evaluateProgramWithCore: ruční posouzení zůstává neurčité', () => {
+  const r = evaluateProgramWithCore({ manualReview: true, requirementSets: [] }, subjects, null);
+  assert.equal(r.status, STATUS.UNKNOWN);
+  assert.equal(r.coreDependent, false);
+});
+
+test('diplomaIssues: „celkové skóre < 24“ jen když nevyjde ani s plnými 3 b. TOK+EE', () => {
+  const low = [
+    { code: 'SEHS', level: 'HL', grade: 4 }, { code: 'BIO', level: 'HL', grade: 4 }, { code: 'BM', level: 'HL', grade: 4 },
+    { code: 'ENG_A', level: 'SL', grade: 4 }, { code: 'SPA_B', level: 'SL', grade: 4 }, { code: 'MATH_AA', level: 'SL', grade: 3 },
+  ]; // součet 23
+  assert.equal(ibTotals(low, null).diplomaIssues.some((i) => i.startsWith('celkové skóre')), false, '23 + až 3 b. může dát 24+');
+  assert.equal(ibTotals(low, 0).diplomaIssues.some((i) => i.startsWith('celkové skóre')), true, 'se zadanými 0 b. je to 23 < 24');
 });

@@ -1,9 +1,8 @@
 import { useMemo, useState } from 'react';
-import { evaluateProgram } from '@calc';
-import { useData, scenarioSubjects, scenarioTotals } from '../context/DataContext';
+import { useData, scenarioTotals, evaluateForScenario } from '../context/DataContext';
 import StatusBadge from '../components/StatusBadge';
 import PageHeader from '../components/PageHeader';
-import { STATUS_META } from '../lib/format';
+import { STATUS_META, scoreText } from '../lib/format';
 import { fieldMeta } from '../lib/theme';
 
 export default function Matrix() {
@@ -14,9 +13,7 @@ export default function Matrix() {
   const results = useMemo(() => {
     if (!catalog || !student) return null;
     return student.scenarios.map((sc) => {
-      const subjects = scenarioSubjects(student.subjects, sc);
-      const totals = scenarioTotals(student.subjects, sc);
-      return new Map(catalog.programs.map((p) => [p.id, evaluateProgram(p, subjects, totals)]));
+      return new Map(catalog.programs.map((p) => [p.id, evaluateForScenario(p, student.subjects, sc)]));
     });
   }, [catalog, student]);
 
@@ -61,7 +58,7 @@ export default function Matrix() {
               {scenarios.map((sc, i) => (
                 <th key={sc.id} className={`min-w-[6rem] px-2 py-2 text-center ${sc.isActive ? 'bg-violet-50 text-violet-700' : ''}`}>
                   <div className="text-sm font-semibold normal-case">{sc.name}</div>
-                  <div className="font-normal tabular-nums">{scenarioTotals(student.subjects, sc).total} b.</div>
+                  <div className="font-normal tabular-nums">{scoreText(scenarioTotals(student.subjects, sc))} b.</div>
                   <div className="font-normal">{STATUS_META.meets.icon} {total(i, 'meets')} · {STATUS_META.borderline.icon} {total(i, 'borderline')}</div>
                 </th>
               ))}

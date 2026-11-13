@@ -26,6 +26,19 @@ hl_profile = HL známky seřazené sestupně, např. [7,5,5]
 známka 1, nejvýš dvě známky 2, nejvýš tři známky 3 a horší, hl_sum ≥ 12, SL součet ≥ 9,
 žádné E z TOK/EE.
 
+## TOK+EE nezadáno = rozpětí
+
+Univerzity počítají celkové skóre **včetně** TOK+EE (až +3 b.), proto aplikace nikdy nevydává skóre bez jádra za hotové:
+
+- `ibTotals` vrací `coreKnown` (zadané body, i 0, nebo obě známky TOK a EE) a `totalMin` / `totalMax`.
+  Nezadané jádro = rozpětí `subjectsTotal` … `subjectsTotal + 3`.
+- Na přehledu, v Predikci a v Matici se pak místo „34“ zobrazí „32–35“ a rozpis „předměty 32 / 42 + TOK+EE nezadáno“.
+- `evaluateProgramWithCore` vyhodnotí program s 0 a se 3 body: splněno už s 0 → ✅; nesplněno ani se 3 → ❌;
+  jinak ⚠️ „záleží na TOK+EE“ s údajem, kolik bodů z jádra stačí (`coreNeeded`).
+- Požadavek „diplom: celkové skóre < 24“ se při nezadaném jádru hlásí, jen když nevyjde ani s plnými 3 body.
+- Jakmile se TOK+EE zadá, rozpětí zmizí a vyhodnocení je jednoznačné.
+- Katalog má u všech požadavků `totalBasis: with_core`. Škola, která body z jádra výslovně nepočítá, se označí `subjects_only`.
+
 ## Vyhodnocení dosažitelnosti
 
 Vstup: aktivní scénář a program se sadami požadavků. Pro každou sadu se vyhodnotí všechny
